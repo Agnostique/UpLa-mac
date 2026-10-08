@@ -15,7 +15,7 @@ jobs:
     runs-on: macos-15
     timeout-minutes: 20
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       - name: Show the toolchain
         run: |
@@ -31,7 +31,7 @@ jobs:
     runs-on: macos-15
     timeout-minutes: 30
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       # The guest key comes only from the repository secret and is never printed. Pull requests from forks get no
       # secrets, so their builds have no guest key and need a sign-in to upload.
@@ -89,7 +89,7 @@ jobs:
       - name: Zip the app
         run: ditto -c -k --keepParent build/Build/Products/Release/UpLa.app UpLa-mac.zip
 
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: UpLa-mac
           path: UpLa-mac.zip

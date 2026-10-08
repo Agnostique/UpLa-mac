@@ -37,7 +37,7 @@ final class TransferTests: XCTestCase {
             LoopbackServer.Response(status: 200, headers: ["Content-Type": "application/json"], body: Data(UploadResponseParserTests.imageJSON.utf8))
         }
 
-        // About 2.7 MB, so the body goes out in many pieces and progress is reported several times.
+        // About 2.7 MB, so the body goes out in many pieces.
         let image = TestImages.png(width: 1200, height: 750, seed: 7)
         let file = try directory.file("büyük ekran.png", image)
         let progress = Recorder<Double>()
@@ -61,7 +61,13 @@ final class TransferTests: XCTestCase {
         XCTAssertEqual(parts.last?.body, image)
 
         let values = progress.values
+        #if canImport(FoundationNetworking)
+        // swift-corelibs-foundation reports every piece it sends.
         XCTAssertGreaterThan(values.count, 1, "progress is reported while the body is sent")
+        #else
+        // Apple's URLSession may report a fast loopback upload in a single callback.
+        XCTAssertFalse(values.isEmpty, "progress is reported")
+        #endif
         XCTAssertEqual(values, values.sorted(), "progress only grows")
         XCTAssertEqual(values.last ?? 0, 1, accuracy: 0.000_1)
         XCTAssertTrue(values.allSatisfy { $0 >= 0 && $0 <= 1 })
