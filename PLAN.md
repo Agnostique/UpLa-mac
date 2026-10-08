@@ -8,7 +8,7 @@ This file is the shared memory between the Windows and the Mac Claude Code sessi
 
 ## Status
 
-*Updated 2026-10-09.* Version 0.1 is on branch `dev` (not merged into `main`). It was written and tested on the Windows PC only (WSL and GitHub Actions). **It has not run on a Mac yet.** Milestones M0–M3 are done but still have to be tested on a Mac; M4 and M5 are open (see [Milestones](#milestones)).
+*Updated 2026-10-09.* Version 0.1 is on `main` (merged from `dev` in pull request #1). It was written and tested on the Windows PC only (WSL and GitHub Actions). **It has not run on a Mac yet.** Milestones M0–M3 are done but still have to be tested on a Mac; M4 and M5 are open (see [Milestones](#milestones)).
 
 ### Implemented in 0.1
 
