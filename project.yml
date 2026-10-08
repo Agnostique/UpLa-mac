@@ -1,0 +1,87 @@
+# XcodeGen spec of UpLa for Mac: run "xcodegen generate" to create UpLa.xcodeproj (not kept in git).
+name: UpLa
+
+options:
+  bundleIdPrefix: tr.com.upla
+  developmentLanguage: en
+  createIntermediateGroups: true
+  deploymentTarget:
+    macOS: "14.0"
+
+packages:
+  UplaKit:
+    path: UplaKit
+
+settings:
+  base:
+    MACOSX_DEPLOYMENT_TARGET: "14.0"
+    SWIFT_VERSION: "5.0"
+
+targets:
+  UpLa:
+    type: application
+    platform: macOS
+    deploymentTarget: "14.0"
+    sources:
+      - path: App/Sources
+      - path: App/Resources
+        buildPhase: resources
+    dependencies:
+      - package: UplaKit
+        product: UplaKit
+    configFiles:
+      Debug: Config/App.xcconfig
+      Release: Config/App.xcconfig
+    info:
+      path: App/Info.plist
+      properties:
+        CFBundleDisplayName: UpLa
+        CFBundleName: UpLa
+        CFBundleShortVersionString: $(MARKETING_VERSION)
+        CFBundleVersion: $(CURRENT_PROJECT_VERSION)
+        CFBundleLocalizations:
+          - en
+          - tr
+        LSMinimumSystemVersion: $(MACOSX_DEPLOYMENT_TARGET)
+        LSUIElement: true
+        LSApplicationCategoryType: public.app-category.photography
+        NSHumanReadableCopyright: "Copyright © 2026 upla.com.tr. Licensed under the GNU GPL v3."
+        NSPrincipalClass: NSApplication
+        # Filled from Config/Secrets.xcconfig (gitignored); empty in builds without it, which then need a sign-in.
+        UplaGuestAPIKey: $(UPLA_GUEST_API_KEY)
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: tr.com.upla.UpLa
+        PRODUCT_NAME: UpLa
+        MARKETING_VERSION: 0.1.0
+        CURRENT_PROJECT_VERSION: 1
+        SWIFT_VERSION: "5.0"
+        SWIFT_STRICT_CONCURRENCY: minimal
+        ENABLE_HARDENED_RUNTIME: YES
+        # Not sandboxed: the app runs /usr/sbin/screencapture.
+        ENABLE_APP_SANDBOX: NO
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        LOCALIZATION_PREFERS_STRING_CATALOGS: YES
+        SWIFT_EMIT_LOC_STRINGS: YES
+        COMBINE_HIDPI_IMAGES: YES
+        # Signing is set in Config/App.xcconfig (ad-hoc by default) and Config/Signing.xcconfig (your team), not here:
+        # target settings would override both, and regenerating the project would reset a team chosen in Xcode.
+
+schemes:
+  UpLa:
+    build:
+      targets:
+        UpLa: all
+    run:
+      config: Debug
+      # Debug builds only: tick it in Edit Scheme › Run › Arguments to use a local test site instead of upla.com.tr.
+      environmentVariables:
+        - variable: UPLA_DEBUG_BASE_URL
+          value: http://localhost:8090
+          isEnabled: false
+    profile:
+      config: Release
+    analyze:
+      config: Debug
+    archive:
+      config: Release

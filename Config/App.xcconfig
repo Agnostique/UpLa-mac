@@ -1,0 +1,15 @@
+// Build settings shared by Debug and Release.
+
+// Shared upla.com.tr guest upload key. Empty here; Secrets.xcconfig (gitignored, see Secrets.example.xcconfig)
+// sets the real value. Without it the app still builds, and uploads need a sign-in.
+UPLA_GUEST_API_KEY =
+
+// Signing: "Sign to Run Locally" (ad-hoc) so a fresh checkout builds. Signing.xcconfig (gitignored, see
+// Signing.example.xcconfig) can set your team instead; then macOS keeps the Screen Recording permission and the keychain
+// access between builds. CI passes its own values on the xcodebuild command line.
+CODE_SIGN_STYLE = Automatic
+CODE_SIGN_IDENTITY = -
+DEVELOPMENT_TEAM =
+
+#include? "Signing.xcconfig"
+#include? "Secrets.xcconfig"

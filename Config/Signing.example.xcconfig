@@ -1,0 +1,6 @@
+// Copy this file to Signing.xcconfig (ignored by git) and fill in your team ID to sign your own builds with your
+// (Personal) Team, so macOS keeps the Screen Recording permission and the keychain access between builds. The ID is
+// shown in Xcode › Settings › Accounts (select the team) and in the Team menu of Signing & Capabilities.
+
+DEVELOPMENT_TEAM =
+CODE_SIGN_IDENTITY = Apple Development
