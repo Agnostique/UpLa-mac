@@ -1,0 +1,7 @@
+// Build settings shared by Debug and Release.
+
+// Shared upla.com.tr guest upload key. Empty here; Secrets.xcconfig (gitignored, see Secrets.example.xcconfig)
+// sets the real value. Without it the app still builds, and uploads need a sign-in.
+UPLA_GUEST_API_KEY =
+
+#include? "Secrets.xcconfig"

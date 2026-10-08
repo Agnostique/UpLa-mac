@@ -1,0 +1,96 @@
+name: Build UpLa for Mac
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+# The UplaKit tests and the app build run as parallel jobs, so one run shows the errors of both.
+jobs:
+  test:
+    name: Test UplaKit
+    runs-on: macos-15
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Show the toolchain
+        run: |
+          xcodebuild -version
+          swift --version
+
+      - name: Test UplaKit
+        timeout-minutes: 15
+        run: swift test --package-path UplaKit
+
+  build:
+    name: Build the app
+    runs-on: macos-15
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      # The guest key comes only from the repository secret and is never printed. Pull requests from forks get no
+      # secrets, so their builds have no guest key and need a sign-in to upload.
+      - name: Write Config/Secrets.xcconfig
+        env:
+          UPLA_GUEST_API_KEY: ${{ secrets.UPLA_GUEST_API_KEY }}
+        run: |
+          if [ -n "$UPLA_GUEST_API_KEY" ]; then
+            printf 'UPLA_GUEST_API_KEY = %s\n' "$UPLA_GUEST_API_KEY" > Config/Secrets.xcconfig
+            echo "Guest key: set"
+          else
+            echo "Guest key: not set (uploads need a sign-in)"
+          fi
+
+      - name: Install XcodeGen
+        env:
+          HOMEBREW_NO_AUTO_UPDATE: 1
+          HOMEBREW_NO_INSTALL_CLEANUP: 1
+        run: brew install xcodegen
+
+      - name: Show the toolchain
+        run: |
+          xcodebuild -version
+          swift --version
+          xcodegen --version
+
+      - name: Generate the Xcode project
+        run: xcodegen generate
+
+      # Ad-hoc signed ("-") universal build: it runs on Apple Silicon too, but it is not notarized.
+      - name: Build
+        run: >
+          xcodebuild
+          -project UpLa.xcodeproj
+          -scheme UpLa
+          -configuration Release
+          -destination 'generic/platform=macOS'
+          -derivedDataPath build
+          ARCHS="arm64 x86_64"
+          ONLY_ACTIVE_ARCH=NO
+          CODE_SIGN_IDENTITY=-
+          CODE_SIGN_STYLE=Manual
+          DEVELOPMENT_TEAM=
+          build
+
+      # Shows the architectures, the signature and the compiled localizations; only a missing binary fails here.
+      - name: Check the app
+        run: |
+          APP="build/Build/Products/Release/UpLa.app"
+          lipo -archs "$APP/Contents/MacOS/UpLa"
+          codesign --verify --deep --strict --verbose=2 "$APP" || echo "::warning::codesign could not verify the app"
+          ls "$APP/Contents/Resources" "$APP/Contents/Resources/tr.lproj" || echo "::warning::no Turkish resources"
+          /usr/libexec/PlistBuddy -c "Print :LSUIElement" -c "Print :CFBundleShortVersionString" "$APP/Contents/Info.plist" || true
+
+      - name: Zip the app
+        run: ditto -c -k --keepParent build/Build/Products/Release/UpLa.app UpLa-mac.zip
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: UpLa-mac
+          path: UpLa-mac.zip
+          if-no-files-found: error

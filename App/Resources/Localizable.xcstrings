@@ -1,0 +1,3334 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "\"%@\" files cannot be uploaded to upla.com.tr. Supported types: %@." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "\"%@\" files cannot be uploaded to upla.com.tr. Supported types: %@."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "\"%@\" türündeki dosyalar upla.com.tr'ye yüklenemez. Desteklenen türler: %@."
+          }
+        }
+      }
+    },
+    "%@ (awaiting moderation)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ (awaiting moderation)"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ (onay bekliyor)"
+          }
+        }
+      }
+    },
+    "%@ (sign in again)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ (sign in again)"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ (tekrar giriş yapın)"
+          }
+        }
+      }
+    },
+    "%@ days" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ days"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ gün"
+          }
+        }
+      }
+    },
+    "%@ hours" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ hours"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ saat"
+          }
+        }
+      }
+    },
+    "%@ minutes" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ minutes"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ dakika"
+          }
+        }
+      }
+    },
+    "%@ months" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ months"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ ay"
+          }
+        }
+      }
+    },
+    "%@ weeks" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ weeks"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ hafta"
+          }
+        }
+      }
+    },
+    "%@ years" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ years"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ yıl"
+          }
+        }
+      }
+    },
+    "1 day" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1 day"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1 gün"
+          }
+        }
+      }
+    },
+    "1 hour" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1 hour"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1 saat"
+          }
+        }
+      }
+    },
+    "1 minute" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1 minute"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1 dakika"
+          }
+        }
+      }
+    },
+    "1 month" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1 month"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1 ay"
+          }
+        }
+      }
+    },
+    "1 week" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1 week"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1 hafta"
+          }
+        }
+      }
+    },
+    "1 year" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1 year"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1 yıl"
+          }
+        }
+      }
+    },
+    "API key:" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "API key:"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "API anahtarı:"
+          }
+        }
+      }
+    },
+    "About UpLa" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "About UpLa"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "UpLa Hakkında"
+          }
+        }
+      }
+    },
+    "Account" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Account"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hesap"
+          }
+        }
+      }
+    },
+    "After capture" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "After capture"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yakalama sonrası"
+          }
+        }
+      }
+    },
+    "Album (link or ID):" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Album (link or ID):"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Albüm (link veya kimlik):"
+          }
+        }
+      }
+    },
+    "Album and tags only work when you are signed in. Auto delete is applied when it is enabled on upla.com.tr." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Album and tags only work when you are signed in. Auto delete is applied when it is enabled on upla.com.tr."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Albüm ve etiketler yalnızca giriş yaptığınızda çalışır. Otomatik silme, upla.com.tr'de etkinse uygulanır."
+          }
+        }
+      }
+    },
+    "Allow UpLa in System Settings › General › Login Items." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Allow UpLa in System Settings › General › Login Items."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sistem Ayarları › Genel › Giriş Öğeleri bölümünde UpLa'ya izin verin."
+          }
+        }
+      }
+    },
+    "An empty field checks the guest upload." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "An empty field checks the guest upload."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alan boşsa misafir yükleme kontrol edilir."
+          }
+        }
+      }
+    },
+    "Auto delete:" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Auto delete:"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Otomatik silme:"
+          }
+        }
+      }
+    },
+    "Awaiting moderation" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Awaiting moderation"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Onay bekliyor"
+          }
+        }
+      }
+    },
+    "Cancel" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cancel"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İptal"
+          }
+        }
+      }
+    },
+    "Cancel Uploads" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cancel Uploads"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yüklemeleri İptal Et"
+          }
+        }
+      }
+    },
+    "Capture" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Capture"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yakalama"
+          }
+        }
+      }
+    },
+    "Capture Full Screen" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Capture Full Screen"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tam Ekranı Yakala"
+          }
+        }
+      }
+    },
+    "Capture Region" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Capture Region"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bölge Yakala"
+          }
+        }
+      }
+    },
+    "Capture Window" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Capture Window"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pencere Yakala"
+          }
+        }
+      }
+    },
+    "Category ID (0 = none):" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Category ID (0 = none):"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kategori kimliği (0 = yok):"
+          }
+        }
+      }
+    },
+    "Check Key" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Check Key"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Anahtarı Doğrula"
+          }
+        }
+      }
+    },
+    "Choose" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seç"
+          }
+        }
+      }
+    },
+    "Choose…" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose…"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seç…"
+          }
+        }
+      }
+    },
+    "Clear History" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clear History"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Geçmişi Temizle"
+          }
+        }
+      }
+    },
+    "Clear History…" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clear History…"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Geçmişi Temizle…"
+          }
+        }
+      }
+    },
+    "Clear the upload history?" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clear the upload history?"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yükleme geçmişi temizlensin mi?"
+          }
+        }
+      }
+    },
+    "Click a shortcut, then press the new keys. Esc cancels, Delete removes the shortcut. A shortcut needs ⌘, ⌥ or ⌃." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Click a shortcut, then press the new keys. Esc cancels, Delete removes the shortcut. A shortcut needs ⌘, ⌥ or ⌃."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bir kısayola tıklayın, ardından yeni tuşlara basın. Esc iptal eder, Sil tuşu kısayolu kaldırır. Kısayolda ⌘, ⌥ veya ⌃ bulunmalıdır."
+          }
+        }
+      }
+    },
+    "Close" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Close"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kapat"
+          }
+        }
+      }
+    },
+    "Connected Devices" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Connected Devices"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bağlı Cihazlar"
+          }
+        }
+      }
+    },
+    "Continue as Guest" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Continue as Guest"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Misafir Olarak Devam Et"
+          }
+        }
+      }
+    },
+    "Copy" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Copy"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kopyala"
+          }
+        }
+      }
+    },
+    "Copy Link" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Copy Link"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Linki Kopyala"
+          }
+        }
+      }
+    },
+    "Copy link: %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Copy link: %@"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Linki kopyala: %@"
+          }
+        }
+      }
+    },
+    "Copy the image to the clipboard" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Copy the image to the clipboard"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Resmi panoya kopyala"
+          }
+        }
+      }
+    },
+    "Could not change the login item: %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Could not change the login item: %@"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Giriş öğesi değiştirilemedi: %@"
+          }
+        }
+      }
+    },
+    "Could not connect to upla.com.tr. Check your internet connection." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Could not connect to upla.com.tr. Check your internet connection."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "upla.com.tr'ye bağlanılamadı. İnternet bağlantınızı kontrol edin."
+          }
+        }
+      }
+    },
+    "Could not sign in: %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Could not sign in: %@"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Giriş yapılamadı: %@"
+          }
+        }
+      }
+    },
+    "Could not verify the key: %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Could not verify the key: %@"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Anahtar doğrulanamadı: %@"
+          }
+        }
+      }
+    },
+    "Create Account" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Create Account"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hesap Oluştur"
+          }
+        }
+      }
+    },
+    "Cut" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cut"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kes"
+          }
+        }
+      }
+    },
+    "Deletion link" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Deletion link"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Silme linki"
+          }
+        }
+      }
+    },
+    "Direct file link" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Direct file link"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Doğrudan dosya linki"
+          }
+        }
+      }
+    },
+    "Edit" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Edit"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Düzen"
+          }
+        }
+      }
+    },
+    "Enter a key first." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enter a key first."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Önce bir anahtar girin."
+          }
+        }
+      }
+    },
+    "Enter an API key by hand (advanced)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enter an API key by hand (advanced)"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "API anahtarını elle gir (gelişmiş)"
+          }
+        }
+      }
+    },
+    "Enter your username or email and your password." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enter your username or email and your password."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kullanıcı adınızı veya e-postanızı ve şifrenizi girin."
+          }
+        }
+      }
+    },
+    "Example: https://upla.com.tr/album/Holiday.AbCd (the album must belong to your account)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Example: https://upla.com.tr/album/Holiday.AbCd (the album must belong to your account)"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Örnek: https://upla.com.tr/album/Tatil.AbCd (albüm sizin hesabınıza ait olmalıdır)"
+          }
+        }
+      }
+    },
+    "Failed uploads are always reported. Click a notification to open the link." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Failed uploads are always reported. Click a notification to open the link."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Başarısız yüklemeler her zaman bildirilir. Linki açmak için bildirime tıklayın."
+          }
+        }
+      }
+    },
+    "Folder:" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Folder:"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Klasör:"
+          }
+        }
+      }
+    },
+    "Forgot password" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Forgot password"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Şifremi unuttum"
+          }
+        }
+      }
+    },
+    "General" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "General"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Genel"
+          }
+        }
+      }
+    },
+    "Get Key" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Get Key"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Anahtar Al"
+          }
+        }
+      }
+    },
+    "Guest upload is available." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Guest upload is available."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Misafir yükleme kullanılabilir."
+          }
+        }
+      }
+    },
+    "Guest upload is currently disabled on upla.com.tr. Sign in with your account from the \"upla.com.tr Account\" menu." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Guest upload is currently disabled on upla.com.tr. Sign in with your account from the \"upla.com.tr Account\" menu."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "upla.com.tr'de misafir yükleme şu anda kapalı. \"upla.com.tr Hesabı\" menüsünden hesabınızla giriş yapın."
+          }
+        }
+      }
+    },
+    "Guest upload is currently disabled. Sign in with your account." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Guest upload is currently disabled. Sign in with your account."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Misafir yükleme şu anda kapalı. Hesabınızla giriş yapın."
+          }
+        }
+      }
+    },
+    "Hotkeys" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hotkeys"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kısayollar"
+          }
+        }
+      }
+    },
+    "Invalid key. Sign in from the app or create a new key on the \"Connected devices\" page." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Invalid key. Sign in from the app or create a new key on the \"Connected devices\" page."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Anahtar geçersiz. Uygulamadan giriş yapın veya \"Bağlı cihazlar\" sayfasından yeni bir anahtar oluşturun."
+          }
+        }
+      }
+    },
+    "License" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "License"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lisans"
+          }
+        }
+      }
+    },
+    "Link to copy:" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Link to copy:"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kopyalanacak link:"
+          }
+        }
+      }
+    },
+    "Max width on server (px, 0 = off):" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Max width on server (px, 0 = off):"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sunucuda en fazla genişlik (px, 0 = kapalı):"
+          }
+        }
+      }
+    },
+    "Minimize" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Minimize"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Simge Durumuna Küçült"
+          }
+        }
+      }
+    },
+    "My Profile" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "My Profile"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Profilim"
+          }
+        }
+      }
+    },
+    "Never" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Never"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kapalı"
+          }
+        }
+      }
+    },
+    "No uploads yet" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No uploads yet"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Henüz yükleme yok"
+          }
+        }
+      }
+    },
+    "None" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "None"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yok"
+          }
+        }
+      }
+    },
+    "Nothing to upload" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nothing to upload"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yüklenecek bir şey yok"
+          }
+        }
+      }
+    },
+    "OK" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OK"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tamam"
+          }
+        }
+      }
+    },
+    "Only needed if you cannot sign in from the app. Get a key with \"Create a new API key\" on the \"Connected devices\" page. \"Regen key\" on Settings › API deletes the newest key, which may be the connection of another computer you signed in on." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Only needed if you cannot sign in from the app. Get a key with \"Create a new API key\" on the \"Connected devices\" page. \"Regen key\" on Settings › API deletes the newest key, which may be the connection of another computer you signed in on."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yalnızca uygulamadan giriş yapamıyorsanız gerekir. Anahtarı \"Bağlı cihazlar\" sayfasındaki \"Yeni API anahtarı oluştur\" düğmesiyle alın. Ayarlar › API sayfasındaki \"Regen key\" en yeni anahtarı siler; bu, giriş yaptığınız başka bir bilgisayarın bağlantısı olabilir."
+          }
+        }
+      }
+    },
+    "Open" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aç"
+          }
+        }
+      }
+    },
+    "Open Connected Devices" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open Connected Devices"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bağlı Cihazları Aç"
+          }
+        }
+      }
+    },
+    "Open Delete Page" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open Delete Page"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Silme Sayfasını Aç"
+          }
+        }
+      }
+    },
+    "Open Delete Page…" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open Delete Page…"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Silme Sayfasını Aç…"
+          }
+        }
+      }
+    },
+    "Open Login Items Settings" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open Login Items Settings"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Giriş Öğeleri Ayarlarını Aç"
+          }
+        }
+      }
+    },
+    "Open System Settings" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open System Settings"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sistem Ayarlarını Aç"
+          }
+        }
+      }
+    },
+    "Open UpLa at login" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open UpLa at login"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Oturum açıldığında UpLa'yı başlat"
+          }
+        }
+      }
+    },
+    "Opening the deletion link can delete the uploaded file from the server immediately and permanently. Do you want to continue?" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Opening the deletion link can delete the uploaded file from the server immediately and permanently. Do you want to continue?"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Silme linki açıldığında yüklenen dosya sunucudan hemen ve kalıcı olarak silinebilir. Devam etmek istiyor musunuz?"
+          }
+        }
+      }
+    },
+    "Page link (recommended)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Page link (recommended)"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sayfa linki (önerilen)"
+          }
+        }
+      }
+    },
+    "Password:" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Password:"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Şifre:"
+          }
+        }
+      }
+    },
+    "Paste" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Paste"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yapıştır"
+          }
+        }
+      }
+    },
+    "Press the new shortcut…" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Press the new shortcut…"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yeni kısayola basın…"
+          }
+        }
+      }
+    },
+    "Quit UpLa" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quit UpLa"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "UpLa'dan Çık"
+          }
+        }
+      }
+    },
+    "Recent Uploads" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Recent Uploads"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Son Yüklemeler"
+          }
+        }
+      }
+    },
+    "Redo" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Redo"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yinele"
+          }
+        }
+      }
+    },
+    "Region and window captures use the macOS selection: drag to select a region, press Space to switch between region and window, press Esc to cancel." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Region and window captures use the macOS selection: drag to select a region, press Space to switch between region and window, press Esc to cancel."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bölge ve pencere yakalamada macOS seçimi kullanılır: bölge seçmek için sürükleyin, bölge ile pencere arasında geçmek için Boşluk tuşuna, iptal etmek için Esc tuşuna basın."
+          }
+        }
+      }
+    },
+    "Remove Key" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Remove Key"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Anahtarı Kaldır"
+          }
+        }
+      }
+    },
+    "Remove Key…" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Remove Key…"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Anahtarı Kaldır…"
+          }
+        }
+      }
+    },
+    "Remove from History" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Remove from History"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Geçmişten Kaldır"
+          }
+        }
+      }
+    },
+    "Remove the API key entered by hand from this Mac? Later uploads are made as a guest." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Remove the API key entered by hand from this Mac? Later uploads are made as a guest."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Elle girilen API anahtarı bu Mac'ten kaldırılsın mı? Sonraki yüklemeler misafir olarak yapılır."
+          }
+        }
+      }
+    },
+    "Restore Defaults" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Restore Defaults"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Varsayılanları Geri Yükle"
+          }
+        }
+      }
+    },
+    "Save to a folder" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Save to a folder"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bir klasöre kaydet"
+          }
+        }
+      }
+    },
+    "Screen Recording Permission" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Screen Recording Permission"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ekran Kaydı İzni"
+          }
+        }
+      }
+    },
+    "Screen recording comes in a later version; this setting is kept for it." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Screen recording comes in a later version; this setting is kept for it."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ekran kaydı sonraki bir sürümde gelecek; bu ayar onun için saklanır."
+          }
+        }
+      }
+    },
+    "Screen recordings (MP4, WEBM) are uploaded to upla.com.tr too. The limit is 20 MB for guests and 100 MB for signed in members." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Screen recordings (MP4, WEBM) are uploaded to upla.com.tr too. The limit is 20 MB for guests and 100 MB for signed in members."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ekran kayıtları (MP4, WEBM) da upla.com.tr'ye yüklenir. Sınır misafirlerde 20 MB, giriş yapan üyelerde 100 MB."
+          }
+        }
+      }
+    },
+    "Screenshot copied to the clipboard" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Screenshot copied to the clipboard"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ekran görüntüsü panoya kopyalandı"
+          }
+        }
+      }
+    },
+    "Screenshot saved" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Screenshot saved"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ekran görüntüsü kaydedildi"
+          }
+        }
+      }
+    },
+    "Screenshots are taken with the macOS screencapture tool, which needs this permission. UpLa does not record anything until you capture." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Screenshots are taken with the macOS screencapture tool, which needs this permission. UpLa does not record anything until you capture."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ekran görüntüleri macOS'in screencapture aracıyla alınır ve bu araç bu izne ihtiyaç duyar. Siz yakalama yapana kadar UpLa hiçbir şey kaydetmez."
+          }
+        }
+      }
+    },
+    "Select All" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Select All"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tümünü Seç"
+          }
+        }
+      }
+    },
+    "Settings…" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Settings…"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ayarlar…"
+          }
+        }
+      }
+    },
+    "Short link" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Short link"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kısa link"
+          }
+        }
+      }
+    },
+    "Show" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Göster"
+          }
+        }
+      }
+    },
+    "Show History…" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show History…"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Geçmişi Göster…"
+          }
+        }
+      }
+    },
+    "Show a notification when an upload finishes" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show a notification when an upload finishes"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yükleme bitince bildirim göster"
+          }
+        }
+      }
+    },
+    "Show in Finder" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show in Finder"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Finder'da Göster"
+          }
+        }
+      }
+    },
+    "Sign In" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sign In"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Giriş Yap"
+          }
+        }
+      }
+    },
+    "Sign In Again…" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sign In Again…"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tekrar Giriş Yap…"
+          }
+        }
+      }
+    },
+    "Sign In…" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sign In…"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Giriş Yap…"
+          }
+        }
+      }
+    },
+    "Sign Out" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sign Out"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Çıkış Yap"
+          }
+        }
+      }
+    },
+    "Sign in to upla.com.tr" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sign in to upla.com.tr"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "upla.com.tr'ye giriş yap"
+          }
+        }
+      }
+    },
+    "Sign out of your upla.com.tr account? This Mac's connection is removed from the server too; later uploads are made as a guest." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sign out of your upla.com.tr account? This Mac's connection is removed from the server too; later uploads are made as a guest."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "upla.com.tr hesabınızdan çıkış yapılsın mı? Bu Mac'in bağlantısı sunucudan da silinir; sonraki yüklemeler misafir olarak yapılır."
+          }
+        }
+      }
+    },
+    "Signed in as %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Signed in as %@"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Giriş yapıldı: %@"
+          }
+        }
+      }
+    },
+    "Signed in as %@. Files are uploaded to your account." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Signed in as %@. Files are uploaded to your account."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Giriş yapıldı: %@. Dosyalar hesabınıza yüklenir."
+          }
+        }
+      }
+    },
+    "Signing in…" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Signing in…"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Giriş yapılıyor…"
+          }
+        }
+      }
+    },
+    "Source code" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Source code"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kaynak kod"
+          }
+        }
+      }
+    },
+    "Stop screen recordings that will be uploaded at the upload limit" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stop screen recordings that will be uploaded at the upload limit"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yüklenecek ekran kayıtlarını yükleme sınırına gelince durdur"
+          }
+        }
+      }
+    },
+    "Tags (comma separated):" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tags (comma separated):"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Etiketler (virgülle ayırın):"
+          }
+        }
+      }
+    },
+    "The file could not be read." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The file could not be read."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dosya okunamadı."
+          }
+        }
+      }
+    },
+    "The file did not reach the server; it may be larger than allowed." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The file did not reach the server; it may be larger than allowed."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dosya sunucuya ulaşmadı; dosya izin verilen boyuttan büyük olabilir."
+          }
+        }
+      }
+    },
+    "The file is too large (%@). Guest uploads are limited to %@; sign in with your account for larger files." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The file is too large (%@). Guest uploads are limited to %@; sign in with your account for larger files."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dosya çok büyük (%@). Misafir yüklemelerde sınır %@; daha büyük dosyalar için hesabınızla giriş yapın."
+          }
+        }
+      }
+    },
+    "The file is too large (%@); at most %@ can be uploaded at once." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The file is too large (%@); at most %@ can be uploaded at once."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dosya çok büyük (%@); tek seferde en fazla %@ yüklenebilir."
+          }
+        }
+      }
+    },
+    "The file is too large for upla.com.tr." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The file is too large for upla.com.tr."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dosya upla.com.tr için çok büyük."
+          }
+        }
+      }
+    },
+    "The file is waiting for moderation; until it is approved only the page link works." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The file is waiting for moderation; until it is approved only the page link works."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dosya onay bekliyor; onaylanana kadar yalnızca sayfa linki çalışır."
+          }
+        }
+      }
+    },
+    "The file was not uploaded because the upla.com.tr sign-in saved on this Mac could not be read from the keychain. Sign in again or continue as a guest from the \"upla.com.tr Account\" menu." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The file was not uploaded because the upla.com.tr sign-in saved on this Mac could not be read from the keychain. Sign in again or continue as a guest from the \"upla.com.tr Account\" menu."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bu Mac'te kayıtlı upla.com.tr oturumu anahtar zincirinden okunamadığı için dosya yüklenmedi. \"upla.com.tr Hesabı\" menüsünden tekrar giriş yapın veya misafir olarak devam edin."
+          }
+        }
+      }
+    },
+    "The folder could not be created" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The folder could not be created"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Klasör oluşturulamadı"
+          }
+        }
+      }
+    },
+    "The key could not be saved in the keychain: %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The key could not be saved in the keychain: %@"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Anahtar, anahtar zincirine kaydedilemedi: %@"
+          }
+        }
+      }
+    },
+    "The key is valid but this account is not allowed to upload." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The key is valid but this account is not allowed to upload."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Anahtar geçerli ancak bu hesabın yükleme izni yok."
+          }
+        }
+      }
+    },
+    "The key is valid; files will be uploaded to your account." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The key is valid; files will be uploaded to your account."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Anahtar geçerli; dosyalar hesabınıza yüklenecek."
+          }
+        }
+      }
+    },
+    "The key was saved. Files are uploaded to the account that owns the key." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The key was saved. Files are uploaded to the account that owns the key."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Anahtar kaydedildi. Dosyalar anahtarın sahibi olan hesaba yüklenir."
+          }
+        }
+      }
+    },
+    "The link was copied to the clipboard." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The link was copied to the clipboard."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Link panoya kopyalandı."
+          }
+        }
+      }
+    },
+    "The links and deletion links saved on this Mac are removed. The files stay on upla.com.tr." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The links and deletion links saved on this Mac are removed. The files stay on upla.com.tr."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bu Mac'te kayıtlı linkler ve silme linkleri kaldırılır. Dosyalar upla.com.tr'de kalır."
+          }
+        }
+      }
+    },
+    "The permission is on. If capturing still fails, quit and reopen UpLa." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The permission is on. If capturing still fails, quit and reopen UpLa."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İzin açık. Yakalama hâlâ çalışmıyorsa UpLa'dan çıkıp yeniden açın."
+          }
+        }
+      }
+    },
+    "The resize width is larger than the image width." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The resize width is larger than the image width."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sunucuda yeniden boyutlandırma genişliği resmin kendi genişliğinden büyük."
+          }
+        }
+      }
+    },
+    "The saved API key could not be read from this Mac's keychain. Sign in again or continue as a guest." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The saved API key could not be read from this Mac's keychain. Sign in again or continue as a guest."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kayıtlı API anahtarı bu Mac'in anahtar zincirinden okunamadı. Tekrar giriş yapın veya misafir olarak devam edin."
+          }
+        }
+      }
+    },
+    "The screenshot could not be saved" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The screenshot could not be saved"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ekran görüntüsü kaydedilemedi"
+          }
+        }
+      }
+    },
+    "The sign-in of %@ could not be read from this Mac's keychain. Sign in again or continue as a guest." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The sign-in of %@ could not be read from this Mac's keychain. Sign in again or continue as a guest."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ hesabının oturumu bu Mac'in anahtar zincirinden okunamadı. Tekrar giriş yapın veya misafir olarak devam edin."
+          }
+        }
+      }
+    },
+    "The upla.com.tr API key entered by hand is invalid. Sign in from the app or check the key in Settings › Account." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The upla.com.tr API key entered by hand is invalid. Sign in from the app or check the key in Settings › Account."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Elle girilen upla.com.tr API anahtarı geçersiz. Uygulamadan giriş yapın veya anahtarı Ayarlar › Hesap bölümünde kontrol edin."
+          }
+        }
+      }
+    },
+    "The upla.com.tr upload API is currently disabled." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The upla.com.tr upload API is currently disabled."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "upla.com.tr yükleme API'si şu anda kapalı."
+          }
+        }
+      }
+    },
+    "The upload was cancelled." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The upload was cancelled."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yükleme iptal edildi."
+          }
+        }
+      }
+    },
+    "There is no file or image on the clipboard." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "There is no file or image on the clipboard."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Panoda dosya veya resim yok."
+          }
+        }
+      }
+    },
+    "This Mac's connection was removed (possibly from the website's \"Connected devices\" page). Sign in again." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This Mac's connection was removed (possibly from the website's \"Connected devices\" page). Sign in again."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bu Mac'in bağlantısı kaldırılmış (web sitesindeki \"Bağlı cihazlar\" sayfasından silinmiş olabilir). Tekrar giriş yapın."
+          }
+        }
+      }
+    },
+    "This account cannot sign in." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This account cannot sign in."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bu hesapla giriş yapılamıyor."
+          }
+        }
+      }
+    },
+    "This account is banned." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This account is banned."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bu hesap engellenmiş."
+          }
+        }
+      }
+    },
+    "This account is not allowed to upload to upla.com.tr, or uploads are temporarily disabled." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This account is not allowed to upload to upla.com.tr, or uploads are temporarily disabled."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bu hesabın upla.com.tr'ye yükleme izni yok veya yükleme geçici olarak kapalı."
+          }
+        }
+      }
+    },
+    "This build has no guest upload key. Sign in to upload." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This build has no guest upload key. Sign in to upload."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bu sürümde misafir yükleme anahtarı yok. Yüklemek için giriş yapın."
+          }
+        }
+      }
+    },
+    "This file type is currently not accepted by upla.com.tr." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This file type is currently not accepted by upla.com.tr."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bu dosya türü upla.com.tr'de şu anda kabul edilmiyor."
+          }
+        }
+      }
+    },
+    "This file was already uploaded recently; upla.com.tr does not accept the same file again within 24 hours." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This file was already uploaded recently; upla.com.tr does not accept the same file again within 24 hours."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bu dosya kısa süre önce zaten yüklendi; upla.com.tr aynı dosyanın 24 saat içinde tekrar yüklenmesine izin vermiyor."
+          }
+        }
+      }
+    },
+    "This key uses an old format that is no longer supported. Sign in from the app or create a new key on the \"Connected devices\" page." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This key uses an old format that is no longer supported. Sign in from the app or create a new key on the \"Connected devices\" page."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bu anahtar eski formatta ve artık desteklenmiyor. Uygulamadan giriş yapın veya \"Bağlı cihazlar\" sayfasından yeni bir anahtar oluşturun."
+          }
+        }
+      }
+    },
+    "This shortcut could not be registered; another app may be using it." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This shortcut could not be registered; another app may be using it."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bu kısayol kaydedilemedi; başka bir uygulama kullanıyor olabilir."
+          }
+        }
+      }
+    },
+    "Too many failed attempts. Try again in 24 hours or sign in on the website." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Too many failed attempts. Try again in 24 hours or sign in on the website."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Çok fazla hatalı deneme yapıldı. 24 saat sonra tekrar deneyin veya web sitesinden giriş yapın."
+          }
+        }
+      }
+    },
+    "Too many failed attempts. Try again in an hour or sign in on the website." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Too many failed attempts. Try again in an hour or sign in on the website."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Çok fazla hatalı deneme yapıldı. Bir saat sonra tekrar deneyin veya web sitesinden giriş yapın."
+          }
+        }
+      }
+    },
+    "Too many requests to upla.com.tr. Wait a little and try again." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Too many requests to upla.com.tr. Wait a little and try again."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "upla.com.tr'ye çok fazla istek gönderildi. Biraz bekleyip tekrar deneyin."
+          }
+        }
+      }
+    },
+    "Too many uploads in a short time. Please wait a little and try again." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Too many uploads in a short time. Please wait a little and try again."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Çok kısa sürede çok fazla yükleme yapıldı. Lütfen biraz bekleyip tekrar deneyin."
+          }
+        }
+      }
+    },
+    "Turn on UpLa in System Settings › Privacy & Security › Screen & System Audio Recording (Screen Recording on macOS 14), then quit and reopen UpLa." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Turn on UpLa in System Settings › Privacy & Security › Screen & System Audio Recording (Screen Recording on macOS 14), then quit and reopen UpLa."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sistem Ayarları › Gizlilik ve Güvenlik › Ekran ve Sistem Sesi Kaydı (macOS 14'te Ekran Kaydı) bölümünde UpLa'yı açın, ardından UpLa'dan çıkıp yeniden açın."
+          }
+        }
+      }
+    },
+    "Two-step verification is on for your account. Enter the 6-digit code from your authenticator app." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Two-step verification is on for your account. Enter the 6-digit code from your authenticator app."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hesabınızda iki adımlı doğrulama açık. Kimlik doğrulama uygulamanızdaki 6 haneli kodu girin."
+          }
+        }
+      }
+    },
+    "Undo" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Undo"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Geri Al"
+          }
+        }
+      }
+    },
+    "Unexpected response from upla.com.tr." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unexpected response from upla.com.tr."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "upla.com.tr'den beklenmeyen bir yanıt alındı."
+          }
+        }
+      }
+    },
+    "UpLa Settings" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "UpLa Settings"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "UpLa Ayarları"
+          }
+        }
+      }
+    },
+    "UpLa is the screenshot and upload app of upla.com.tr. It is free and open source software, distributed under the GNU General Public License version 3 (GPL v3)." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "UpLa is the screenshot and upload app of upla.com.tr. It is free and open source software, distributed under the GNU General Public License version 3 (GPL v3)."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "UpLa, upla.com.tr'nin ekran görüntüsü alma ve yükleme uygulamasıdır. Özgür ve açık kaynaklı bir yazılımdır; GNU Genel Kamu Lisansı sürüm 3 (GPL v3) ile dağıtılır."
+          }
+        }
+      }
+    },
+    "UpLa lives in the menu bar. Drop files on its icon to upload them." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "UpLa lives in the menu bar. Drop files on its icon to upload them."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "UpLa menü çubuğunda çalışır. Yüklemek için dosyaları simgesinin üzerine bırakın."
+          }
+        }
+      }
+    },
+    "UpLa needs the Screen Recording permission" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "UpLa needs the Screen Recording permission"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "UpLa'nın Ekran Kaydı iznine ihtiyacı var"
+          }
+        }
+      }
+    },
+    "Upload" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Upload"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yükle"
+          }
+        }
+      }
+    },
+    "Upload File…" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Upload File…"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dosya Yükle…"
+          }
+        }
+      }
+    },
+    "Upload History" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Upload History"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yükleme Geçmişi"
+          }
+        }
+      }
+    },
+    "Upload failed: %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Upload failed: %@"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yüklenemedi: %@"
+          }
+        }
+      }
+    },
+    "Upload from Clipboard" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Upload from Clipboard"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Panodan Yükle"
+          }
+        }
+      }
+    },
+    "Upload to upla.com.tr" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Upload to upla.com.tr"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "upla.com.tr'ye yükle"
+          }
+        }
+      }
+    },
+    "Upload to upla.com.tr and copy the link" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Upload to upla.com.tr and copy the link"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "upla.com.tr'ye yükle ve linki kopyala"
+          }
+        }
+      }
+    },
+    "Uploaded files and their links appear here." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uploaded files and their links appear here."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yüklenen dosyalar ve linkleri burada görünür."
+          }
+        }
+      }
+    },
+    "Uploaded to upla.com.tr" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uploaded to upla.com.tr"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "upla.com.tr'ye yüklendi"
+          }
+        }
+      }
+    },
+    "Uploading… %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uploading… %@"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yükleniyor… %@"
+          }
+        }
+      }
+    },
+    "Uploading… %@, %@ waiting" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uploading… %@, %@ waiting"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yükleniyor… %@, %@ dosya bekliyor"
+          }
+        }
+      }
+    },
+    "Uploads: %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uploads: %@"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yüklemeler: %@"
+          }
+        }
+      }
+    },
+    "Use This Key" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Use This Key"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bu Anahtarı Kullan"
+          }
+        }
+      }
+    },
+    "Username or email:" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Username or email:"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kullanıcı adı veya e-posta:"
+          }
+        }
+      }
+    },
+    "Using an API key entered by hand" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Using an API key entered by hand"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Elle girilen API anahtarı kullanılıyor"
+          }
+        }
+      }
+    },
+    "Using an API key entered by hand; files are uploaded to the account that owns the key." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Using an API key entered by hand; files are uploaded to the account that owns the key."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Elle girilen API anahtarı kullanılıyor; dosyalar anahtarın sahibi olan hesaba yüklenir."
+          }
+        }
+      }
+    },
+    "Verification code:" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verification code:"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Doğrulama kodu:"
+          }
+        }
+      }
+    },
+    "Verifying…" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verifying…"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Doğrulanıyor…"
+          }
+        }
+      }
+    },
+    "Version %@ (%@)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Version %@ (%@)"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sürüm %@ (%@)"
+          }
+        }
+      }
+    },
+    "Window" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Window"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pencere"
+          }
+        }
+      }
+    },
+    "Wrong username/email or password. If you created your account with a social network, create a password on the website first." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wrong username/email or password. If you created your account with a social network, create a password on the website first."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kullanıcı adı/e-posta veya şifre hatalı. Hesabınızı bir sosyal ağ ile açtıysanız önce web sitesinde şifre oluşturun."
+          }
+        }
+      }
+    },
+    "Wrong verification code." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wrong verification code."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Doğrulama kodu hatalı."
+          }
+        }
+      }
+    },
+    "You are signed out on this Mac, but its connection could not be removed from upla.com.tr (%@). Until it is removed it can still upload to your account. Open the \"Connected devices\" page?" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You are signed out on this Mac, but its connection could not be removed from upla.com.tr (%@). Until it is removed it can still upload to your account. Open the \"Connected devices\" page?"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bu Mac'te çıkış yapıldı ancak bağlantısı upla.com.tr'den kaldırılamadı (%@). Kaldırılana kadar bu bağlantı hesabınıza yükleme yapabilir. \"Bağlı cihazlar\" sayfası açılsın mı?"
+          }
+        }
+      }
+    },
+    "You upload as a guest; files are not linked to an account. Sign in to upload to your account." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You upload as a guest; files are not linked to an account. Sign in to upload to your account."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Misafir olarak yüklüyorsunuz; dosyalar bir hesaba bağlanmaz. Hesabınızla yüklemek için giriş yapın."
+          }
+        }
+      }
+    },
+    "Your account is not confirmed yet. Click the confirmation link sent to your email." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your account is not confirmed yet. Click the confirmation link sent to your email."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hesabınız henüz onaylanmamış. E-postanıza gönderilen onay linkine tıklayın."
+          }
+        }
+      }
+    },
+    "Your account needs an email address. Sign in on upla.com.tr and add your email address." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your account needs an email address. Sign in on upla.com.tr and add your email address."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hesabınızın bir e-posta adresine ihtiyacı var. upla.com.tr'de giriş yapıp e-posta adresinizi ekleyin."
+          }
+        }
+      }
+    },
+    "Your password is only sent to upla.com.tr and is not stored on this Mac. A separate connection is created in your account for this Mac; you can remove it on the \"Connected devices\" page at upla.com.tr/upla-app/devices. Changing your password does not remove it." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your password is only sent to upla.com.tr and is not stored on this Mac. A separate connection is created in your account for this Mac; you can remove it on the \"Connected devices\" page at upla.com.tr/upla-app/devices. Changing your password does not remove it."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Şifreniz yalnızca upla.com.tr'ye gönderilir ve bu Mac'te saklanmaz. Hesabınızda bu Mac için ayrı bir bağlantı oluşturulur; upla.com.tr/upla-app/devices adresindeki \"Bağlı cihazlar\" sayfasından kaldırabilirsiniz. Şifrenizi değiştirmek bu bağlantıyı kaldırmaz."
+          }
+        }
+      }
+    },
+    "Your upla.com.tr account connection is no longer valid (this Mac's connection may have been removed). Choose \"Sign In Again\" in the \"upla.com.tr Account\" menu." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your upla.com.tr account connection is no longer valid (this Mac's connection may have been removed). Choose \"Sign In Again\" in the \"upla.com.tr Account\" menu."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "upla.com.tr hesap bağlantınız artık geçerli değil (bu Mac'in bağlantısı kaldırılmış olabilir). \"upla.com.tr Hesabı\" menüsünden \"Tekrar Giriş Yap\"ı seçin."
+          }
+        }
+      }
+    },
+    "macOS's own ⇧⌘3, ⇧⌘4 and ⇧⌘5 keep working; UpLa's defaults add ⌥." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "macOS's own ⇧⌘3, ⇧⌘4 and ⇧⌘5 keep working; UpLa's defaults add ⌥."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "macOS'in kendi ⇧⌘3, ⇧⌘4 ve ⇧⌘5 kısayolları çalışmaya devam eder; UpLa'nın varsayılanlarına ⌥ eklenir."
+          }
+        }
+      }
+    },
+    "upla.com.tr Account" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "upla.com.tr Account"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "upla.com.tr Hesabı"
+          }
+        }
+      }
+    },
+    "upla.com.tr answered the sign-in with an unexpected page (the site may be under maintenance). Try again later." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "upla.com.tr answered the sign-in with an unexpected page (the site may be under maintenance). Try again later."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "upla.com.tr giriş isteğine beklenmeyen bir sayfayla yanıt verdi (site bakımda olabilir). Daha sonra tekrar deneyin."
+          }
+        }
+      }
+    },
+    "upla.com.tr could not process the video." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "upla.com.tr could not process the video."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "upla.com.tr videoyu işleyemedi."
+          }
+        }
+      }
+    },
+    "upla.com.tr does not accept member uploads right now." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "upla.com.tr does not accept member uploads right now."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "upla.com.tr üye yüklemelerini şu anda kabul etmiyor."
+          }
+        }
+      }
+    },
+    "upla.com.tr does not support signing in from the app yet. In Settings › Account you can enter the key from upla.com.tr › Settings › API by hand." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "upla.com.tr does not support signing in from the app yet. In Settings › Account you can enter the key from upla.com.tr › Settings › API by hand."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "upla.com.tr henüz uygulamadan girişi desteklemiyor. Ayarlar › Hesap bölümünde, upla.com.tr › Ayarlar › API sayfasından aldığınız anahtarı elle girebilirsiniz."
+          }
+        }
+      }
+    },
+    "upla.com.tr is not responding right now (HTTP %@). Please try again later." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "upla.com.tr is not responding right now (HTTP %@). Please try again later."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "upla.com.tr şu anda yanıt vermiyor (HTTP %@). Lütfen daha sonra tekrar deneyin."
+          }
+        }
+      }
+    },
+    "upla.com.tr is temporarily blocking requests from this Mac (possibly too many failed attempts). Try again later." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "upla.com.tr is temporarily blocking requests from this Mac (possibly too many failed attempts). Try again later."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "upla.com.tr bu Mac'ten gelen istekleri geçici olarak engelledi (çok fazla hatalı deneme olabilir). Daha sonra tekrar deneyin."
+          }
+        }
+      }
+    },
+    "upla.com.tr rejected the upload: %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "upla.com.tr rejected the upload: %@"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "upla.com.tr yüklemeyi kabul etmedi: %@"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}
