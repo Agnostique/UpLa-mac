@@ -6,17 +6,133 @@ It is **not a port**. UpLa for Windows is built on ShareX (WinForms and Win32 ca
 
 This file is the shared memory between the Windows and the Mac Claude Code sessions. Update it whenever a decision is made.
 
+## Status
+
+*Updated 2026-10-09.* Version 0.1 is on branch `dev` (not merged into `main`). It was written and tested on the Windows PC only (WSL and GitHub Actions). **It has not run on a Mac yet.** Milestones M0–M3 are done but still have to be tested on a Mac; M4 and M5 are open (see [Milestones](#milestones)).
+
+### Implemented in 0.1
+
+- **UplaKit** (local Swift package, no UI, also builds on Linux):
+  - Upload client: extension and size checks, a multipart body streamed from a temporary file, progress and cancelling.
+  - Key check, and the mapping of answers and errors to results.
+  - Account client (`login`, `me`, `logout`).
+  - Album, tag and key rules, limits, device name.
+  - The behaviour follows `UplaUploader.cs` and `UplaAccount.cs` of UpLa for Windows.
+- **Menu bar app** (AppKit `NSStatusItem` with SwiftUI windows):
+  - Region, window and full-screen capture through `screencapture`, and a window that explains the Screen Recording permission.
+  - Global hotkeys ⌥⇧⌘3/4/5 (Carbon, no Accessibility permission), with a shortcut recorder in Settings.
+  - After-capture actions: upload, copy the image, save to a folder (`~/Pictures/UpLa`).
+  - Upload a file, upload from the clipboard, and drop files on the menu bar icon.
+  - Uploads one at a time, with the percentage on the menu bar button and Cancel Uploads. The link goes to the clipboard, and a notification opens it.
+  - History window: 500 items in `~/Library/Application Support/UpLa/history.json` (0600), with the delete page behind a confirmation.
+  - Settings tabs: General, Capture, upla.com.tr, Hotkeys, Account.
+  - In-app sign-in with the two-step code; the key in the Keychain; `me` and `logout`; the expired and lost sign-in states; a key entered by hand.
+  - Launch at login (`SMAppService`), the About window, and all texts in English and Turkish (String Catalog, 215 texts).
+- **From the review of 0.1:**
+  - The app asks once before the first upload, like `ShowUploadWarning` on Windows. Turning automatic upload off saves screenshots to the folder instead of uploading them.
+  - A screenshot whose upload fails is moved to the save folder instead of being deleted.
+  - Request bodies, which contain the key, are written to the app's own temporary folder. It is emptied at launch and at quit.
+  - An expired sign-in still uploads, and the server decides, as on Windows. The account is checked when the Account settings open, not at launch.
+  - The device name is the Mac model, not the Computer Name.
+  - History thumbnails are kept in memory only.
+  - The shortcut recorder only reads keys in its own window.
+  - Signing is set in `Config/Signing.xcconfig`.
+- **Not done yet:** screen recording (M4); Sparkle updates, the final icon, Developer ID signing, notarization and the DMG (M5).
+
+### Verified on the Windows PC
+
+| Check | Result |
+| --- | --- |
+| UplaKit unit tests in WSL Ubuntu 24.04 (Swift 6.4, `-strict-concurrency=complete`) | 81 tests, 0 failures, no warnings |
+| UplaKit E2E tests against the local Chevereto 4.5.7 test site in WSL (`http://localhost:8090`, with the `upla-app` route) | 5 of 5 passed: sign-in, `me`, key check, member upload (also with tags and a resize width), sign-out, deleted key refused, two-step sign-in, banned account, wrong password, site without the route |
+| E2E guard | the tests skip any host other than localhost, 127.0.0.1 and ::1 (allowlist) |
+| App sources on Linux | all files parse; the logic that does not need AppKit (account, settings, history, uploads, capture, texts) type-checks against UplaKit with stand-ins for AppKit, Security and similar frameworks |
+| String Catalog | 215 keys, each with a Turkish text and the same format specifiers |
+| GitHub Actions (`macos-15`, Xcode 16.4, Swift 6.1.2), run [37844671941](https://github.com/Agnostique/UpLa-mac/actions/runs/37844671941) | UplaKit tests passed (86 tests, 5 E2E skipped); the Release build of the app compiles; the app is universal (arm64 x86_64), ad-hoc signed, has `tr.lproj` and `LSUIElement`; the zipped app is the `UpLa-mac` artifact |
+
+### To verify on a real Mac
+
+Use the CI artifact, or a local build, which can be signed with a team.
+
+- [x] **First CI build (done in CI):** XcodeGen treats `Localizable.xcstrings` as a String Catalog, the Release build compiles all the AppKit and SwiftUI files, and "Check the app" lists arm64 x86_64 and a `tr.lproj` folder. This proves only that it compiles. Everything below must be checked by hand.
+- [ ] **Start:** the menu bar icon appears and there is no Dock icon (`LSUIElement`). The first launch opens Settings once.
+- [ ] **Drop on the icon:** files dropped on the menu bar icon are uploaded. The status bar window is registered for `.fileURL`, and the NSWindow must pass the dragging calls on to its delegate.
+- [ ] **Capture:** region, window and full screen work through `screencapture`. Esc writes no file and nothing is reported. Space switches between region and window.
+- [ ] **Screen Recording permission:**
+  - `CGPreflightScreenCaptureAccess` is false before it is granted.
+  - `CGRequestScreenCaptureAccess` adds UpLa to the list.
+  - The System Settings link in the permission window opens the right page.
+  - Find out whether UpLa must be relaunched after granting.
+- [ ] **Hotkeys:**
+  - ⌥⇧⌘3/4/5 register and fire without the Accessibility permission.
+  - A shortcut taken by another app shows the error in Settings; any other refusal shows macOS's error code.
+  - The recorder: Esc cancels, Delete removes, and hotkeys are paused while recording.
+  - ⌘C, ⌥X and plain letters are refused with a beep. ⌥⇧⌘ or ⌃⌥ combinations and ⌘F5 are accepted.
+  - Typing in the sign-in window or an open panel while a recording is pending is not taken.
+  - Recording stops when the Settings window loses focus or UpLa is deactivated.
+- [ ] **One capture at a time:** pressing a capture shortcut while the menu is open starts only one capture. The menu key equivalent and the Carbon hotkey can both fire, and the `isCapturing` guard should drop the second.
+- [ ] **First upload question:**
+  - It appears once, at the first upload, while "Upload to upla.com.tr" is on.
+  - "Turn Off Automatic Upload" uploads no screenshot, saves it to `~/Pictures/UpLa`, turns "Save to a folder" on and shows "Screenshot saved". Files chosen by hand are still uploaded.
+  - It is never asked again.
+- [ ] **Failed uploads:** with Wi-Fi off, a capture upload fails and the screenshot is moved to the save folder; the failure notification names the path. "Cancel Uploads" deletes captures that were not uploaded.
+- [ ] **Quitting during an upload:** waiting captures end up in the save folder, and `$TMPDIR/UpLa` (with the request body) is gone.
+- [ ] **Notifications:**
+  - The permission prompt appears at the first upload.
+  - The first "Uploaded" notification is shown after you choose Allow (it waits up to 15 s).
+  - Clicking a notification opens the link.
+  - When notifications are denied, failures fall back to an alert.
+- [ ] **Keychain with an ad-hoc signature:**
+  - Saving, reading and deleting the upload key work (`kSecAttrAccessibleAfterFirstUnlock` on the login keychain, retried without it on `errSecParam`).
+  - Check the access prompt after each new build.
+  - Denying access must show the "lost" state, never a guest upload.
+- [ ] **Sign-in against a test site** (Debug build; in the scheme, tick `UPLA_DEBUG_BASE_URL`; only a localhost, LAN or `.local` address is accepted):
+  - The two-step code flow works, the password is cleared, and Cancel works.
+  - The window's content is hidden from screenshots (`sharingType = .none`).
+  - The device name on the Connected devices page is the model, e.g. "MacBook Pro (5f3e9a1c)". On Apple silicon it comes from `IODeviceTree:/product`; on Intel from the `hw.model` family.
+  - The test site's sign-in uses its own keychain item (`upload-key-test-site`) and settings, and the real sign-in is untouched afterwards.
+  - The WSL test site on the Windows PC is reachable from the Mac only through a port forward (or an SSH tunnel to localhost).
+- [ ] **Account check:**
+  - Opening Settings › Account sends one `me` request.
+  - A Mac removed on the website then shows "This Mac's connection was removed…".
+  - Uploads with that key fail with the server's invalid-key message.
+- [ ] **Check Key:** with a key entered by hand and an empty field, the saved key is checked, not the guest key.
+- [ ] **Launch at login:** works through `SMAppService.mainApp` from `/Applications` with an ad-hoc signed build, including the `requiresApproval` message.
+- [ ] **Turkish:** with Turkish as the preferred language every text appears in Turkish (String Catalog compiled with tr; `CFBundleLocalizations` en, tr).
+- [ ] **Edit shortcuts:** ⌘V, ⌘C, ⌘A and ⌘W work in the windows through the hidden main menu.
+- [ ] **Upload progress:** the percentage on the menu bar button, Cancel Uploads, the serial queue, and the link on the clipboard afterwards.
+- [ ] **Upload from Clipboard:** files copied in Finder, image data copied from a browser or Preview, and the "nothing to upload" notice.
+- [ ] **Save to a folder:** `~/Pictures/UpLa` is created, and Choose… and Show in Finder work.
+- [ ] **History window:**
+  - Thumbnails load (https only, in memory; nothing new in `~/Library/Caches/tr.com.upla.UpLa`).
+  - Copy Link, Open, the delete page confirmation, Remove and Clear work.
+  - `history.json` is written with 0600 permissions.
+- [ ] **Settings window:** the fixed 600×540 size (`TabView` in `NSHostingController`), the form layouts, the album and tag fields disabled for guests, and the number fields.
+- [ ] **Signing:** with `Config/Signing.xcconfig` (team ID), the Screen Recording permission and the keychain access survive a rebuild and `xcodegen generate`.
+- [ ] **App icon:** it looks acceptable. The 512 and 1024 px images are upscaled from the 256 px `.ico` frame (placeholders).
+- [ ] **CI zip:** it opens on Apple silicon and on Intel. On macOS 15 and later use Open Anyway in System Settings › Privacy & Security; on 14, right-click › Open. `xattr -dr com.apple.quarantine` also works.
+
+### Decisions so far
+
+- **Language mode:** Swift 5 (`SWIFT_VERSION` 5.0). The app uses minimal concurrency checking; UplaKit is also tested with complete checking.
+- **Hotkeys:** the defaults are ⌥⇧⌘3/4/5. A recorded shortcut needs ⌘ or ⌃ plus another modifier (a function key needs only one).
+- **Expired sign-in:** uploads still try the key and the server decides (Windows parity). Only a missing keychain key ("lost") stops uploads locally.
+- **Account check:** `me` runs only when Settings › Account opens, not at launch (Windows parity, less traffic).
+- **CI:** two parallel `macos-15` jobs ("Test UplaKit", "Build the app"), `actions/checkout` and `upload-artifact` v7. Xcode is not pinned: today it is 16.4 with Swift 6.1.2, and it changes when the image default changes. The output is an ad-hoc signed universal app.
+- **Guest key:** the CI artifact has the guest key in plain text in `Info.plist`. This is the known exposure, the same as the released Windows binary. Built apps and archives are gitignored.
+- **No third-party dependencies in 0.1:** the hotkey recorder is UpLa's own.
+
 ## Platform
 
 | Item | Plan |
 | --- | --- |
 | Minimum macOS | 14 Sonoma (ScreenCaptureKit screenshots, SMAppService); check the user's MacBook first |
-| Language | Swift 6, SwiftUI for windows, AppKit where SwiftUI is not enough |
+| Language | Swift 6 toolchain in Swift 5 language mode, SwiftUI for windows, AppKit where SwiftUI is not enough |
 | Architectures | Universal (Apple Silicon + Intel) |
-| Project | Xcode project; generating it with XcodeGen (`project.yml` in git) is preferred so the project file stays reviewable |
-| Bundle ID | `tr.com.upla.UpLa` (to confirm) |
+| Project | XcodeGen: `project.yml` is in git, `UpLa.xcodeproj` is generated and not kept in git |
+| Bundle ID | `tr.com.upla.UpLa` |
 | Localization | Turkish and English in a String Catalog. Port the texts from `ShareX.HelpersLib/Upla/UplaStrings.cs` (112 TR/EN pairs) |
-| Dependencies | Keep few: [Sparkle 2](https://sparkle-project.org) for updates; optionally [KeyboardShortcuts](https://github.com/sindresorhus/KeyboardShortcuts) (MIT) for hotkey recording |
+| Dependencies | None in 0.1. [Sparkle 2](https://sparkle-project.org) for updates in M5 |
 
 ## Features
 
@@ -184,7 +300,7 @@ The link type setting picks the preferred link. If it is empty, try `url_viewer`
 
 - `login-subject`: username or e-mail, trimmed.
 - `password`
-- `device`: shown on the website's Connected devices page, e.g. `MacBook-Pro (5f3e9a1c)` = computer name + the first 8 hex digits of a random per-install ID.
+- `device`: shown on the website's Connected devices page, e.g. `MacBook Pro (5f3e9a1c)` = the Mac model + the first 8 hex digits of a random per-install ID. Not the Computer Name: macOS builds that from the owner's name, and the server stores the device name.
 - `two-factor-code`: digits only, when asked.
 
 **Success (HTTP 200):**
@@ -245,12 +361,13 @@ The shared guest API key is **not in any repository**:
 
 **Tests:**
 
-- XCTest for `UplaKit`, using `URLProtocol` stubs with JSON fixtures taken from the Windows parsers' cases.
+- XCTest for `UplaKit`, using `URLProtocol` stubs with JSON fixtures taken from the Windows parsers' cases, and a loopback server for real transfers.
+- E2E tests (`UPLA_E2E_BASE_URL`, `UPLA_E2E_CREDS`) run only against a test site on localhost.
 - No real upload, sign-in or other POST to upla.com.tr without the user's approval.
 
 ## Build, signing, distribution
 
-**Development:** Xcode with the user's free Apple ID ("Personal Team"). A stable signature keeps the Screen Recording permission between builds; ad-hoc builds lose it after every rebuild.
+**Development:** Xcode with the user's free Apple ID ("Personal Team"). A stable signature keeps the Screen Recording permission between builds; ad-hoc builds lose it after every rebuild. Put the team ID into `Config/Signing.xcconfig` (gitignored, copied from `Config/Signing.example.xcconfig`): a team chosen only in Xcode is lost at the next `xcodegen generate`. Without that file the build is ad-hoc signed, like CI.
 
 **Release** needs the Apple Developer Program ($99/year):
 
@@ -267,19 +384,19 @@ The shared guest API key is **not in any repository**:
 
 ## Milestones
 
-| | Goal | Done when |
-| --- | --- | --- |
-| M0 | Scaffold | project builds in Xcode and in CI (unsigned), menu bar icon and empty settings window, TR/EN String Catalog |
-| M1 | Upload core | `UplaKit` with tests; upload via dialog and drag & drop; clipboard, notification, history |
-| M2 | Capture | permission onboarding; region/window/full screen; hotkeys; after-capture actions |
-| M3 | Account | sign-in window with two-step code, Keychain, `me`/`logout`, expired key handling; album, tags, expiration, link type |
-| M4 | Recording | MP4 recording with the size-limit stop and upload |
-| M5 | Release 1.0 | app icon, launch at login, Sparkle, signing + notarization, DMG, README with screenshots, website link |
-| 1.1 | Extras | editor, text recognition, GIF |
+| | Goal | Done when | Status |
+| --- | --- | --- | --- |
+| M0 | Scaffold | project builds in Xcode and in CI (unsigned), menu bar icon and empty settings window, TR/EN String Catalog | Done in CI; still to test on a Mac |
+| M1 | Upload core | `UplaKit` with tests; upload via dialog and drag & drop; clipboard, notification, history | Done (UplaKit tested in WSL, E2E and CI); still to test on a Mac |
+| M2 | Capture | permission onboarding; region/window/full screen; hotkeys; after-capture actions | Done; still to test on a Mac |
+| M3 | Account | sign-in window with two-step code, Keychain, `me`/`logout`, expired key handling; album, tags, expiration, link type | Done (sign-in tested E2E against the local test site); still to test on a Mac |
+| M4 | Recording | MP4 recording with the size-limit stop and upload | Open |
+| M5 | Release 1.0 | app icon, launch at login, Sparkle, signing + notarization, DMG, README with screenshots, website link | Open (launch at login is already in 0.1) |
+| 1.1 | Extras | editor, text recognition, GIF | Open |
 
 ## Open questions for the user
 
 1. The macOS version of the MacBook (sets the minimum version).
 2. The original UpLa logo as a vector or at least 1024 px for the app icon. The largest we have is the 256 px frame in `design/upla-icon.ico`.
-3. Default hotkeys.
+3. Default hotkeys: 0.1 uses ⌥⇧⌘3/4/5. Confirm them on the Mac.
 4. When to join the Apple Developer Program (needed for M5, not before).
