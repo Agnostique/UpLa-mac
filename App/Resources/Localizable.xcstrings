@@ -369,6 +369,22 @@
         }
       }
     },
+    "An empty field checks the saved key." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "An empty field checks the saved key."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alan boşsa kayıtlı anahtar kontrol edilir."
+          }
+        }
+      }
+    },
     "Auto delete:" : {
       "localizations" : {
         "en" : {
@@ -381,6 +397,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Otomatik silme:"
+          }
+        }
+      }
+    },
+    "Automatic upload to upla.com.tr" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Automatic upload to upla.com.tr"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "upla.com.tr'ye otomatik yükleme"
           }
         }
       }
@@ -609,18 +641,18 @@
         }
       }
     },
-    "Click a shortcut, then press the new keys. Esc cancels, Delete removes the shortcut. A shortcut needs ⌘, ⌥ or ⌃." : {
+    "Click a shortcut, then press the new keys. Esc cancels, Delete removes the shortcut. A shortcut needs ⌘ or ⌃ and one more modifier key, like ⌥⇧⌘4; with F1–F20 one is enough. Shortcuts like ⌘C are left to the other apps." : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Click a shortcut, then press the new keys. Esc cancels, Delete removes the shortcut. A shortcut needs ⌘, ⌥ or ⌃."
+            "value" : "Click a shortcut, then press the new keys. Esc cancels, Delete removes the shortcut. A shortcut needs ⌘ or ⌃ and one more modifier key, like ⌥⇧⌘4; with F1–F20 one is enough. Shortcuts like ⌘C are left to the other apps."
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Bir kısayola tıklayın, ardından yeni tuşlara basın. Esc iptal eder, Sil tuşu kısayolu kaldırır. Kısayolda ⌘, ⌥ veya ⌃ bulunmalıdır."
+            "value" : "Bir kısayola tıklayın, ardından yeni tuşlara basın. Esc iptal eder, Sil tuşu kısayolu kaldırır. Kısayolda ⌘ veya ⌃ ile bir değiştirici tuş daha bulunmalıdır, örneğin ⌥⇧⌘4; F1–F20 tuşlarında biri yeterlidir. ⌘C gibi kısayollar diğer uygulamalara bırakılır."
           }
         }
       }
@@ -1101,6 +1133,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Anahtar geçersiz. Uygulamadan giriş yapın veya \"Bağlı cihazlar\" sayfasından yeni bir anahtar oluşturun."
+          }
+        }
+      }
+    },
+    "Keep Uploading" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keep Uploading"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yüklemeye Devam Et"
           }
         }
       }
@@ -2321,6 +2369,22 @@
         }
       }
     },
+    "The screenshot was saved to %@." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The screenshot was saved to %@."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ekran görüntüsü şuraya kaydedildi: %@."
+          }
+        }
+      }
+    },
     "The sign-in of %@ could not be read from this Mac's keychain. Sign in again or continue as a guest." : {
       "localizations" : {
         "en" : {
@@ -2605,6 +2669,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Çok kısa sürede çok fazla yükleme yapıldı. Lütfen biraz bekleyip tekrar deneyin."
+          }
+        }
+      }
+    },
+    "Turn Off Automatic Upload" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Turn Off Automatic Upload"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Otomatik Yüklemeyi Kapat"
           }
         }
       }
@@ -3169,6 +3249,22 @@
         }
       }
     },
+    "Your screenshots are uploaded to upla.com.tr automatically after capture, and a link that anyone who has it can open is created.\n\nKeep automatic upload on?\n\nIf you turn it off, screenshots are not uploaded and are saved to a folder instead; you can turn automatic upload back on in Settings › Capture." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your screenshots are uploaded to upla.com.tr automatically after capture, and a link that anyone who has it can open is created.\n\nKeep automatic upload on?\n\nIf you turn it off, screenshots are not uploaded and are saved to a folder instead; you can turn automatic upload back on in Settings › Capture."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ekran görüntüleriniz yakalandıktan sonra otomatik olarak upla.com.tr'ye yüklenir ve linke sahip herkesin görebileceği bir bağlantı oluşturulur.\n\nOtomatik yükleme açık kalsın mı?\n\nKapatırsanız ekran görüntüleri yüklenmez, bunun yerine bir klasöre kaydedilir; otomatik yüklemeyi Ayarlar › Yakalama bölümünden tekrar açabilirsiniz."
+          }
+        }
+      }
+    },
     "Your upla.com.tr account connection is no longer valid (this Mac's connection may have been removed). Choose \"Sign In Again\" in the \"upla.com.tr Account\" menu." : {
       "localizations" : {
         "en" : {
@@ -3181,6 +3277,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "upla.com.tr hesap bağlantınız artık geçerli değil (bu Mac'in bağlantısı kaldırılmış olabilir). \"upla.com.tr Hesabı\" menüsünden \"Tekrar Giriş Yap\"ı seçin."
+          }
+        }
+      }
+    },
+    "macOS did not accept this shortcut (error %@). Choose another one." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "macOS did not accept this shortcut (error %@). Choose another one."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "macOS bu kısayolu kabul etmedi (hata %@). Başka bir kısayol seçin."
           }
         }
       }

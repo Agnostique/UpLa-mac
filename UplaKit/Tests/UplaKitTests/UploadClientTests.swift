@@ -132,6 +132,22 @@ final class UploadClientTests: XCTestCase {
         XCTAssertEqual(UplaClient(apiKey: "k", isMember: false).baseURL, Upla.websiteURL)
     }
 
+    func testBodyFolderIsCreatedAndLeftEmpty() async throws {
+        // The app passes its own temporary folder, which it empties at launch and may not exist yet.
+        let folder = bodyDirectory.url.appendingPathComponent("UpLa", isDirectory: true)
+        StubURLProtocol.state.reply(.json(200, UploadResponseParserTests.imageJSON), bodyDirectory: folder)
+        let image = TestImages.png(width: 10, height: 10)
+        let file = try directory.file("a.png", image)
+        let client = UplaClient(apiKey: "chv_member_key", isMember: true, baseURL: base, configuration: StubURLProtocol.configuration(),
+                                temporaryDirectory: folder)
+        XCTAssertEqual(client.temporaryDirectory, folder)
+
+        _ = try await client.upload(fileURL: file, options: UplaUploadOptions())
+        XCTAssertEqual(try sentRequest().parts.last?.body, image)
+        XCTAssertEqual(try FileManager.default.contentsOfDirectory(atPath: folder.path), [], "the request body file is deleted")
+        XCTAssertEqual(UplaClient(apiKey: "k", isMember: false).temporaryDirectory, FileManager.default.temporaryDirectory)
+    }
+
     func testChecksBeforeSending() async throws {
         let zip = try directory.file("arsiv.zip", Data(repeating: 0, count: 10))
         await assertUploadFails(client(), zip, .unsupportedFileType("zip"))

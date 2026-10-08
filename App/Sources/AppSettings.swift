@@ -18,6 +18,8 @@ final class AppSettings: ObservableObject {
         static let expiration = "Expiration"
         static let maxWidth = "MaxWidth"
         static let stopRecordingAtUploadLimit = "StopRecordingAtUploadLimit"
+        // Same name as the setting of UpLa for Windows.
+        static let showUploadWarning = "ShowUploadWarning"
     }
 
     private let defaults: UserDefaults
@@ -44,6 +46,8 @@ final class AppSettings: ObservableObject {
     @Published var stopRecordingAtUploadLimit: Bool {
         didSet { defaults.set(stopRecordingAtUploadLimit, forKey: Key.stopRecordingAtUploadLimit) }
     }
+    // The question before the first upload is still to be asked (captures are uploaded automatically by default).
+    var showUploadWarning: Bool { didSet { defaults.set(showUploadWarning, forKey: Key.showUploadWarning) } }
 
     static var defaultSaveFolder: URL {
         let pictures = FileManager.default.urls(for: .picturesDirectory, in: .userDomainMask).first
@@ -58,7 +62,8 @@ final class AppSettings: ObservableObject {
             Key.uploadAfterCapture: true,
             Key.copyImageAfterCapture: false,
             Key.saveAfterCapture: false,
-            Key.stopRecordingAtUploadLimit: true
+            Key.stopRecordingAtUploadLimit: true,
+            Key.showUploadWarning: true
         ])
 
         showNotifications = defaults.bool(forKey: Key.showNotifications)
@@ -74,6 +79,7 @@ final class AppSettings: ObservableObject {
         expiration = Upla.expirationPresets.contains(storedExpiration) ? storedExpiration : ""
         maxWidth = max(0, defaults.integer(forKey: Key.maxWidth))
         stopRecordingAtUploadLimit = defaults.bool(forKey: Key.stopRecordingAtUploadLimit)
+        showUploadWarning = defaults.bool(forKey: Key.showUploadWarning)
     }
 
     var saveFolder: URL {

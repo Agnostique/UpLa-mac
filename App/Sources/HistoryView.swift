@@ -68,6 +68,7 @@ struct HistoryView: View {
         .confirmationDialog("Clear the upload history?", isPresented: $confirmsClear) {
             Button("Clear History", role: .destructive) {
                 history.removeAll()
+                ThumbnailLoader.shared.removeAll()
             }
         } message: {
             Text("The links and deletion links saved on this Mac are removed. The files stay on upla.com.tr.")
@@ -91,18 +92,10 @@ struct HistoryRow: View {
 
     var body: some View {
         HStack(spacing: 12) {
-            AsyncImage(url: AppEnvironment.webURL(item.thumbnailURL)) { image in
-                image
-                    .resizable()
-                    .scaledToFill()
-            } placeholder: {
-                Image(systemName: item.isVideo ? "film" : "photo")
-                    .font(.title2)
-                    .foregroundStyle(.secondary)
-            }
-            .frame(width: 56, height: 56)
-            .background(Color.secondary.opacity(0.1))
-            .clipShape(RoundedRectangle(cornerRadius: 6))
+            ThumbnailView(url: ThumbnailLoader.thumbnailURL(item.thumbnailURL), isVideo: item.isVideo)
+                .frame(width: 56, height: 56)
+                .background(Color.secondary.opacity(0.1))
+                .clipShape(RoundedRectangle(cornerRadius: 6))
 
             VStack(alignment: .leading, spacing: 2) {
                 Text(verbatim: item.fileName)
@@ -133,5 +126,90 @@ struct HistoryRow: View {
             }
         }
         .padding(.vertical, 4)
+    }
+}
+
+// Loads history thumbnails in memory only. AsyncImage would use URLSession.shared, whose disk cache and cookies keep
+// every thumbnail and its link after the history is cleared.
+@MainActor
+final class ThumbnailLoader {
+    static let shared = ThumbnailLoader()
+
+    private let session: URLSession
+    private let cache = NSCache<NSURL, NSImage>()
+
+    private init() {
+        let configuration = URLSessionConfiguration.ephemeral
+        configuration.urlCache = nil
+        configuration.httpCookieStorage = nil
+        configuration.httpShouldSetCookies = false
+        configuration.httpCookieAcceptPolicy = .never
+        configuration.timeoutIntervalForRequest = 30
+        session = URLSession(configuration: configuration)
+        cache.countLimit = 200
+    }
+
+    // HTTPS only; plain HTTP just for the Debug test site.
+    static func thumbnailURL(_ text: String?) -> URL? {
+        guard let url = AppEnvironment.webURL(text) else {
+            return nil
+        }
+
+        if url.scheme?.lowercased() == "https" {
+            return url
+        }
+
+        if let testSite = AppEnvironment.testSiteURL, url.host?.lowercased() == testSite.host?.lowercased() {
+            return url
+        }
+
+        return nil
+    }
+
+    func image(for url: URL) async -> NSImage? {
+        if let cached = cache.object(forKey: url as NSURL) {
+            return cached
+        }
+
+        guard let (data, response) = try? await session.data(from: url),
+              (response as? HTTPURLResponse)?.statusCode == 200, let image = NSImage(data: data) else {
+            return nil
+        }
+
+        cache.setObject(image, forKey: url as NSURL)
+        return image
+    }
+
+    func removeAll() {
+        cache.removeAllObjects()
+    }
+}
+
+@MainActor
+struct ThumbnailView: View {
+    let url: URL?
+    let isVideo: Bool
+
+    @State private var image: NSImage? = nil
+
+    var body: some View {
+        Group {
+            if let image {
+                Image(nsImage: image)
+                    .resizable()
+                    .scaledToFill()
+            } else {
+                Image(systemName: isVideo ? "film" : "photo")
+                    .font(.title2)
+                    .foregroundStyle(.secondary)
+            }
+        }
+        .task(id: url) {
+            image = nil
+
+            if let url {
+                image = await ThumbnailLoader.shared.image(for: url)
+            }
+        }
     }
 }

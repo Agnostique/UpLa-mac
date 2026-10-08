@@ -9,7 +9,8 @@ enum AccountState: Equatable {
     // Signed in from the app: this Mac has its own key, shown on the website's "Connected devices" page.
     case signedIn
     // The server no longer accepts this Mac's key (removed on "Connected devices", by the 10 key limit, or by an admin).
-    // Kept in memory only, like the Windows app: the next launch checks again.
+    // Kept in memory only, like the Windows app: after a relaunch the next upload or the account settings check again.
+    // Uploads still use the key and let the server decide.
     case expired
     // An account or key is remembered but the key could not be read from the keychain. Uploads must not silently
     // become guest uploads.
@@ -106,9 +107,9 @@ final class AccountStore: ObservableObject {
     }
 
     func signIn(loginSubject: String, password: String, twoFactorCode: String?) async -> SignInOutcome {
-        // Host lookups can be slow, so the computer name is read off the main thread.
-        let computerName: String = await Task.detached { Host.current().localizedName ?? "" }.value
-        let deviceName = Upla.deviceName(computerName: computerName.isEmpty ? "Mac" : computerName, installID: installID)
+        // The model ("MacBook Pro"), not the Computer Name: macOS builds that from the owner's name, and the device name
+        // is stored on the server.
+        let deviceName = Upla.deviceName(computerName: MacModel.name, installID: installID)
         let client = UplaAccountClient(baseURL: AppEnvironment.baseURL)
         let result = await client.signIn(loginSubject: loginSubject, password: password, twoFactorCode: twoFactorCode,
                                          deviceName: deviceName)
@@ -138,7 +139,8 @@ final class AccountStore: ObservableObject {
         return .success
     }
 
-    // Refreshes the shown account (the name may have changed) and notices a Mac that was removed on the website.
+    // Refreshes the shown account (the name may have changed) and notices a Mac that was removed on the website. Runs
+    // when the account settings open, like UpLa for Windows, not at every launch.
     func refresh() async {
         guard isSignedIn, !apiKey.isEmpty else {
             return
@@ -163,14 +165,16 @@ final class AccountStore: ObservableObject {
             updateState()
         case .invalidKey:
             // The key stays, so uploads fail with a clear message instead of silently becoming guest uploads.
-            markExpired()
+            markExpired(ifKeyIs: key)
         default:
             accountLog.notice("Account check did not finish: \(String(describing: result.status), privacy: .public)")
         }
     }
 
-    func markExpired() {
-        guard state == .signedIn else {
+    // The server refused the given sign-in key. Ignored when that is no longer this Mac's key (signed out and in again
+    // while the request ran), so a newer key is never marked expired.
+    func markExpired(ifKeyIs key: String) {
+        guard key == apiKey, state == .signedIn else {
             return
         }
 

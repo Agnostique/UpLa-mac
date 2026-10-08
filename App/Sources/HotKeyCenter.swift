@@ -109,6 +109,26 @@ struct HotKey: Equatable {
         return key.isEmpty ? "#\(keyCode)" : key.uppercased()
     }
 
+    static let functionKeyCodes: Set<UInt32> = [
+        UInt32(kVK_F1), UInt32(kVK_F2), UInt32(kVK_F3), UInt32(kVK_F4), UInt32(kVK_F5), UInt32(kVK_F6), UInt32(kVK_F7),
+        UInt32(kVK_F8), UInt32(kVK_F9), UInt32(kVK_F10), UInt32(kVK_F11), UInt32(kVK_F12), UInt32(kVK_F13), UInt32(kVK_F14),
+        UInt32(kVK_F15), UInt32(kVK_F16), UInt32(kVK_F17), UInt32(kVK_F18), UInt32(kVK_F19), UInt32(kVK_F20)
+    ]
+
+    // A global hot key is taken from every app while UpLa runs. It needs ⌘ or ⌃ (macOS 15 refuses ⌥ and ⌥⇧ alone, and
+    // ⇧ alone would take typing) plus a second modifier, so app and text shortcuts like ⌘C, ⌘← or ⌃A keep working;
+    // a function key is enough with ⌘ or ⌃ alone.
+    static func isAllowed(keyCode: UInt32, flags: NSEvent.ModifierFlags) -> Bool {
+        let modifiers: [NSEvent.ModifierFlags] = [.command, .option, .control, .shift]
+        let count = modifiers.filter { flags.contains($0) }.count
+
+        guard !flags.isDisjoint(with: [.command, .control]) else {
+            return false
+        }
+
+        return count >= 2 || functionKeyCodes.contains(keyCode)
+    }
+
     // Shown next to the menu items; only plain printable keys can be a menu key equivalent.
     var menuKeyEquivalent: String? {
         guard HotKey.specialKeyNames[keyCode] == nil, key.count == 1, let scalar = key.unicodeScalars.first,
@@ -188,8 +208,8 @@ final class HotKeyCenter: ObservableObject {
     fileprivate static var shared: HotKeyCenter?
 
     @Published private(set) var hotKeys: [HotKeyAction: HotKey] = [:]
-    // Shortcuts that could not be registered (e.g. another app uses them).
-    @Published private(set) var failedActions: Set<HotKeyAction> = []
+    // Shortcuts that could not be registered, with RegisterEventHotKey's status.
+    @Published private(set) var failures: [HotKeyAction: OSStatus] = [:]
     @Published private(set) var recordingAction: HotKeyAction?
 
     var onPress: (@MainActor (HotKeyAction) -> Void)?
@@ -198,6 +218,9 @@ final class HotKeyCenter: ObservableObject {
     private var registered: [HotKeyAction: EventHotKeyRef] = [:]
     private var eventHandler: EventHandlerRef?
     private var monitor: Any?
+    // The window the shortcut is recorded in; key presses in other windows pass through.
+    private weak var recordingWindow: NSWindow?
+    private var recordingObservers: [NSObjectProtocol] = []
     private var suspendCount = 0
 
     init(defaults: UserDefaults = .standard) {
@@ -238,6 +261,11 @@ final class HotKeyCenter: ObservableObject {
         hotKeys[action]
     }
 
+    // RegisterEventHotKey's answer when the combination is already registered elsewhere.
+    nonisolated static func isTakenElsewhere(_ status: OSStatus) -> Bool {
+        status == OSStatus(eventHotKeyExistsErr)
+    }
+
     // nil removes the shortcut. A shortcut that another action used moves to this one.
     func set(_ hotKey: HotKey?, for action: HotKeyAction) {
         if let hotKey {
@@ -261,21 +289,43 @@ final class HotKeyCenter: ObservableObject {
         registerAll()
     }
 
-    // Hot keys are off while a shortcut is being recorded, so pressing the current one records it.
+    // Hot keys are off while a shortcut is being recorded, so pressing the current one records it. Only key presses in
+    // the window the recording started in (the settings) are taken; recording stops when that window loses focus or
+    // closes, or UpLa is no longer the active app, so typing elsewhere never becomes a shortcut.
     func startRecording(_ action: HotKeyAction) {
         stopRecording()
         recordingAction = action
+        recordingWindow = NSApp.keyWindow
+            ?? NSApp.windows.first { $0.identifier?.rawValue == WindowID.settings.rawValue }
         suspend()
 
         monitor = NSEvent.addLocalMonitorForEvents(matching: .keyDown) { [weak self] event in
             let keyCode = UInt32(event.keyCode)
             let flags = event.modifierFlags.intersection(.deviceIndependentFlagsMask)
             let characters = event.characters(byApplyingModifiers: []) ?? ""
+            let window = event.window
             let handled = MainActor.assumeIsolated { () -> Bool in
-                self?.record(keyCode: keyCode, flags: flags, characters: characters) ?? false
+                guard let self, window != nil, window === self.recordingWindow else {
+                    return false
+                }
+
+                return self.record(keyCode: keyCode, flags: flags, characters: characters)
             }
             return handled ? nil : event
         }
+
+        let center = NotificationCenter.default
+        let stop: @Sendable (Notification) -> Void = { [weak self] _ in
+            MainActor.assumeIsolated {
+                self?.stopRecording()
+            }
+        }
+
+        recordingObservers = [
+            center.addObserver(forName: NSApplication.didResignActiveNotification, object: nil, queue: .main, using: stop),
+            center.addObserver(forName: NSWindow.didResignKeyNotification, object: recordingWindow, queue: .main, using: stop),
+            center.addObserver(forName: NSWindow.willCloseNotification, object: recordingWindow, queue: .main, using: stop)
+        ]
     }
 
     func stopRecording() {
@@ -284,6 +334,13 @@ final class HotKeyCenter: ObservableObject {
         }
 
         monitor = nil
+
+        for observer in recordingObservers {
+            NotificationCenter.default.removeObserver(observer)
+        }
+
+        recordingObservers = []
+        recordingWindow = nil
 
         if recordingAction != nil {
             recordingAction = nil
@@ -319,7 +376,7 @@ final class HotKeyCenter: ObservableObject {
         onPress?(action)
     }
 
-    // Esc cancels, Delete removes the shortcut; anything else needs ⌘, ⌥ or ⌃ so normal typing is never taken.
+    // Esc cancels, Delete removes the shortcut; anything else must pass HotKey.isAllowed, or it beeps and recording goes on.
     private func record(keyCode: UInt32, flags: NSEvent.ModifierFlags, characters: String) -> Bool {
         guard let action = recordingAction else {
             return false
@@ -338,7 +395,7 @@ final class HotKeyCenter: ObservableObject {
             return true
         }
 
-        guard hasModifier else {
+        guard HotKey.isAllowed(keyCode: keyCode, flags: flags) else {
             NSSound.beep()
             return true
         }
@@ -356,7 +413,7 @@ final class HotKeyCenter: ObservableObject {
             return
         }
 
-        var failed = Set<HotKeyAction>()
+        var failed: [HotKeyAction: OSStatus] = [:]
 
         for action in HotKeyAction.allCases {
             guard let hotKey = hotKeys[action] else {
@@ -370,12 +427,12 @@ final class HotKeyCenter: ObservableObject {
             if status == noErr, let ref {
                 registered[action] = ref
             } else {
-                failed.insert(action)
+                failed[action] = status == noErr ? OSStatus(eventInternalErr) : status
                 appLog.error("Registering the \(action.rawValue, privacy: .public) hot key failed: \(status, privacy: .public)")
             }
         }
 
-        failedActions = failed
+        failures = failed
     }
 
     private func unregisterAll() {

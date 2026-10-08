@@ -11,8 +11,8 @@ public final class UplaClient: Sendable {
     public let isMember: Bool
     public let baseURL: URL
     private let sessionSettings: SessionSettings
-    /// Where the request body is written during an upload (tests point it at their own folder).
-    let temporaryDirectory: URL
+    /// Where the request body is written during an upload.
+    public let temporaryDirectory: URL
 
     // Processing a large video on the server can take longer than URLSession's default 60 s without any traffic.
     static let uploadIdleTimeout: TimeInterval = 300
@@ -21,7 +21,10 @@ public final class UplaClient: Sendable {
         self.init(apiKey: apiKey, isMember: isMember, baseURL: baseURL, configuration: configuration, temporaryDirectory: FileManager.default.temporaryDirectory)
     }
 
-    init(apiKey: String, isMember: Bool, baseURL: URL, configuration: URLSessionConfiguration, temporaryDirectory: URL) {
+    /// - Parameter temporaryDirectory: Folder for the request body during an upload, created when missing. The body
+    ///   holds the key in clear text and stays behind when the process ends during an upload, so an app passes a
+    ///   folder it empties itself (at launch and when quitting).
+    public init(apiKey: String, isMember: Bool, baseURL: URL, configuration: URLSessionConfiguration, temporaryDirectory: URL) {
         self.apiKey = Upla.normalizeAPIKey(apiKey)
         self.isMember = isMember
         self.baseURL = baseURL
@@ -69,6 +72,7 @@ public final class UplaClient: Sendable {
         defer { try? FileManager.default.removeItem(at: bodyURL) }
 
         do {
+            try FileManager.default.createDirectory(at: temporaryDirectory, withIntermediateDirectories: true)
             try MultipartBody.write(fields: uploadFields(fileURL: fileURL, fileExtension: ext, options: options), fileFieldName: "source",
                                     fileURL: fileURL, fileName: name, mimeType: Upla.mimeType(forExtension: ext), boundary: boundary, to: bodyURL)
         } catch {

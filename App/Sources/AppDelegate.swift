@@ -19,6 +19,10 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         false
     }
 
+    func applicationWillTerminate(_ notification: Notification) {
+        controller?.prepareForQuit()
+    }
+
     // Opening the app again (e.g. from Finder) shows the settings, since a menu bar app has no window of its own.
     func applicationShouldHandleReopen(_ sender: NSApplication, hasVisibleWindows flag: Bool) -> Bool {
         if !flag {

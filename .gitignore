@@ -12,14 +12,18 @@ xcuserdata/
 .build/
 .swiftpm/
 
-# Release output
+# Release output (built apps contain the guest key in Info.plist)
+dist/
+*.app
+*.xcarchive
+*.pkg
 *.dmg
+*.zip
 *.dSYM
-*.dSYM.zip
-UpLa-mac.zip
 
-# Secrets: never commit these
+# Secrets and personal settings: never commit these
 Config/Secrets.xcconfig
+Config/Signing.xcconfig
 *.p12
 *.cer
 *.mobileprovision

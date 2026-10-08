@@ -32,7 +32,11 @@ final class NotificationDelegate: NSObject, UNUserNotificationCenterDelegate {
 final class Notifier {
     nonisolated static let linkKey = "link"
 
+    // How long a notification waits for the answer to the permission prompt before the current state is used.
+    private static let authorizationWait: TimeInterval = 15
+
     private var askedForAuthorization = false
+    private var authorizationPending = false
 
     // Asks for permission once, at the first upload (macOS shows its prompt only the first time).
     func prepare() {
@@ -41,15 +45,23 @@ final class Notifier {
         }
 
         askedForAuthorization = true
+        authorizationPending = true
+
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) { granted, error in
             if let error {
                 appLog.error("Notification permission request failed: \(error.localizedDescription, privacy: .public)")
             } else if !granted {
                 appLog.notice("Notifications are not allowed")
             }
+
+            Task { @MainActor in
+                self.authorizationPending = false
+            }
         }
     }
 
+    // Waits while the permission prompt is open, so the first "Uploaded" notification is not dropped as not allowed.
+    // An unanswered prompt does not hold notifications back for long: errors then fall back to an alert.
     func post(title: String, body: String, link: String? = nil, isError: Bool = false) {
         let content = UNMutableNotificationContent()
         content.title = title
@@ -60,21 +72,25 @@ final class Notifier {
         }
 
         let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: nil)
-        let center = UNUserNotificationCenter.current()
 
-        center.getNotificationSettings { settings in
-            let allowed = settings.authorizationStatus == .authorized || settings.authorizationStatus == .provisional
+        Task { @MainActor in
+            let deadline = Date().addingTimeInterval(Notifier.authorizationWait)
 
-            if allowed {
-                center.add(request) { error in
-                    if let error {
-                        appLog.error("Posting a notification failed: \(error.localizedDescription, privacy: .public)")
-                    }
+            while self.authorizationPending && Date() < deadline {
+                try? await Task.sleep(nanoseconds: 250_000_000)
+            }
+
+            let center = UNUserNotificationCenter.current()
+            let status = await center.notificationSettings().authorizationStatus
+
+            if status == .authorized || status == .provisional {
+                do {
+                    try await center.add(request)
+                } catch {
+                    appLog.error("Posting a notification failed: \(error.localizedDescription, privacy: .public)")
                 }
             } else if isError {
-                Task { @MainActor in
-                    Notifier.showAlert(title: title, message: body)
-                }
+                Notifier.showAlert(title: title, message: body)
             }
         }
     }

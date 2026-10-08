@@ -42,6 +42,11 @@ struct AccountSettingsView: View {
         .formStyle(.grouped)
         .onAppear {
             showsManualKey = account.state == .manualKey
+
+            // Like UpLa for Windows when its settings open: updates the name and notices a Mac removed on the website.
+            Task {
+                await account.refresh()
+            }
         }
     }
 
@@ -149,7 +154,12 @@ struct AccountSettingsView: View {
             }
 
             Hint("Only needed if you cannot sign in from the app. Get a key with \"Create a new API key\" on the \"Connected devices\" page. \"Regen key\" on Settings › API deletes the newest key, which may be the connection of another computer you signed in on.")
-            Hint("An empty field checks the guest upload.")
+
+            if account.state == .manualKey {
+                Hint("An empty field checks the saved key.")
+            } else {
+                Hint("An empty field checks the guest upload.")
+            }
         }
         .padding(.top, 4)
     }
@@ -167,11 +177,14 @@ struct AccountSettingsView: View {
         }
     }
 
-    // Sends a request without a file: Chevereto checks the key before the file. An empty field checks the guest key.
+    // Sends a request without a file: Chevereto checks the key before the file. An empty field checks the key in use,
+    // like the key box of UpLa for Windows: the saved key entered by hand, otherwise the guest key.
     private func checkKey() {
         let typed = Upla.normalizeAPIKey(manualKey)
-        let isMember = !typed.isEmpty
-        let key = isMember ? typed : AppEnvironment.guestAPIKey
+        let savedKey = account.state == .manualKey ? (account.memberKey ?? "") : ""
+        let memberKey = typed.isEmpty ? savedKey : typed
+        let isMember = !memberKey.isEmpty
+        let key = isMember ? memberKey : AppEnvironment.guestAPIKey
 
         guard !key.isEmpty else {
             keyMessage = UplaText.noGuestKeyText

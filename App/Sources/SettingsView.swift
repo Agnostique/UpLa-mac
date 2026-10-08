@@ -271,7 +271,7 @@ struct HotKeySettingsView: View {
             }
 
             Section {
-                Hint("Click a shortcut, then press the new keys. Esc cancels, Delete removes the shortcut. A shortcut needs ⌘, ⌥ or ⌃.")
+                Hint("Click a shortcut, then press the new keys. Esc cancels, Delete removes the shortcut. A shortcut needs ⌘ or ⌃ and one more modifier key, like ⌥⇧⌘4; with F1–F20 one is enough. Shortcuts like ⌘C are left to the other apps.")
                 Hint("macOS's own ⇧⌘3, ⇧⌘4 and ⇧⌘5 keep working; UpLa's defaults add ⌥.")
                 Button("Restore Defaults") {
                     hotKeys.restoreDefaults()
@@ -311,8 +311,8 @@ struct HotKeyRow: View {
                 }
                 .frame(minWidth: 160, alignment: .trailing)
 
-                if hotKeys.failedActions.contains(action) {
-                    Text("This shortcut could not be registered; another app may be using it.")
+                if let status = hotKeys.failures[action] {
+                    failureText(status)
                         .font(.caption)
                         .foregroundStyle(.red)
                         .fixedSize(horizontal: false, vertical: true)
@@ -321,5 +321,15 @@ struct HotKeyRow: View {
         } label: {
             Text(verbatim: action.title)
         }
+    }
+
+    // Only "already taken" blames another app; other refusals (e.g. a combination macOS no longer allows) say so.
+    private func failureText(_ status: OSStatus) -> Text {
+        if HotKeyCenter.isTakenElsewhere(status) {
+            return Text("This shortcut could not be registered; another app may be using it.")
+        }
+
+        let code = String(status)
+        return Text("macOS did not accept this shortcut (error \(code)). Choose another one.")
     }
 }

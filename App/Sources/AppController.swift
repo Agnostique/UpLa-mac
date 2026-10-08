@@ -18,10 +18,11 @@ final class AppController {
 
     init() {
         settings = AppSettings()
-        account = AccountStore()
+        account = AccountStore(defaults: AppEnvironment.accountDefaults)
         history = HistoryStore()
         notifier = Notifier()
-        uploads = UploadManager(settings: settings, account: account, history: history, notifier: notifier)
+        uploads = UploadManager(settings: settings, account: account, history: history, notifier: notifier,
+                                confirmFirstUpload: AppController.confirmFirstUpload)
         captureService = CaptureService()
         hotKeys = HotKeyCenter()
         windows = WindowManager()
@@ -42,9 +43,8 @@ final class AppController {
         }
         hotKeys.start()
 
-        Task {
-            await self.account.refresh()
-        }
+        // The account is checked when its settings open (like UpLa for Windows), not at every launch: a launch at login
+        // then sends nothing to upla.com.tr.
 
         // A menu bar app shows nothing when it starts, so the first launch opens the settings once.
         let launchedKey = "HasLaunchedBefore"
@@ -86,7 +86,7 @@ final class AppController {
         }
 
         if settings.uploadAfterCapture {
-            uploads.enqueue(fileURL, isTemporary: true)
+            uploads.enqueue(fileURL, kind: .capture(savedCopy: savedURL))
             return
         }
 
@@ -132,13 +132,33 @@ final class AppController {
         }
 
         if let imageURL = Pasteboard.writeImageToTemporaryFile() {
-            uploads.enqueue(imageURL, isTemporary: true)
+            uploads.enqueue(imageURL, kind: .clipboardImage)
             return
         }
 
         notifier.prepare()
         notifier.post(title: String(localized: "Nothing to upload"),
                       body: String(localized: "There is no file or image on the clipboard."), isError: true)
+    }
+
+    // Asked by UploadManager once, before the first upload: true keeps uploading screenshots automatically. Same
+    // question as UpLa for Windows (UplaStrings.FirstUploadText), pointed at this app's settings.
+    static func confirmFirstUpload() -> Bool {
+        let alert = NSAlert()
+        alert.alertStyle = .informational
+        alert.messageText = String(localized: "Automatic upload to upla.com.tr")
+        alert.informativeText = String(localized: "Your screenshots are uploaded to upla.com.tr automatically after capture, and a link that anyone who has it can open is created.\n\nKeep automatic upload on?\n\nIf you turn it off, screenshots are not uploaded and are saved to a folder instead; you can turn automatic upload back on in Settings › Capture.")
+        alert.addButton(withTitle: String(localized: "Keep Uploading"))
+        alert.addButton(withTitle: String(localized: "Turn Off Automatic Upload"))
+        NSApp.activate()
+        return alert.runModal() == .alertFirstButtonReturn
+    }
+
+    // Screenshots still waiting for their upload go to the save folder; then the temporary folder, which also holds the
+    // request body with the key, is emptied.
+    func prepareForQuit() {
+        uploads.keepPendingCaptures()
+        TempFiles.cleanUp()
     }
 
     // MARK: Account

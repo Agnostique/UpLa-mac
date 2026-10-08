@@ -38,9 +38,10 @@ final class E2ETests: XCTestCase {
         let url = try XCTUnwrap(URL(string: base), "UPLA_E2E_BASE_URL is not a URL")
         let host = url.host?.lowercased() ?? ""
 
-        // The tests sign in, upload and sign out: never against the real website.
-        guard !host.isEmpty, host != "upla.com.tr", !host.hasSuffix(".upla.com.tr") else {
-            throw XCTSkip("The end-to-end tests only run against a local test site.")
+        // The tests sign in, upload and sign out, so they run only against a test site on this computer. An allowlist:
+        // a denylist of upla.com.tr misses "upla.com.tr." and other names or addresses of the real server.
+        guard ["localhost", "127.0.0.1", "::1", "[::1]"].contains(host) else {
+            throw XCTSkip("The end-to-end tests only run against a test site on this computer (localhost).")
         }
 
         baseURL = url

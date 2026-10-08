@@ -43,7 +43,7 @@ enum TempFiles {
         try? FileManager.default.removeItem(at: url)
     }
 
-    // Leftovers of an earlier run (e.g. after a crash).
+    // Captures and upload request bodies (which hold the key); emptied at launch, for leftovers of a crash, and at quit.
     static func cleanUp() {
         try? FileManager.default.removeItem(at: directory)
     }
@@ -54,6 +54,15 @@ enum TempFiles {
         let destination = uniqueURL(in: folder, baseName: fileURL.deletingPathExtension().lastPathComponent,
                                     extension: fileURL.pathExtension)
         try FileManager.default.copyItem(at: fileURL, to: destination)
+        return destination
+    }
+
+    // Moves a capture that was not uploaded into the chosen folder and returns its new place.
+    static func move(_ fileURL: URL, to folder: URL) throws -> URL {
+        try FileManager.default.createDirectory(at: folder, withIntermediateDirectories: true)
+        let destination = uniqueURL(in: folder, baseName: fileURL.deletingPathExtension().lastPathComponent,
+                                    extension: fileURL.pathExtension)
+        try FileManager.default.moveItem(at: fileURL, to: destination)
         return destination
     }
 }

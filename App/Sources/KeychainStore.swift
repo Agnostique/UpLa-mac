@@ -13,7 +13,11 @@ enum KeychainStore {
     }
 
     private static let service = "tr.com.upla.UpLa"
-    private static let account = "upload-key"
+
+    // A Debug build pointed at a test site uses its own item, so the real sign-in is never mixed with the test site.
+    private static var account: String {
+        AppEnvironment.keychainAccount
+    }
 
     private static var baseQuery: [String: Any] {
         [

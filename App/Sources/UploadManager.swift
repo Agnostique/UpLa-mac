@@ -6,12 +6,34 @@ import UplaKit
 // Uploads files one after another, with progress for the menu bar item.
 @MainActor
 final class UploadManager: ObservableObject {
+    enum Kind {
+        // A file the user chose (open panel, drop, files copied in Finder); left alone.
+        case file
+        // An image from the clipboard written to the temporary folder; removed afterwards (the clipboard still has it).
+        case clipboardImage
+        // A screenshot in the temporary folder, with the copy "Save to a folder" made, if any.
+        case capture(savedCopy: URL?)
+    }
+
     private struct Job {
         let id = UUID()
         let fileURL: URL
         let fileName: String
-        // Captures and clipboard images live in the temporary folder and are removed after the upload.
-        let isTemporary: Bool
+        let kind: Kind
+
+        var isCapture: Bool {
+            if case .capture = kind {
+                return true
+            }
+            return false
+        }
+    }
+
+    private enum Outcome {
+        case uploaded
+        case cancelled
+        // Refused before sending or failed; the text says why.
+        case failed(String)
     }
 
     // Fraction of the current upload that was sent, nil when idle.
@@ -26,23 +48,28 @@ final class UploadManager: ObservableObject {
     private let account: AccountStore
     private let history: HistoryStore
     private let notifier: Notifier
+    // Asks whether captures should keep being uploaded automatically; true keeps uploading.
+    private let confirmFirstUpload: @MainActor () -> Bool
     private var queue: [Job] = []
     private var current: Job?
     private var currentTask: Task<Void, Never>?
+    private var isAskingFirstUpload = false
 
-    init(settings: AppSettings, account: AccountStore, history: HistoryStore, notifier: Notifier) {
+    init(settings: AppSettings, account: AccountStore, history: HistoryStore, notifier: Notifier,
+         confirmFirstUpload: @escaping @MainActor () -> Bool) {
         self.settings = settings
         self.account = account
         self.history = history
         self.notifier = notifier
+        self.confirmFirstUpload = confirmFirstUpload
     }
 
     var isBusy: Bool {
         current != nil
     }
 
-    func enqueue(_ fileURL: URL, isTemporary: Bool) {
-        queue.append(Job(fileURL: fileURL, fileName: fileURL.lastPathComponent, isTemporary: isTemporary))
+    func enqueue(_ fileURL: URL, kind: Kind) {
+        queue.append(Job(fileURL: fileURL, fileName: fileURL.lastPathComponent, kind: kind))
         queuedCount = queue.count
         startNext()
         onChange?()
@@ -50,14 +77,14 @@ final class UploadManager: ObservableObject {
 
     func enqueue(_ fileURLs: [URL]) {
         for url in fileURLs {
-            enqueue(url, isTemporary: false)
+            enqueue(url, kind: .file)
         }
     }
 
-    // Cancels the current upload and drops the waiting ones.
+    // Cancels the current upload and drops the waiting ones; cancelled screenshots are not kept.
     func cancelAll() {
-        for job in queue where job.isTemporary {
-            TempFiles.remove(job.fileURL)
+        for job in queue {
+            _ = dispose(job, keepCapture: false)
         }
 
         queue.removeAll()
@@ -66,25 +93,83 @@ final class UploadManager: ObservableObject {
         onChange?()
     }
 
+    // When the app quits: screenshots not uploaded yet are moved to the save folder, because the temporary folder is
+    // emptied right after (it also holds the request body with the key).
+    func keepPendingCaptures() {
+        let pending = (current.map { [$0] } ?? []) + queue
+        queue.removeAll()
+        queuedCount = 0
+        currentTask?.cancel()
+
+        for job in pending {
+            _ = dispose(job, keepCapture: true)
+        }
+    }
+
     private func startNext() {
-        guard current == nil, !queue.isEmpty else {
+        guard current == nil, !isAskingFirstUpload, let job = queue.first else {
             return
         }
 
-        let job = queue.removeFirst()
+        if settings.showUploadWarning && settings.uploadAfterCapture {
+            askFirstUpload()
+            return
+        }
+
+        queue.removeFirst()
         queuedCount = queue.count
         current = job
         progress = 0
 
         currentTask = Task {
-            await self.run(job)
-            self.finish(job)
+            let outcome = await self.run(job)
+            self.finish(job, outcome)
         }
     }
 
-    private func finish(_ job: Job) {
-        if job.isTemporary {
-            TempFiles.remove(job.fileURL)
+    // Asked once before the first upload, like UpLa for Windows: screenshots are uploaded automatically and anyone with
+    // the link can open them. Turning it off uploads no screenshot now and saves them to a folder instead; files the
+    // user chose are still uploaded.
+    private func askFirstUpload() {
+        isAskingFirstUpload = true
+
+        // On a later pass of the run loop, so the alert never runs inside a drop or a menu action.
+        Task {
+            let keepUploading = self.confirmFirstUpload()
+            self.settings.showUploadWarning = false
+            self.isAskingFirstUpload = false
+
+            if !keepUploading {
+                self.settings.uploadAfterCapture = false
+
+                if !self.settings.copyImageAfterCapture {
+                    self.settings.saveAfterCapture = true
+                }
+
+                let captures = self.queue.filter { $0.isCapture }
+                self.queue.removeAll { $0.isCapture }
+                self.queuedCount = self.queue.count
+
+                for job in captures {
+                    if let keptURL = self.dispose(job, keepCapture: true), self.settings.showNotifications {
+                        self.notifier.prepare()
+                        self.notifier.post(title: String(localized: "Screenshot saved"), body: UploadManager.displayPath(keptURL))
+                    }
+                }
+            }
+
+            self.onChange?()
+            self.startNext()
+        }
+    }
+
+    private func finish(_ job: Job, _ outcome: Outcome) {
+        switch outcome {
+        case .uploaded, .cancelled:
+            _ = dispose(job, keepCapture: false)
+        case .failed(let message):
+            let keptURL = dispose(job, keepCapture: true)
+            reportFailure(message, job: job, keptURL: keptURL)
         }
 
         current = nil
@@ -92,6 +177,37 @@ final class UploadManager: ObservableObject {
         progress = nil
         onChange?()
         startNext()
+    }
+
+    // Removes a temporary file once its upload ended. With keepCapture a screenshot stays in the save folder instead
+    // (moved there unless "Save to a folder" already made a copy), so a failed upload never loses the only copy.
+    // Returns where the screenshot is kept.
+    private func dispose(_ job: Job, keepCapture: Bool) -> URL? {
+        switch job.kind {
+        case .file:
+            return nil
+        case .clipboardImage:
+            TempFiles.remove(job.fileURL)
+            return nil
+        case .capture(let savedCopy):
+            if let savedCopy {
+                TempFiles.remove(job.fileURL)
+                return keepCapture ? savedCopy : nil
+            }
+
+            guard keepCapture else {
+                TempFiles.remove(job.fileURL)
+                return nil
+            }
+
+            do {
+                return try TempFiles.move(job.fileURL, to: settings.saveFolder)
+            } catch {
+                // Stays in the temporary folder until the app quits.
+                appLog.error("Keeping the screenshot failed: \(error.localizedDescription, privacy: .public)")
+                return nil
+            }
+        }
     }
 
     private func updateProgress(_ fraction: Double, jobID: UUID) {
@@ -108,30 +224,25 @@ final class UploadManager: ObservableObject {
         }
     }
 
-    private func run(_ job: Job) async {
+    private func run(_ job: Job) async -> Outcome {
         // Never fall back to a guest upload when an account is remembered but cannot be used.
         let keyKind: UploadKeyKind
         let apiKey: String
 
         switch account.state {
         case .lost:
-            reportFailure(UplaText.signInLostText, job: job)
-            return
-        case .expired:
-            reportFailure(UplaText.invalidSignInText, job: job)
-            return
-        case .signedIn, .manualKey:
+            return .failed(UplaText.signInLostText)
+        case .signedIn, .expired, .manualKey:
+            // An expired sign-in still uploads with its key and lets the server decide, like UpLa for Windows.
             guard let key = account.memberKey else {
-                reportFailure(UplaText.signInLostText, job: job)
-                return
+                return .failed(UplaText.signInLostText)
             }
             apiKey = key
             keyKind = account.state == .manualKey ? .manual : .signIn
         case .guest:
             let guestKey = AppEnvironment.guestAPIKey
             guard !guestKey.isEmpty else {
-                reportFailure(UplaText.noGuestKeyText, job: job)
-                return
+                return .failed(UplaText.noGuestKeyText)
             }
             apiKey = guestKey
             keyKind = .guest
@@ -140,7 +251,9 @@ final class UploadManager: ObservableObject {
         notifier.prepare()
 
         let isMember = keyKind != .guest
-        let client = UplaClient(apiKey: apiKey, isMember: isMember, baseURL: AppEnvironment.baseURL)
+        // The request body (with the key) goes to the app's temporary folder, which is emptied at launch and at quit.
+        let client = UplaClient(apiKey: apiKey, isMember: isMember, baseURL: AppEnvironment.baseURL, configuration: .default,
+                                temporaryDirectory: TempFiles.directory)
         let options = settings.uploadOptions
         let jobID = job.id
         let manager = self
@@ -155,27 +268,28 @@ final class UploadManager: ObservableObject {
                 }
             })
             reportSuccess(result, job: job)
+            return .uploaded
         } catch let error as UplaUploadError {
-            handle(error, job: job, keyKind: keyKind)
+            return handle(error, apiKey: apiKey, keyKind: keyKind)
         } catch {
-            handle(Task.isCancelled ? .cancelled : .unexpectedResponse, job: job, keyKind: keyKind)
+            return handle(Task.isCancelled ? .cancelled : .unexpectedResponse, apiKey: apiKey, keyKind: keyKind)
         }
     }
 
-    private func handle(_ error: UplaUploadError, job: Job, keyKind: UploadKeyKind) {
+    private func handle(_ error: UplaUploadError, apiKey: String, keyKind: UploadKeyKind) -> Outcome {
         if error == .cancelled {
             uploadLog.info("Upload cancelled")
-            return
+            return .cancelled
         }
 
         uploadLog.error("Upload failed: \(String(describing: error), privacy: .public)")
 
         if case .invalidKey(let isMember) = error, isMember, keyKind == .signIn {
-            // Lets the account menu offer "Sign In Again".
-            account.markExpired()
+            // Lets the account menu offer "Sign In Again"; a key that was replaced during the upload is left alone.
+            account.markExpired(ifKeyIs: apiKey)
         }
 
-        reportFailure(UplaText.uploadError(error, keyKind: keyKind), job: job)
+        return .failed(UplaText.uploadError(error, keyKind: keyKind))
     }
 
     private func reportSuccess(_ result: UplaUploadResult, job: Job) {
@@ -200,7 +314,22 @@ final class UploadManager: ObservableObject {
         notifier.post(title: String(localized: "Uploaded to upla.com.tr"), body: body, link: result.url)
     }
 
-    private func reportFailure(_ message: String, job: Job) {
-        notifier.post(title: String(localized: "Upload failed: \(job.fileName)"), body: message, isError: true)
+    private func reportFailure(_ message: String, job: Job, keptURL: URL?) {
+        var body = message
+
+        if let keptURL {
+            let path = UploadManager.displayPath(keptURL)
+            body += " " + String(localized: "The screenshot was saved to \(path).")
+        }
+
+        notifier.prepare()
+        notifier.post(title: String(localized: "Upload failed: \(job.fileName)"), body: body, isError: true)
+    }
+
+    // "~/Pictures/UpLa/UpLa_2026-10-08_12-00-00.png"
+    static func displayPath(_ url: URL) -> String {
+        let path = url.path
+        let home = FileManager.default.homeDirectoryForCurrentUser.path
+        return path.hasPrefix(home + "/") ? "~" + path.dropFirst(home.count) : path
     }
 }
