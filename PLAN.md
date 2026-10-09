@@ -8,7 +8,7 @@ This file is the shared memory between the Windows and the Mac Claude Code sessi
 
 ## Status
 
-*Updated 2026-10-09.* Version 0.1 is on `main` (merged from `dev` in pull request #1). It was written and tested on the Windows PC only (WSL and GitHub Actions). **It has not run on a Mac yet.** Milestones M0–M3 are done but still have to be tested on a Mac. M4 (screen recording) and the CI DMG are written on the branch `feature/screen-recording`, not merged yet; the rest of M5 is open (see [Milestones](#milestones)).
+*Updated 2026-10-09.* Version 0.1 is on `main` (merged from `dev` in pull request #1). It was written and tested on the Windows PC only (WSL and GitHub Actions). **It has not run on a Mac yet.** Milestones M0–M3 are done but still have to be tested on a Mac. M4 (screen recording) and the CI DMG are written on the branch `feature/screen-recording` and compile in CI, not merged yet; the rest of M5 is open (see [Milestones](#milestones)).
 
 ### Implemented in 0.1
 
@@ -63,6 +63,7 @@ This file is the shared memory between the Windows and the Mac Claude Code sessi
 | String Catalog | 215 keys, each with a Turkish text and the same format specifiers; 247 on `feature/screen-recording` |
 | Recording code (`feature/screen-recording`) | all app files parse on Linux; settings, uploads and capture type-check; `ScreenRecorder.swift` and `RegionSelector.swift` type-check against stand-ins for AppKit, ScreenCaptureKit, AVFoundation and CoreMedia, also with complete concurrency checking (this checks UpLa's own code and actor isolation; the SDK names themselves only CI can check) |
 | GitHub Actions (`macos-15`, Xcode 16.4, Swift 6.1.2), run [37844671941](https://github.com/Agnostique/UpLa-mac/actions/runs/37844671941) | UplaKit tests passed (86 tests, 5 E2E skipped); the Release build of the app compiles; the app is universal (arm64 x86_64), ad-hoc signed, has `tr.lproj` and `LSUIElement`; the zipped app is the `UpLa-mac` artifact |
+| GitHub Actions on `feature/screen-recording`, run [37945663070](https://github.com/Agnostique/UpLa-mac/actions/runs/37945663070) | UplaKit tests passed (100 tests, 5 E2E skipped); the app with the recording code compiles against the real SDK (ScreenCaptureKit, AVFoundation) with no compiler warnings; universal, `tr.lproj`; both artifacts, `UpLa-mac` (zip) and `UpLa-mac-dmg` (`hdiutil` worked on the first try, `hdiutil verify` VALID). The first run failed only because `Recording.swift` used CGRect's members without `import CoreGraphics`, which macOS needs and Linux does not |
 
 ### To verify on a real Mac
 
@@ -126,7 +127,7 @@ Use the CI artifact, or a local build, which can be signed with a team.
 - [ ] **App icon:** it looks acceptable. The 512 and 1024 px images are upscaled from the 256 px `.ico` frame (placeholders).
 - [ ] **CI zip:** it opens on Apple silicon and on Intel. On macOS 15 and later use Open Anyway in System Settings › Privacy & Security; on 14, right-click › Open. `xattr -dr com.apple.quarantine` also works.
 - [ ] **CI DMG** (`UpLa-mac-dmg`): it mounts as "UpLa", shows the app and the Applications link, and the copied app starts like the zipped one.
-- [ ] **Screen recording** (branch `feature/screen-recording`; first check that CI compiles it):
+- [ ] **Screen recording** (branch `feature/screen-recording`; it compiles in CI, run 37945663070):
   - Record Region…: the overlay covers the screen under the mouse (also over the menu bar and a full screen app); the crosshair, the dimming, the size label and the hint show; Esc and a right click cancel; a click records the whole screen; the app that was in front gets the focus back. On a second display the overlay and the recorded area are on that display.
   - The video shows exactly the selected area (`sourceRect` in points, top left origin), on Retina and non-Retina screens, and on a display left of or above the main one.
   - Record Window…: the system picker appears (UpLa's own windows are not offered), Cancel in the picker ends quietly, and the chosen window is recorded at its size. Find out whether the picker needs the Screen Recording permission at all, and whether the menu bar sharing indicator stays until the recording ends.
@@ -429,7 +430,7 @@ The shared guest API key is **not in any repository**:
 | M1 | Upload core | `UplaKit` with tests; upload via dialog and drag & drop; clipboard, notification, history | Done (UplaKit tested in WSL, E2E and CI); still to test on a Mac |
 | M2 | Capture | permission onboarding; region/window/full screen; hotkeys; after-capture actions | Done; still to test on a Mac |
 | M3 | Account | sign-in window with two-step code, Keychain, `me`/`logout`, expired key handling; album, tags, expiration, link type | Done (sign-in tested E2E against the local test site); still to test on a Mac |
-| M4 | Recording | MP4 recording with the size-limit stop and upload | Written on `feature/screen-recording` (UplaKit part tested in WSL); still to compile in CI and test on a Mac |
+| M4 | Recording | MP4 recording with the size-limit stop and upload | Written on `feature/screen-recording` (UplaKit part tested in WSL and CI; the app compiles in CI); still to test on a Mac |
 | M5 | Release 1.0 | app icon, launch at login, Sparkle, signing + notarization, DMG, README with screenshots, website link | Open (launch at login is in 0.1; an unsigned DMG is built in CI on `feature/screen-recording`) |
 | 1.1 | Extras | editor, text recognition, GIF | Open |
 
