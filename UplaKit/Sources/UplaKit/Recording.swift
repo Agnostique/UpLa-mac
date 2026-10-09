@@ -1,4 +1,8 @@
 import Foundation
+#if canImport(CoreGraphics)
+// On macOS Foundation declares CGRect, but its Swift members (width, minX, ==) come with the CoreGraphics overlay.
+import CoreGraphics
+#endif
 
 /// When a screen recording stops early, and whether a finished recording may be uploaded. The rules of
 /// `ScreenRecordManager.GetRecordingSizeLimit` in UpLa for Windows: a recording that will be uploaded stops a little
