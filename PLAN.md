@@ -6,6 +6,8 @@ It is **not a port**. UpLa for Windows is built on ShareX (WinForms and Win32 ca
 
 This file is the shared memory between the Windows and the Mac Claude Code sessions. Update it whenever a decision is made.
 
+> **Windows parity (decided 2026-10-10).** The user wants the app to look and work like UpLa for Windows: the same main window, menus, settings windows and texts. This changes the scope below ("Not planned", "Later"). The inventory of the Windows app, the parity plan with five phases, the 22 accepted decisions and 53 Windows screenshots are in [`docs/parity/`](docs/parity/README.md). Order: test and merge pull request #3 (screen recording) first, then phase 1 of the plan.
+
 ## Status
 
 *Updated 2026-10-09.* Version 0.1 is on `main` (merged from `dev` in pull request #1). It was written and tested on the Windows PC only (WSL and GitHub Actions). **It has not run on a Mac yet.** Milestones M0–M3 are done but still have to be tested on a Mac; M4 and M5 are open (see [Milestones](#milestones)).
@@ -223,6 +225,8 @@ Use the CI artifact, or a local build, which can be signed with a team.
 
 ### Later (1.1+)
 
+These are now scheduled in the parity plan ([`docs/parity/mac-parite-plani.md`](docs/parity/mac-parite-plani.md) §5): text recognition in phase 3, own capture overlay and GIF in phase 4, the editor in phase 5.
+
 - Annotation editor: arrow, rectangle, text, highlight, blur/pixelate, crop.
 - Text recognition with Vision (`VNRecognizeTextRequest`), copied to the clipboard.
 - GIF export of recordings, and a microphone track.
@@ -231,7 +235,7 @@ Use the CI artifact, or a local build, which can be signed with a team.
 
 ### Not planned
 
-- ShareX's other destinations, custom uploaders, workflows and tools.
+- ShareX's other destinations and custom uploaders (UpLa for Windows does not have them either). Workflows (the hotkey list) and the tools are in scope since the parity decision of 2026-10-10.
 - The NSFW flag: since 2026-10-08 the terms of use prohibit adult content.
 
 ## upla.com.tr API
