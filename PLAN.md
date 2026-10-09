@@ -8,7 +8,7 @@ This file is the shared memory between the Windows and the Mac Claude Code sessi
 
 ## Status
 
-*Updated 2026-10-09.* Version 0.1 is on `main` (merged from `dev` in pull request #1). It was written and tested on the Windows PC only (WSL and GitHub Actions). **It has not run on a Mac yet.** Milestones M0–M3 are done but still have to be tested on a Mac; M4 and M5 are open (see [Milestones](#milestones)).
+*Updated 2026-10-09.* Version 0.1 is on `main` (merged from `dev` in pull request #1). It was written and tested on the Windows PC only (WSL and GitHub Actions). **It has not run on a Mac yet.** Milestones M0–M3 are done but still have to be tested on a Mac. M4 (screen recording) and the CI DMG are written on the branch `feature/screen-recording`, not merged yet; the rest of M5 is open (see [Milestones](#milestones)).
 
 ### Implemented in 0.1
 
@@ -40,17 +40,28 @@ This file is the shared memory between the Windows and the Mac Claude Code sessi
 - **After 0.1 (2026-10-09), matching UpLa for Windows 2.0.1/2.0.2:**
   - "Report Abuse" at the end of the account menu opens the contact page.
   - `Upla.profileURL` turns a profile link sent as a path ("/name") into a full URL. The server sent paths until October 2026 (Chevereto's `get_base_url()`), and on Windows "My profile" did nothing because of it.
-- **Not done yet:** screen recording (M4); Sparkle updates, the final icon, Developer ID signing, notarization and the DMG (M5).
+- **Screen recording (M4), branch `feature/screen-recording`:**
+  - `ScreenRecorder.swift`: ScreenCaptureKit `SCStream` → `AVAssetWriter`, an H.264 MP4 in the app's temporary folder. Only frames with a new picture are written (`SCFrameStatus.complete`, and `.started`, which the SDK uses for the first new frame); the session starts at the first frame's time; `expectsMediaDataInRealTime`, `shouldOptimizeForNetworkUse`. When the screen stays still, the last frame is repeated at the stop time, so the video lasts until the user stopped.
+  - Targets: **region** (`RegionSelector.swift`: a dimmed overlay on the screen under the mouse; drag to select, a click takes the whole screen, Esc or a right click cancels; `sourceRect` in points), **window** (the system's `SCContentSharingPicker`, macOS 14) and **full screen** (the display under the mouse). UpLa's own windows are left out of display recordings.
+  - Menu: Record Region…, Record Window…, Record Full Screen; while recording a "Recording… 0:42, 12.3 MB" line, Stop Recording and Cancel Recording. The menu bar button shows a red dot and the elapsed time. Shortcut ⌥⇧⌘6 (Settings › Hotkeys): starts a region recording, or stops the running one.
+  - Settings › Recording: 30 or 60 frames per second, the mouse pointer (on), system audio (off; AAC, the sound apps play, no microphone), and "Stop screen recordings that will be uploaded at the upload limit" (moved here from the upla.com.tr tab).
+  - Upload limit stop, as on Windows: the file size is read twice a second; with upload on and the setting on, the recording stops at `Upla.recordingSizeLimit` (guests 18 MiB, members 95,000,000 bytes; member = an upload key) and the notification "Recording stopped at the upload limit (20 MB)" follows. A finished recording above the real upload limit is not uploaded; it goes to the save folder with a notification.
+  - After a recording, the screenshot actions apply: upload (through `UploadManager`) and save to the folder. A recording that is not uploaded is always kept in the save folder, because it cannot be taken again; Cancel deletes it. Quitting during a recording finishes it and keeps it in the save folder (UpLa quits after at most 10 seconds).
+  - The same Screen Recording permission check and window as screenshots.
+  - UplaKit `Recording.swift` (tested on Linux): `RecordingLimit` (stop size, upload check), `RecordingTime` (the elapsed time text) and `RecordingVideo` (selection → `sourceRect` and video size, bit rate).
+- **CI DMG:** the workflow also builds `UpLa-mac.dmg` (`hdiutil` UDZO, volume "UpLa", the app and an /Applications link; retried when `hdiutil` reports a busy resource) and uploads it as the `UpLa-mac-dmg` artifact next to the zip. It is not signed or notarized.
+- **Not done yet:** Sparkle updates, the final icon, Developer ID signing, notarization and a signed DMG (M5).
 
 ### Verified on the Windows PC
 
 | Check | Result |
 | --- | --- |
-| UplaKit unit tests in WSL Ubuntu 24.04 (Swift 6.4, `-strict-concurrency=complete`) | 81 tests, 0 failures, no warnings |
+| UplaKit unit tests in WSL Ubuntu 24.04 (Swift 6.4, `-strict-concurrency=complete`) | 81 tests, 0 failures, no warnings; on `feature/screen-recording` 95 (13 recording tests: Windows limit numbers, time text, area and video size), no warnings |
 | UplaKit E2E tests against the local Chevereto 4.5.7 test site in WSL (`http://localhost:8090`, with the `upla-app` route) | 5 of 5 passed: sign-in, `me`, key check, member upload (also with tags and a resize width), sign-out, deleted key refused, two-step sign-in, banned account, wrong password, site without the route |
 | E2E guard | the tests skip any host other than localhost, 127.0.0.1 and ::1 (allowlist) |
 | App sources on Linux | all files parse; the logic that does not need AppKit (account, settings, history, uploads, capture, texts) type-checks against UplaKit with stand-ins for AppKit, Security and similar frameworks |
-| String Catalog | 215 keys, each with a Turkish text and the same format specifiers |
+| String Catalog | 215 keys, each with a Turkish text and the same format specifiers; 247 on `feature/screen-recording` |
+| Recording code (`feature/screen-recording`) | all app files parse on Linux; settings, uploads and capture type-check; `ScreenRecorder.swift` and `RegionSelector.swift` type-check against stand-ins for AppKit, ScreenCaptureKit, AVFoundation and CoreMedia, also with complete concurrency checking (this checks UpLa's own code and actor isolation; the SDK names themselves only CI can check) |
 | GitHub Actions (`macos-15`, Xcode 16.4, Swift 6.1.2), run [37844671941](https://github.com/Agnostique/UpLa-mac/actions/runs/37844671941) | UplaKit tests passed (86 tests, 5 E2E skipped); the Release build of the app compiles; the app is universal (arm64 x86_64), ad-hoc signed, has `tr.lproj` and `LSUIElement`; the zipped app is the `UpLa-mac` artifact |
 
 ### To verify on a real Mac
@@ -114,6 +125,23 @@ Use the CI artifact, or a local build, which can be signed with a team.
 - [ ] **Signing:** with `Config/Signing.xcconfig` (team ID), the Screen Recording permission and the keychain access survive a rebuild and `xcodegen generate`.
 - [ ] **App icon:** it looks acceptable. The 512 and 1024 px images are upscaled from the 256 px `.ico` frame (placeholders).
 - [ ] **CI zip:** it opens on Apple silicon and on Intel. On macOS 15 and later use Open Anyway in System Settings › Privacy & Security; on 14, right-click › Open. `xattr -dr com.apple.quarantine` also works.
+- [ ] **CI DMG** (`UpLa-mac-dmg`): it mounts as "UpLa", shows the app and the Applications link, and the copied app starts like the zipped one.
+- [ ] **Screen recording** (branch `feature/screen-recording`; first check that CI compiles it):
+  - Record Region…: the overlay covers the screen under the mouse (also over the menu bar and a full screen app); the crosshair, the dimming, the size label and the hint show; Esc and a right click cancel; a click records the whole screen; the app that was in front gets the focus back. On a second display the overlay and the recorded area are on that display.
+  - The video shows exactly the selected area (`sourceRect` in points, top left origin), on Retina and non-Retina screens, and on a display left of or above the main one.
+  - Record Window…: the system picker appears (UpLa's own windows are not offered), Cancel in the picker ends quietly, and the chosen window is recorded at its size. Find out whether the picker needs the Screen Recording permission at all, and whether the menu bar sharing indicator stays until the recording ends.
+  - Record Full Screen: the display under the mouse.
+  - UpLa's own windows and the overlay are not in display recordings.
+  - The menu bar button shows the red dot and the time; the menu shows "Recording… time, size", which updates while the menu is open. Stop Recording, Cancel Recording (the file is deleted) and ⌥⇧⌘6 (start a region recording / stop) work.
+  - The MP4 plays in QuickTime and in Safari/Chrome after the upload; the duration is right when the screen stayed still at the end; 30 and 60 fps; the mouse pointer setting; colours look right.
+  - System audio on: the sound of a video playing in Safari is in the file, in sync; UpLa's own sounds are not.
+  - **The file grows while recording** (the size in the menu goes up): the upload limit stop depends on it. With "Optimize for network use" AVAssetWriter must write the media to the file as it goes.
+  - Upload limit as a guest: a busy recording (e.g. a scrolling page) stops at about 18 MB with the notification "Recording stopped at the upload limit (20 MB)", is at most 20 MB and is uploaded. As a member it stops near 95 MB. With the setting or the upload off it does not stop.
+  - Upload off: the recording goes to `~/Pictures/UpLa` with "Screen recording saved". Upload and Save on: a copy is saved and the recording uploaded. A recording above the upload limit (stop setting off) is not uploaded and is kept in the folder.
+  - Closing the recorded window, or stopping the sharing from the menu bar indicator, ends the recording and keeps the file.
+  - Quitting during a recording keeps the file in the save folder.
+  - The Screen Recording permission window appears when the permission is missing.
+  - The first-upload question appears for a recording too, and "Turn Off Automatic Upload" keeps the recording in the folder.
 
 ### Decisions so far
 
@@ -124,6 +152,14 @@ Use the CI artifact, or a local build, which can be signed with a team.
 - **CI:** two parallel `macos-15` jobs ("Test UplaKit", "Build the app"), `actions/checkout` and `upload-artifact` v7. Xcode is not pinned: today it is 16.4 with Swift 6.1.2, and it changes when the image default changes. The output is an ad-hoc signed universal app.
 - **Guest key:** the CI artifact has the guest key in plain text in `Info.plist`. This is the known exposure, the same as the released Windows binary. Built apps and archives are gitignored.
 - **No third-party dependencies in 0.1:** the hotkey recorder is UpLa's own.
+- **Screen recording:**
+  - H.264 MP4 only, which every browser plays; HEVC is not offered.
+  - The video is at most 1920 pixels on its longer side: a Retina full screen is recorded at about 1080p, a small region keeps every pixel. The bit rate is 0.05 bits per pixel and frame, between 1 and 8 Mbit/s; the cap keeps what the writer holds back (about a second) well inside the 2 MiB that the stop leaves below the guest limit.
+  - The size is read from the file twice a second, like FFmpeg's `-fs` on Windows stops by size. The limit is fixed when the recording starts; the "too large" check after it uses the account as it is then.
+  - Window recording uses the system picker (`SCContentSharingPicker`, macOS 14) instead of an own window list. The picker stays active while the recording runs and is turned off afterwards.
+  - System audio is an AAC track from ScreenCaptureKit (`capturesAudio`, 48 kHz stereo, UpLa's own sound excluded), off by default. No microphone (`captureMicrophone` needs macOS 15).
+  - A recording that is not uploaded is always kept in the save folder, even when "Save to a folder" is off; "Copy the image" does not apply to recordings.
+  - Default shortcut ⌥⇧⌘6, next to the capture shortcuts.
 
 ## Platform
 
@@ -165,7 +201,7 @@ Use the CI artifact, or a local build, which can be signed with a team.
 
 **4. Screen recording:**
 
-- ScreenCaptureKit (`SCStream`) feeds `AVAssetWriter`, which writes MP4 (H.264, HEVC as an option). System audio is optional.
+- ScreenCaptureKit (`SCStream`) feeds `AVAssetWriter`, which writes MP4 (H.264). System audio is optional.
 - Region, window or full screen; a stop button and elapsed time/size are shown in the menu bar.
 - **Stop at the upload limit**, as on Windows (the setting is on by default):
   - Count the bytes written and stop at the recording limit, then upload. A notification says that the recording was stopped at the limit.
@@ -212,7 +248,7 @@ Use the CI artifact, or a local build, which can be signed with a team.
 | General | launch at login via `SMAppService.mainApp` |
 | Hotkeys | |
 | Capture | format, Retina 1x downscale |
-| Recording | stop at the upload limit |
+| Recording | frames per second (30/60), mouse pointer, system audio, stop at the upload limit |
 | upla.com.tr | link type, album, tags, expiration, category ID, max width |
 | Account | |
 | Updates | |
@@ -393,8 +429,8 @@ The shared guest API key is **not in any repository**:
 | M1 | Upload core | `UplaKit` with tests; upload via dialog and drag & drop; clipboard, notification, history | Done (UplaKit tested in WSL, E2E and CI); still to test on a Mac |
 | M2 | Capture | permission onboarding; region/window/full screen; hotkeys; after-capture actions | Done; still to test on a Mac |
 | M3 | Account | sign-in window with two-step code, Keychain, `me`/`logout`, expired key handling; album, tags, expiration, link type | Done (sign-in tested E2E against the local test site); still to test on a Mac |
-| M4 | Recording | MP4 recording with the size-limit stop and upload | Open |
-| M5 | Release 1.0 | app icon, launch at login, Sparkle, signing + notarization, DMG, README with screenshots, website link | Open (launch at login is already in 0.1) |
+| M4 | Recording | MP4 recording with the size-limit stop and upload | Written on `feature/screen-recording` (UplaKit part tested in WSL); still to compile in CI and test on a Mac |
+| M5 | Release 1.0 | app icon, launch at login, Sparkle, signing + notarization, DMG, README with screenshots, website link | Open (launch at login is in 0.1; an unsigned DMG is built in CI on `feature/screen-recording`) |
 | 1.1 | Extras | editor, text recognition, GIF | Open |
 
 ## Open questions for the user

@@ -26,11 +26,27 @@ enum CaptureMode {
 final class CaptureService {
     private static let toolURL = URL(fileURLWithPath: "/usr/sbin/screencapture")
 
-    private var isCapturing = false
+    private(set) var isCapturing = false
     private var requestedAccess = false
 
     var hasScreenCaptureAccess: Bool {
         CGPreflightScreenCaptureAccess()
+    }
+
+    // The Screen Recording permission, which screenshots and screen recordings both need. Without it macOS is asked
+    // once and onPermissionMissing is called (it shows the permission window).
+    func checkAccess(onPermissionMissing: @MainActor () -> Void) -> Bool {
+        guard CGPreflightScreenCaptureAccess() else {
+            if !requestedAccess {
+                requestedAccess = true
+                // Adds UpLa to the Screen Recording list in System Settings (macOS asks only once).
+                _ = CGRequestScreenCaptureAccess()
+            }
+            onPermissionMissing()
+            return false
+        }
+
+        return true
     }
 
     // Returns the PNG file, or nil when the user cancelled (Esc writes no file), the permission is missing
@@ -40,13 +56,7 @@ final class CaptureService {
             return nil
         }
 
-        guard CGPreflightScreenCaptureAccess() else {
-            if !requestedAccess {
-                requestedAccess = true
-                // Adds UpLa to the Screen Recording list in System Settings (macOS asks only once).
-                _ = CGRequestScreenCaptureAccess()
-            }
-            onPermissionMissing()
+        guard checkAccess(onPermissionMissing: onPermissionMissing) else {
             return nil
         }
 

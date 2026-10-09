@@ -11,10 +11,13 @@ final class AppController {
     let notifier: Notifier
     let uploads: UploadManager
     let captureService: CaptureService
+    let recorder: ScreenRecorder
     let hotKeys: HotKeyCenter
     let windows: WindowManager
     let settingsNavigation: SettingsNavigation
     private var statusItem: StatusItemController?
+    // Set while UpLa waits for a recording to finish before it quits.
+    private var quitReply: (@MainActor () -> Void)?
 
     init() {
         settings = AppSettings()
@@ -24,6 +27,7 @@ final class AppController {
         uploads = UploadManager(settings: settings, account: account, history: history, notifier: notifier,
                                 confirmFirstUpload: AppController.confirmFirstUpload)
         captureService = CaptureService()
+        recorder = ScreenRecorder()
         hotKeys = HotKeyCenter()
         windows = WindowManager()
         settingsNavigation = SettingsNavigation()
@@ -37,9 +41,15 @@ final class AppController {
         uploads.onChange = { [weak statusItem] in
             statusItem?.update()
         }
+        recorder.onChange = { [weak statusItem] in
+            statusItem?.update()
+        }
+        recorder.onFinish = { [weak self] outcome in
+            self?.handleRecording(outcome)
+        }
 
         hotKeys.onPress = { [weak self] action in
-            self?.capture(action.captureMode)
+            self?.handleHotKey(action)
         }
         hotKeys.start()
 
@@ -56,7 +66,20 @@ final class AppController {
 
     // MARK: Capture and upload
 
+    private func handleHotKey(_ action: HotKeyAction) {
+        if let mode = action.captureMode {
+            capture(mode)
+        } else {
+            toggleRecording()
+        }
+    }
+
     func capture(_ mode: CaptureMode) {
+        // The selection of a recording is on the screen.
+        guard recorder.state != .choosing else {
+            return
+        }
+
         Task {
             let fileURL = await self.captureService.capture(mode, onPermissionMissing: {
                 self.showPermission()
@@ -105,6 +128,159 @@ final class AppController {
         }
     }
 
+    // MARK: Screen recording
+
+    // The recording shortcut: starts a region recording, or stops the running one.
+    func toggleRecording() {
+        switch recorder.state {
+        case .idle:
+            startRecording(.region)
+        case .recording:
+            recorder.stop()
+        case .choosing, .starting, .finishing:
+            break
+        }
+    }
+
+    func startRecording(_ target: RecordingTarget) {
+        guard recorder.isIdle, !captureService.isCapturing else {
+            return
+        }
+
+        guard captureService.checkAccess(onPermissionMissing: { self.showPermission() }) else {
+            return
+        }
+
+        // As on Windows, the limit is fixed when the recording starts: only a recording that will be uploaded stops at
+        // it, and the member limit needs a key.
+        let limit = RecordingLimit(isMember: account.hasMemberKey, willUpload: settings.uploadAfterCapture,
+                                   stopAtUploadLimit: settings.stopRecordingAtUploadLimit)
+        let options = RecordingOptions(framesPerSecond: settings.recordingFramesPerSecond,
+                                       showsCursor: settings.recordingShowsCursor,
+                                       capturesAudio: settings.recordingCapturesAudio, limit: limit)
+        recorder.start(target, options: options)
+    }
+
+    private func handleRecording(_ outcome: RecordingOutcome) {
+        if quitReply != nil {
+            // Quitting: a finished recording is only kept in the save folder.
+            if case .finished(let fileURL, _, _) = outcome {
+                do {
+                    _ = try TempFiles.move(fileURL, to: settings.saveFolder)
+                } catch {
+                    appLog.error("Keeping the recording at quit failed: \(error.localizedDescription, privacy: .public)")
+                }
+            }
+
+            replyToQuit()
+            return
+        }
+
+        switch outcome {
+        case .finished(let fileURL, let stoppedAtLimit, let limit):
+            deliverRecording(fileURL, stoppedAtLimit: stoppedAtLimit, limit: limit)
+        case .cancelled:
+            break
+        case .permissionMissing:
+            showPermission()
+        case .failed(let message):
+            notifier.prepare()
+            notifier.post(title: String(localized: "Screen recording failed"), body: message, isError: true)
+        }
+    }
+
+    // After a recording, the after-capture actions of screenshots: upload and save to the folder. A recording that is
+    // not uploaded always goes to the folder, because it cannot be taken again, and one above the upload limit is not
+    // sent.
+    private func deliverRecording(_ fileURL: URL, stoppedAtLimit: Bool, limit: RecordingLimit) {
+        guard settings.uploadAfterCapture else {
+            keepRecording(fileURL)
+            return
+        }
+
+        // The account as it is now, because the upload uses it.
+        let isMember = account.hasMemberKey
+
+        guard RecordingLimit.canUpload(fileSize: TempFiles.fileSize(fileURL), isMember: isMember) else {
+            let limitText = Upla.maxUploadSizeText(isMember: isMember)
+            let title = String(localized: "The screen recording was not uploaded")
+            notifier.prepare()
+
+            do {
+                let keptURL = try TempFiles.move(fileURL, to: settings.saveFolder)
+                let path = UploadManager.displayPath(keptURL)
+                notifier.post(title: title, body: String(localized: "It is larger than the \(limitText) upload limit. It was saved to \(path)."),
+                              isError: true)
+            } catch {
+                let reason = error.localizedDescription
+                notifier.post(title: title, body: String(localized: "It is larger than the \(limitText) upload limit, and it could not be saved: \(reason)"),
+                              isError: true)
+            }
+            return
+        }
+
+        var savedURL: URL?
+
+        if settings.saveAfterCapture {
+            do {
+                savedURL = try TempFiles.save(fileURL, to: settings.saveFolder)
+            } catch {
+                notifier.prepare()
+                notifier.post(title: String(localized: "The screen recording could not be saved"), body: error.localizedDescription,
+                              isError: true)
+            }
+        }
+
+        if stoppedAtLimit {
+            let limitText = limit.uploadLimitText
+            notifier.prepare()
+            notifier.post(title: String(localized: "Recording stopped at the upload limit (\(limitText))"),
+                          body: String(localized: "The recording is being uploaded."))
+        }
+
+        uploads.enqueue(fileURL, kind: .capture(savedCopy: savedURL))
+    }
+
+    private func keepRecording(_ fileURL: URL) {
+        do {
+            let savedURL = try TempFiles.move(fileURL, to: settings.saveFolder)
+
+            if settings.showNotifications {
+                notifier.prepare()
+                notifier.post(title: String(localized: "Screen recording saved"), body: UploadManager.displayPath(savedURL))
+            }
+        } catch {
+            notifier.prepare()
+            notifier.post(title: String(localized: "The screen recording could not be saved"), body: error.localizedDescription,
+                          isError: true)
+        }
+    }
+
+    // Quitting during a recording: it is finished and kept in the save folder, not uploaded. UpLa quits after at most
+    // 10 seconds even if the file is not closed by then.
+    func finishRecordingBeforeQuit(reply: @escaping @MainActor () -> Void) {
+        quitReply = reply
+        recorder.stop()
+
+        Task { [weak self] in
+            try? await Task.sleep(nanoseconds: 10_000_000_000)
+            self?.replyToQuit()
+        }
+    }
+
+    private func replyToQuit() {
+        guard let reply = quitReply else {
+            return
+        }
+
+        quitReply = nil
+
+        // Later, never from inside applicationShouldTerminate itself.
+        Task { @MainActor in
+            reply()
+        }
+    }
+
     func uploadFiles() {
         let panel = NSOpenPanel()
         panel.title = String(localized: "Upload to upla.com.tr")
@@ -147,7 +323,7 @@ final class AppController {
         let alert = NSAlert()
         alert.alertStyle = .informational
         alert.messageText = String(localized: "Automatic upload to upla.com.tr")
-        alert.informativeText = String(localized: "Your screenshots are uploaded to upla.com.tr automatically after capture, and a link that anyone who has it can open is created.\n\nKeep automatic upload on?\n\nIf you turn it off, screenshots are not uploaded and are saved to a folder instead; you can turn automatic upload back on in Settings › Capture.")
+        alert.informativeText = String(localized: "Your screenshots and screen recordings are uploaded to upla.com.tr automatically after capture, and a link that anyone who has it can open is created.\n\nKeep automatic upload on?\n\nIf you turn it off, screenshots and recordings are not uploaded and are saved to a folder instead; you can turn automatic upload back on in Settings › Capture.")
         alert.addButton(withTitle: String(localized: "Keep Uploading"))
         alert.addButton(withTitle: String(localized: "Turn Off Automatic Upload"))
         NSApp.activate()

@@ -18,9 +18,15 @@ final class AppSettings: ObservableObject {
         static let expiration = "Expiration"
         static let maxWidth = "MaxWidth"
         static let stopRecordingAtUploadLimit = "StopRecordingAtUploadLimit"
+        static let recordingFramesPerSecond = "RecordingFramesPerSecond"
+        static let recordingShowsCursor = "RecordingShowsCursor"
+        static let recordingCapturesAudio = "RecordingCapturesAudio"
         // Same name as the setting of UpLa for Windows.
         static let showUploadWarning = "ShowUploadWarning"
     }
+
+    // The frame rates a recording can use.
+    static let recordingFrameRates = [30, 60]
 
     private let defaults: UserDefaults
 
@@ -42,9 +48,17 @@ final class AppSettings: ObservableObject {
     @Published var expiration: String { didSet { defaults.set(expiration, forKey: Key.expiration) } }
     // Server side resize of wider images, 0 = off.
     @Published var maxWidth: Int { didSet { defaults.set(maxWidth, forKey: Key.maxWidth) } }
-    // Kept for screen recording, which comes later: recordings that will be uploaded stop at the upload limit.
+    // Screen recordings that will be uploaded stop a little below the upload limit, like on Windows.
     @Published var stopRecordingAtUploadLimit: Bool {
         didSet { defaults.set(stopRecordingAtUploadLimit, forKey: Key.stopRecordingAtUploadLimit) }
+    }
+    // Screen recording: 30 or 60 frames per second, the mouse pointer, and the sound apps play (no microphone).
+    @Published var recordingFramesPerSecond: Int {
+        didSet { defaults.set(recordingFramesPerSecond, forKey: Key.recordingFramesPerSecond) }
+    }
+    @Published var recordingShowsCursor: Bool { didSet { defaults.set(recordingShowsCursor, forKey: Key.recordingShowsCursor) } }
+    @Published var recordingCapturesAudio: Bool {
+        didSet { defaults.set(recordingCapturesAudio, forKey: Key.recordingCapturesAudio) }
     }
     // The question before the first upload is still to be asked (captures are uploaded automatically by default).
     var showUploadWarning: Bool { didSet { defaults.set(showUploadWarning, forKey: Key.showUploadWarning) } }
@@ -63,6 +77,9 @@ final class AppSettings: ObservableObject {
             Key.copyImageAfterCapture: false,
             Key.saveAfterCapture: false,
             Key.stopRecordingAtUploadLimit: true,
+            Key.recordingFramesPerSecond: 30,
+            Key.recordingShowsCursor: true,
+            Key.recordingCapturesAudio: false,
             Key.showUploadWarning: true
         ])
 
@@ -79,6 +96,10 @@ final class AppSettings: ObservableObject {
         expiration = Upla.expirationPresets.contains(storedExpiration) ? storedExpiration : ""
         maxWidth = max(0, defaults.integer(forKey: Key.maxWidth))
         stopRecordingAtUploadLimit = defaults.bool(forKey: Key.stopRecordingAtUploadLimit)
+        let storedFrameRate = defaults.integer(forKey: Key.recordingFramesPerSecond)
+        recordingFramesPerSecond = AppSettings.recordingFrameRates.contains(storedFrameRate) ? storedFrameRate : 30
+        recordingShowsCursor = defaults.bool(forKey: Key.recordingShowsCursor)
+        recordingCapturesAudio = defaults.bool(forKey: Key.recordingCapturesAudio)
         showUploadWarning = defaults.bool(forKey: Key.showUploadWarning)
     }
 

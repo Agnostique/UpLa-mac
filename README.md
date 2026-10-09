@@ -17,8 +17,8 @@ macOS 14 veya daha yenisi ve Xcode 16 gerekir.
 
 ## CI derlemesini deneme
 
-1. GitHub'da Actions › "Build UpLa for Mac" altında son başarılı çalışmayı açın ve **UpLa-mac** dosyasını indirin.
-2. Zip'i açın ve `UpLa.app`'i Uygulamalar klasörüne taşıyın.
+1. GitHub'da Actions › "Build UpLa for Mac" altında son başarılı çalışmayı açın ve **UpLa-mac-dmg** dosyasını (disk görüntüsü) ya da **UpLa-mac** dosyasını (zip) indirin.
+2. DMG: indirilen zip'i açın, `UpLa-mac.dmg`'yi çift tıklayarak açın ve `UpLa.app`'i yanındaki Applications (Uygulamalar) kısayoluna sürükleyin. Zip: açın ve `UpLa.app`'i Uygulamalar klasörüne taşıyın.
 3. Uygulama noter onaylı (notarized) değildir. macOS 15 ve sonrası: uygulamayı bir kez açmayı deneyin, ardından Sistem Ayarları › Gizlilik ve Güvenlik bölümünde **Yine de Aç**'ı seçin (macOS 14'te: sağ tıklayıp **Aç**). Ya da Terminal'de `xattr -dr com.apple.quarantine /Applications/UpLa.app` çalıştırın.
 4. İstendiğinde Sistem Ayarları › Gizlilik ve Güvenlik › Ekran ve Sistem Sesi Kaydı bölümünde UpLa'ya izin verin, sonra UpLa'yı kapatıp yeniden açın.
 5. Her test derlemesi farklı imzalandığı için Ekran Kaydı iznini ve anahtar zinciri erişimini yeniden isteyebilir.
@@ -36,8 +36,8 @@ Needs macOS 14 or later and Xcode 16.
 
 ## Try a CI build
 
-1. On GitHub, open the latest successful run under Actions › "Build UpLa for Mac" and download the **UpLa-mac** artifact.
-2. Unzip it and move `UpLa.app` to the Applications folder.
+1. On GitHub, open the latest successful run under Actions › "Build UpLa for Mac" and download the **UpLa-mac-dmg** artifact (a disk image) or the **UpLa-mac** artifact (a zip).
+2. DMG: unzip the download, open `UpLa-mac.dmg` and drag `UpLa.app` onto the Applications link next to it. Zip: unzip it and move `UpLa.app` to the Applications folder.
 3. The app is not notarized. macOS 15 and later: try to open it once, then choose **Open Anyway** in System Settings › Privacy & Security (macOS 14: right-click it and choose **Open**). Or run `xattr -dr com.apple.quarantine /Applications/UpLa.app` in Terminal.
 4. When asked, allow UpLa in System Settings › Privacy & Security › Screen & System Audio Recording, then quit and reopen UpLa.
 5. Each test build is signed differently, so it may ask again for the Screen Recording permission and for keychain access.

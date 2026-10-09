@@ -9,6 +9,8 @@ enum HotKeyAction: String, CaseIterable, Identifiable {
     case fullScreen
     case region
     case window
+    // Starts a region recording, or stops the running recording.
+    case recording
 
     var id: String {
         rawValue
@@ -22,10 +24,13 @@ enum HotKeyAction: String, CaseIterable, Identifiable {
             return 2
         case .window:
             return 3
+        case .recording:
+            return 4
         }
     }
 
-    var captureMode: CaptureMode {
+    // nil for the recording shortcut.
+    var captureMode: CaptureMode? {
         switch self {
         case .fullScreen:
             return .fullScreen
@@ -33,6 +38,8 @@ enum HotKeyAction: String, CaseIterable, Identifiable {
             return .region
         case .window:
             return .window
+        case .recording:
+            return nil
         }
     }
 
@@ -44,10 +51,12 @@ enum HotKeyAction: String, CaseIterable, Identifiable {
             return String(localized: "Capture Region")
         case .window:
             return String(localized: "Capture Window")
+        case .recording:
+            return String(localized: "Start/Stop Recording")
         }
     }
 
-    // ⌥⇧⌘3/4/5 sit next to macOS's own ⇧⌘3/4/5 without replacing them.
+    // ⌥⇧⌘3/4/5 sit next to macOS's own ⇧⌘3/4/5 without replacing them; ⌥⇧⌘6 records.
     var defaultHotKey: HotKey {
         let modifiers = UInt32(optionKey | shiftKey | cmdKey)
 
@@ -58,6 +67,8 @@ enum HotKeyAction: String, CaseIterable, Identifiable {
             return HotKey(keyCode: UInt32(kVK_ANSI_4), modifiers: modifiers, key: "4")
         case .window:
             return HotKey(keyCode: UInt32(kVK_ANSI_5), modifiers: modifiers, key: "5")
+        case .recording:
+            return HotKey(keyCode: UInt32(kVK_ANSI_6), modifiers: modifiers, key: "6")
         }
     }
 }

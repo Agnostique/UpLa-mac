@@ -3,7 +3,7 @@ import Foundation
 import UniformTypeIdentifiers
 import UplaKit
 
-// Temporary capture files ("UpLa_yyyy-MM-dd_HH-mm-ss.png") and copies into the save folder.
+// Temporary capture files ("UpLa_yyyy-MM-dd_HH-mm-ss.png", recordings as .mp4) and copies into the save folder.
 enum TempFiles {
     static var directory: URL {
         FileManager.default.temporaryDirectory.appendingPathComponent("UpLa", isDirectory: true)
@@ -41,6 +41,12 @@ enum TempFiles {
 
     static func remove(_ url: URL) {
         try? FileManager.default.removeItem(at: url)
+    }
+
+    // 0 when the file is missing.
+    static func fileSize(_ url: URL) -> Int64 {
+        let attributes = try? FileManager.default.attributesOfItem(atPath: url.path)
+        return (attributes?[.size] as? NSNumber)?.int64Value ?? 0
     }
 
     // Captures and upload request bodies (which hold the key); emptied at launch, for leftovers of a crash, and at quit.

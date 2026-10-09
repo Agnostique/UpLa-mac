@@ -94,3 +94,30 @@ jobs:
           name: UpLa-mac
           path: UpLa-mac.zip
           if-no-files-found: error
+
+      # A compressed disk image with the app and a link to /Applications, so it can be dragged there. Not signed or
+      # notarized yet (M5). hdiutil sometimes fails with "Resource busy" on the hosted runners, so it is retried.
+      - name: Build the DMG
+        run: |
+          mkdir dmg
+          ditto build/Build/Products/Release/UpLa.app dmg/UpLa.app
+          ln -s /Applications dmg/Applications
+          for attempt in 1 2 3 4 5; do
+            if hdiutil create -volname UpLa -srcfolder dmg -ov -format UDZO UpLa-mac.dmg; then
+              break
+            fi
+            if [ "$attempt" -eq 5 ]; then
+              echo "::error::hdiutil could not create the DMG"
+              exit 1
+            fi
+            echo "hdiutil failed (attempt $attempt), trying again"
+            sleep $((attempt * 5))
+          done
+          hdiutil verify UpLa-mac.dmg
+          ls -l UpLa-mac.dmg
+
+      - uses: actions/upload-artifact@v7
+        with:
+          name: UpLa-mac-dmg
+          path: UpLa-mac.dmg
+          if-no-files-found: error

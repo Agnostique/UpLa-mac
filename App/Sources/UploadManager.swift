@@ -11,7 +11,7 @@ final class UploadManager: ObservableObject {
         case file
         // An image from the clipboard written to the temporary folder; removed afterwards (the clipboard still has it).
         case clipboardImage
-        // A screenshot in the temporary folder, with the copy "Save to a folder" made, if any.
+        // A screenshot or screen recording in the temporary folder, with the copy "Save to a folder" made, if any.
         case capture(savedCopy: URL?)
     }
 
@@ -26,6 +26,11 @@ final class UploadManager: ObservableObject {
                 return true
             }
             return false
+        }
+
+        // A screen recording rather than a screenshot, for the texts.
+        var isVideo: Bool {
+            Upla.isVideoExtension(fileURL.pathExtension)
         }
     }
 
@@ -152,8 +157,9 @@ final class UploadManager: ObservableObject {
 
                 for job in captures {
                     if let keptURL = self.dispose(job, keepCapture: true), self.settings.showNotifications {
+                        let title = job.isVideo ? String(localized: "Screen recording saved") : String(localized: "Screenshot saved")
                         self.notifier.prepare()
-                        self.notifier.post(title: String(localized: "Screenshot saved"), body: UploadManager.displayPath(keptURL))
+                        self.notifier.post(title: title, body: UploadManager.displayPath(keptURL))
                     }
                 }
             }
@@ -319,7 +325,8 @@ final class UploadManager: ObservableObject {
 
         if let keptURL {
             let path = UploadManager.displayPath(keptURL)
-            body += " " + String(localized: "The screenshot was saved to \(path).")
+            body += " " + (job.isVideo ? String(localized: "The screen recording was saved to \(path).")
+                : String(localized: "The screenshot was saved to \(path)."))
         }
 
         notifier.prepare()
