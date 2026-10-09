@@ -177,7 +177,7 @@ final class StatusItemController: NSObject, NSMenuDelegate, NSWindowDelegate, NS
             submenu.addItem(item(String(localized: "Create Account"), #selector(openSignUp(_:))))
         case .signedIn:
             info(String(localized: "Signed in as \(account.displayName)"))
-            if AppEnvironment.webURL(account.profileURL) != nil {
+            if Upla.profileURL(account.profileURL, site: AppEnvironment.baseURL) != nil {
                 submenu.addItem(item(String(localized: "My Profile"), #selector(openProfile(_:))))
             }
             submenu.addItem(item(String(localized: "Connected Devices"), #selector(openConnectedDevices(_:))))
@@ -200,6 +200,10 @@ final class StatusItemController: NSObject, NSMenuDelegate, NSWindowDelegate, NS
             submenu.addItem(.separator())
             submenu.addItem(item(String(localized: "Remove Key…"), #selector(signOut(_:))))
         }
+
+        // Store rules for apps that share user content: a way to report content that breaks the rules, as on Windows.
+        submenu.addItem(.separator())
+        submenu.addItem(item(String(localized: "Report Abuse"), #selector(openReportAbuse(_:))))
 
         return submenu
     }
@@ -253,9 +257,13 @@ final class StatusItemController: NSObject, NSMenuDelegate, NSWindowDelegate, NS
     }
 
     @objc private func openProfile(_ sender: Any?) {
-        if let url = AppEnvironment.webURL(app.account.profileURL) {
+        if let url = Upla.profileURL(app.account.profileURL, site: AppEnvironment.baseURL) {
             NSWorkspace.shared.open(url)
         }
+    }
+
+    @objc private func openReportAbuse(_ sender: Any?) {
+        NSWorkspace.shared.open(Upla.reportAbuseURL)
     }
 
     @objc private func openConnectedDevices(_ sender: Any?) {

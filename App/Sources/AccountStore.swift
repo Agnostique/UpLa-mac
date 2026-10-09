@@ -133,7 +133,7 @@ final class AccountStore: ObservableObject {
         expired = false
         username = result.account?.username ?? loginSubject
         name = result.account?.name ?? ""
-        profileURL = result.account?.profileURL ?? ""
+        profileURL = Upla.profileURL(result.account?.profileURL, site: AppEnvironment.baseURL)?.absoluteString ?? ""
         save()
         updateState()
         return .success
@@ -158,7 +158,7 @@ final class AccountStore: ObservableObject {
             if let account = result.account, !account.username.isEmpty {
                 username = account.username
                 name = account.name
-                profileURL = account.profileURL
+                profileURL = Upla.profileURL(account.profileURL, site: AppEnvironment.baseURL)?.absoluteString ?? ""
                 save()
             }
             expired = false

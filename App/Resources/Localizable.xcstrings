@@ -1649,6 +1649,22 @@
         }
       }
     },
+    "Report Abuse" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Report Abuse"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kötüye Kullanımı Bildir"
+          }
+        }
+      }
+    },
     "Restore Defaults" : {
       "localizations" : {
         "en" : {
