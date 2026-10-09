@@ -15,7 +15,10 @@ Kullanıcı, Mac uygulamasının Windows'taki UpLa ile aynı menülere, pencerel
   1. PR #3 (ekran kaydı) MacBook'ta test edilir; kullanıcı onaylarsa birleştirilir.
   2. Aşama 1 (plan §5) güncel `main` üzerinden başlar. İlk PR: metin aktarma betiği, `TaskSettings` / `ApplicationConfig` / `HotkeysConfig` modelleri, `MenuBuilder`.
   3. Her alt adım ayrı dal ve PR (`parity/1-temel`, `parity/1-ana-pencere`, …). Birleştirme kararı her zaman kullanıcının.
-- **Windows tarafı:** 2.0.3 onay işareti hatasını düzeltti (envanter §12.1). Yazım hataları ve çevrilmemiş metinler (karar 6) sıradaki Windows sürümünde düzeltilecek; metin betiği o zaman yeniden çalıştırılır.
+- **Windows tarafı:**
+  - 2.0.3 onay işareti hatasını düzeltti (envanter §12.1).
+  - Yazım hataları ve çevrilmemiş metinler (karar 6) Windows deposunun `main` dalında düzeltildi (`92748c3ad`). Henüz bir sürümde çıkmadı.
+  - Metin betiği metinleri `main`'den alır; ayrı bir düzeltme tablosu gerekmez.
 
 ## Kararların özeti (ayrıntısı plan §9'da)
 
@@ -24,7 +27,7 @@ Kullanıcı, Mac uygulamasının Windows'taki UpLa ile aynı menülere, pencerel
 3. **Menü çubuğu simgesi:** tıklama ayarları Windows'taki gibi; varsayılan sol tık menüyü açar.
 4. **Görünüm:** macOS açık / koyu görünümü; Tema sayfasında yalnızca Sistem / Açık / Koyu.
 5. **İkonlar:** Windows'taki Fugue ikonları (CC BY 3.0); menü çubuğunda UpLa logosu.
-6. **Metinler:** Windows'un yazım hataları kopyalanmaz (iki uygulamada da düzeltilir); çevrilmemiş metinler Türkçe olur (gelişmiş özellik, efekt ve hızlı görev ön ayar adları İngilizce kalır); "..." yerine "…"; "bu bilgisayar".
+6. **Metinler:** Windows'un yazım hataları kopyalanmaz (iki uygulamada da düzeltilir); çevrilmemiş metinler Türkçe olur (gelişmiş özellik, efekt ve hızlı görev ön ayar adları ile "Yükleme sonrası" penceresindeki biçim adları Windows'ta da İngilizce kalır); "..." yerine "…"; "bu bilgisayar".
 7. **Windows'ta işlevsiz öğeler** (hep gri olanlar, ikincil yükleyiciler, yükleyici filtreleri, Metin olarak yükle, Kütüğü karşıya yükle) Mac'te gösterilmez.
 8. **Varsayılan kısayollar:** ⌥⇧⌘3 Tüm ekranı yakala, ⌥⇧⌘4 Bölge yakala, ⌥⇧⌘5 Aktif pencereyi yakala, ⌥⇧⌘6 Ekran kaydetme başlat/durdur, ⌥⇧⌘7 Ekran kaydetme (GIF) başlat/durdur (Aşama 4).
 9. **Varsayılan görevler ve dosyalar** Windows'taki gibi (Yakalama sonrası: panoya kopyala + kaydet + yükle; ad `%ra{10}`; klasör `Belgeler/UpLa/Screenshots/yyyy-MM`); mevcut kullanıcıların kendi seçtikleri korunur.
@@ -38,7 +41,7 @@ Kullanıcı, Mac uygulamasının Windows'taki UpLa ile aynı menülere, pencerel
 17. **Bölge yakalama:** Aşama 4'te kendi ekranımız varsayılan; macOS seçimi Mac'e özgü seçenek olarak kalır.
 18. **Sürüm numarası:** Mac kendi numarasıyla ("UpLa 1.0").
 19. **Dağıtım:** Developer ID + notarization.
-20. **Windows düzeltmeleri:** onay işareti hatası (2.0.3'te yapıldı) ve metinler (sırada).
+20. **Windows düzeltmeleri:** onay işareti hatası (2.0.3'te yapıldı) ve metinler (`main`'de yapıldı, sonraki sürümde çıkacak).
 21. **Mac'e özgü fazlalar** (menü çubuğu simgesine dosya bırakma, "Geçmişi Temizle…") kalır; "Geçmişi Temizle…" Geçmiş ayarlarına taşınır.
 22. **Başlangıç:** önce PR #3, sonra Aşama 1'in ilk PR'ı.
 
@@ -48,7 +51,7 @@ Kullanıcı, Mac uygulamasının Windows'taki UpLa ile aynı menülere, pencerel
 
 - Kişisel klasör yolları maskelendi: 10-04 ve 13'te yol, gerçek kurulumdaki gibi `C:\Users\<kullanıcı>\Documents\UpLa…` diye yazıldı.
 - 18–20 için profile örnek bir "son görev" eklendi: çizilmiş bir resim, sahte adres `https://upla.com.tr/i/Ornek`. Hiçbir şey yüklenmedi, ekran yakalanmadı.
-- Görüntülerdeki metinler envanterle aynı; Windows'un yazım hataları ("Resimi", "Adresden" …) görüntülerde duruyor, Mac'e kopyalanmaz (karar 6).
+- Görüntülerdeki metinler envanterle aynı. Windows'un yazım hataları ("Resimi", "Adresden" …) görüntülerde duruyor; bunlar Windows `main`'de düzeltildi ve Mac'e kopyalanmaz (karar 6).
 
 | Dosya | Ne gösterir | Envanter |
 | --- | --- | --- |

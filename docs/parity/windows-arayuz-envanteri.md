@@ -14,7 +14,7 @@ Bu belge Windows'taki UpLa'nın kullanıcının gördüğü her şeyini, uygulam
 
 **Doğrulama.** UI Automation ile okunan 2.0.1 ana penceresinin sol panel sırası kodla aynı: Yakala, Yükle, Araçlar, Yakalama sonrası, Yükleme sonrası, Hedefler, Uygulama ayarları..., Görev ayarları..., Kısayol ayarları..., Hedef ayarları..., Giriş yap, Ekran görüntüsü dizini..., Geçmiş..., Resim geçmişi..., Hata ayıklama, Hakkında....
 
-**2.0.3 (2026-10-10).** Bu belge yazıldıktan sonra çıkan 2.0.3 yalnızca §12.1'deki onay işareti hatasını düzeltir (`1ce7e55ff`); başka bir arayüz değişikliği yok. `windows-ref/` klasöründeki ekran görüntüleri 2.0.3'ten alındı ve bu belgedeki metinlerle karşılaştırıldı (dizin: `README.md`).
+**2.0.3 (2026-10-10).** Bu belge yazıldıktan sonra çıkan 2.0.3 yalnızca §12.1'deki onay işareti hatasını düzeltir (`1ce7e55ff`); başka bir arayüz değişikliği yok. Ardından Windows `main`'de (`92748c3ad`, henüz sürümde değil) yazım hataları ve §12.5'teki çevrilmemiş metinler düzeltildi: "Resmi", "Adresten", "Küçük resim dosyası" …; geçmiş menüsü, soruları ve öğe düzenleyicisi Türkçe. Bu belgedeki metinler 2.0.2'deki hâlidir; metin betiği güncel metinleri `main`'den alır. `windows-ref/` klasöründeki ekran görüntüleri 2.0.3'ten alındı ve bu belgedeki metinlerle karşılaştırıldı (dizin: `README.md`).
 
 **Gösterim.**
 

@@ -1038,9 +1038,9 @@ Her aşama birkaç PR'a bölünür ve her PR kendi başına derlenip denenebilir
 5. **Metin betiği** depoda tutulmalı ve her aşamanın başında yeniden çalıştırılmalı.
 6. **Windows tarafında ayrı küçük işler** (karar 20):
    - onay işareti hatasının düzeltilmesi (envanter §12.1; `MainForm.SetMultiEnumChecked`, `TaskSettingsForm`, `QuickTaskInfoEditForm`) — **2.0.3'te yapıldı** (`1ce7e55ff`);
-   - çevrilmemiş metinler (karar 6b) — Windows oturumunda yapılacak;
-   - yazım hataları (karar 6a) — Windows oturumunda yapılacak.
-   Bunlar Mac'teki metinleri de etkiler: metin betiği Windows düzeltmelerinden sonra yeniden çalıştırılır. O zamana kadar Mac'te düzeltilmiş metinler betiğin küçük bir düzeltme tablosundan gelir.
+   - çevrilmemiş metinler (karar 6b) — Windows `main`'de yapıldı (`92748c3ad`), sonraki sürümde çıkacak;
+   - yazım hataları (karar 6a) — aynı commit.
+   Bunlar Mac'teki metinleri de etkiler: metin betiği metinleri Windows deposunun `main` dalından alır, ayrı bir düzeltme tablosu gerekmez. "Yükleme sonrası" penceresindeki biçim adları Windows'ta İngilizce kaldı (o pencere grupları bu adlara bakarak kuruyor).
 
 ---
 
