@@ -37,6 +37,9 @@ This file is the shared memory between the Windows and the Mac Claude Code sessi
   - History thumbnails are kept in memory only.
   - The shortcut recorder only reads keys in its own window.
   - Signing is set in `Config/Signing.xcconfig`.
+- **After 0.1 (2026-10-09), matching UpLa for Windows 2.0.1/2.0.2:**
+  - "Report Abuse" at the end of the account menu opens the contact page.
+  - `Upla.profileURL` turns a profile link sent as a path ("/name") into a full URL. The server sent paths until October 2026 (Chevereto's `get_base_url()`), and on Windows "My profile" did nothing because of it.
 - **Not done yet:** screen recording (M4); Sparkle updates, the final icon, Developer ID signing, notarization and the DMG (M5).
 
 ### Verified on the Windows PC

@@ -12,6 +12,25 @@ final class UplaTests: XCTestCase {
         XCTAssertEqual(Upla.apiKeySettingsURL.absoluteString, "https://upla.com.tr/settings/api")
         XCTAssertEqual(Upla.apiDocumentationURL.absoluteString, "https://upla.com.tr/api-v1")
         XCTAssertEqual(Upla.sourceCodeURL.absoluteString, "https://github.com/Agnostique/UpLa-mac")
+        XCTAssertEqual(Upla.reportAbuseURL.absoluteString, "https://upla.com.tr/page/contact")
+    }
+
+    // The server sent "/name" until October 2026 (Chevereto's get_base_url() without $public); the Windows app shipped
+    // a "My profile" that did nothing because of it.
+    func testProfileURL() {
+        XCTAssertEqual(Upla.profileURL("/test123123")?.absoluteString, "https://upla.com.tr/test123123")
+        XCTAssertEqual(Upla.profileURL("ali")?.absoluteString, "https://upla.com.tr/ali")
+        XCTAssertEqual(Upla.profileURL(" https://upla.com.tr/ali ")?.absoluteString, "https://upla.com.tr/ali")
+        XCTAssertNil(Upla.profileURL(""))
+        XCTAssertNil(Upla.profileURL(nil))
+        XCTAssertNil(Upla.profileURL("https://evil.example/ali"))
+        XCTAssertNil(Upla.profileURL("//evil.example/ali"))
+        XCTAssertNil(Upla.profileURL("javascript:alert(1)"))
+
+        let testSite = URL(string: "http://localhost:8090")!
+        XCTAssertEqual(Upla.profileURL("/testuser", site: testSite)?.absoluteString, "http://localhost:8090/testuser")
+        XCTAssertEqual(Upla.profileURL("http://localhost:8090/testuser", site: testSite)?.absoluteString, "http://localhost:8090/testuser")
+        XCTAssertNil(Upla.profileURL("https://upla.com.tr/ali", site: testSite))
     }
 
     func testEndpointKeepsTheBasePath() {

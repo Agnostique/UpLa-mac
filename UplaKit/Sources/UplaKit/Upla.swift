@@ -10,6 +10,8 @@ public enum Upla {
     public static let signUpURL = URL(string: "https://upla.com.tr/signup")!
     public static let passwordForgotURL = URL(string: "https://upla.com.tr/account/password-forgot")!
     public static let connectedDevicesURL = URL(string: "https://upla.com.tr/upla-app/devices")!
+    /// The contact page explains how to report content that breaks the terms (abuse@upla.com.tr).
+    public static let reportAbuseURL = URL(string: "https://upla.com.tr/page/contact")!
     public static let apiDocumentationURL = URL(string: "https://upla.com.tr/api-v1")!
     public static let sourceCodeURL = URL(string: "https://github.com/Agnostique/UpLa-mac")!
 
@@ -188,6 +190,19 @@ public enum Upla {
         let suffix = " (\(id.prefix(8)))"
         let shortName = prefix(name, scalarCount: maxLength - suffix.unicodeScalars.count).trimmingCharacters(in: .whitespacesAndNewlines)
         return shortName + suffix
+    }
+
+    /// The profile link as a full URL on `site`. Until October 2026 upla.com.tr sent it as a path ("/name"), like
+    /// `GetProfileURL` of UpLa for Windows handles; links to other hosts or with other schemes are not used.
+    public static func profileURL(_ text: String?, site: URL = websiteURL) -> URL? {
+        guard let text = text?.trimmingCharacters(in: .whitespacesAndNewlines), !text.isEmpty,
+              let url = URL(string: text, relativeTo: site)?.absoluteURL,
+              let scheme = url.scheme?.lowercased(), scheme == "http" || scheme == "https",
+              let host = url.host?.lowercased(), host == site.host?.lowercased() else {
+            return nil
+        }
+
+        return url
     }
 
     // MARK: - Internal helpers

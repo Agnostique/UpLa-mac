@@ -112,7 +112,7 @@ struct AccountSettingsView: View {
                 Link("Create Account", destination: Upla.signUpURL)
             }
 
-            if account.state == .signedIn, let profile = AppEnvironment.webURL(account.profileURL) {
+            if account.state == .signedIn, let profile = Upla.profileURL(account.profileURL, site: AppEnvironment.baseURL) {
                 Link("My Profile", destination: profile)
             }
 
