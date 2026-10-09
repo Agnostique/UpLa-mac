@@ -604,7 +604,7 @@
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Kaydedilecek alanı seçin…"
+            "value" : "Neyi kaydedeceğinizi seçin…"
           }
         }
       }
@@ -1229,38 +1229,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Anahtar geçersiz. Uygulamadan giriş yapın veya \"Bağlı cihazlar\" sayfasından yeni bir anahtar oluşturun."
-          }
-        }
-      }
-    },
-    "It is larger than the %@ upload limit, and it could not be saved: %@" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "It is larger than the %@ upload limit, and it could not be saved: %@"
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Kayıt %@ yükleme sınırından büyük ve kaydedilemedi: %@"
-          }
-        }
-      }
-    },
-    "It is larger than the %@ upload limit. It was saved to %@." : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "It is larger than the %@ upload limit. It was saved to %@."
-          }
-        },
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Kayıt %@ yükleme sınırından büyük. Şuraya kaydedildi: %@."
           }
         }
       }

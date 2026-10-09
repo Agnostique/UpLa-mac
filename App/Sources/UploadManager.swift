@@ -86,10 +86,10 @@ final class UploadManager: ObservableObject {
         }
     }
 
-    // Cancels the current upload and drops the waiting ones; cancelled screenshots are not kept.
+    // Cancels the current upload and drops the waiting ones. Cancelled screenshots are not kept; screen recordings are.
     func cancelAll() {
         for job in queue {
-            _ = dispose(job, keepCapture: false)
+            disposeCancelled(job)
         }
 
         queue.removeAll()
@@ -171,8 +171,10 @@ final class UploadManager: ObservableObject {
 
     private func finish(_ job: Job, _ outcome: Outcome) {
         switch outcome {
-        case .uploaded, .cancelled:
+        case .uploaded:
             _ = dispose(job, keepCapture: false)
+        case .cancelled:
+            disposeCancelled(job)
         case .failed(let message):
             let keptURL = dispose(job, keepCapture: true)
             reportFailure(message, job: job, keptURL: keptURL)
@@ -207,12 +209,24 @@ final class UploadManager: ObservableObject {
             }
 
             do {
-                return try TempFiles.move(job.fileURL, to: settings.saveFolder)
+                return try TempFiles.keep(job.fileURL, in: settings.saveFolder)
             } catch {
                 // Stays in the temporary folder until the app quits.
                 appLog.error("Keeping the screenshot failed: \(error.localizedDescription, privacy: .public)")
                 return nil
             }
+        }
+    }
+
+    // A cancelled upload: a screen recording stays in the save folder, because it cannot be taken again (on Windows
+    // it is recorded into that folder), and a screenshot is deleted.
+    private func disposeCancelled(_ job: Job) {
+        let keepsRecording = job.isCapture && job.isVideo
+        let keptURL = dispose(job, keepCapture: keepsRecording)
+
+        if keepsRecording, let keptURL, settings.showNotifications {
+            notifier.prepare()
+            notifier.post(title: String(localized: "Screen recording saved"), body: UploadManager.displayPath(keptURL))
         }
     }
 

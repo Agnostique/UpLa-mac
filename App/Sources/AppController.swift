@@ -143,7 +143,8 @@ final class AppController {
     }
 
     func startRecording(_ target: RecordingTarget) {
-        guard recorder.isIdle, !captureService.isCapturing else {
+        // Not while an alert or open panel of UpLa waits for an answer: the region overlay would cover it.
+        guard recorder.isIdle, !captureService.isCapturing, NSApp.modalWindow == nil else {
             return
         }
 
@@ -163,10 +164,11 @@ final class AppController {
 
     private func handleRecording(_ outcome: RecordingOutcome) {
         if quitReply != nil {
-            // Quitting: a finished recording is only kept in the save folder.
+            // Quitting: a finished recording is only kept in the save folder (or the default one), because the
+            // temporary folder is emptied next.
             if case .finished(let fileURL, _, _) = outcome {
                 do {
-                    _ = try TempFiles.move(fileURL, to: settings.saveFolder)
+                    _ = try TempFiles.keep(fileURL, in: settings.saveFolder)
                 } catch {
                     appLog.error("Keeping the recording at quit failed: \(error.localizedDescription, privacy: .public)")
                 }
@@ -200,21 +202,23 @@ final class AppController {
 
         // The account as it is now, because the upload uses it.
         let isMember = account.hasMemberKey
+        let fileSize = TempFiles.fileSize(fileURL)
 
-        guard RecordingLimit.canUpload(fileSize: TempFiles.fileSize(fileURL), isMember: isMember) else {
-            let limitText = Upla.maxUploadSizeText(isMember: isMember)
-            let title = String(localized: "The screen recording was not uploaded")
+        guard RecordingLimit.canUpload(fileSize: fileSize, isMember: isMember) else {
+            // The text of a file that is too large to upload, with its size and, for guests, the hint to sign in.
+            let tooLarge = UplaText.uploadError(.fileTooLarge(size: fileSize, limit: Upla.maxUploadSize(isMember: isMember),
+                                                              isMember: isMember),
+                                                keyKind: isMember ? .signIn : .guest)
             notifier.prepare()
 
             do {
-                let keptURL = try TempFiles.move(fileURL, to: settings.saveFolder)
+                let keptURL = try TempFiles.keep(fileURL, in: settings.saveFolder)
                 let path = UploadManager.displayPath(keptURL)
-                notifier.post(title: title, body: String(localized: "It is larger than the \(limitText) upload limit. It was saved to \(path)."),
-                              isError: true)
+                notifier.post(title: String(localized: "The screen recording was not uploaded"),
+                              body: tooLarge + " " + String(localized: "The screen recording was saved to \(path)."), isError: true)
             } catch {
-                let reason = error.localizedDescription
-                notifier.post(title: title, body: String(localized: "It is larger than the \(limitText) upload limit, and it could not be saved: \(reason)"),
-                              isError: true)
+                notifier.post(title: String(localized: "The screen recording could not be saved"),
+                              body: tooLarge + " " + error.localizedDescription, isError: true)
             }
             return
         }
@@ -243,7 +247,7 @@ final class AppController {
 
     private func keepRecording(_ fileURL: URL) {
         do {
-            let savedURL = try TempFiles.move(fileURL, to: settings.saveFolder)
+            let savedURL = try TempFiles.keep(fileURL, in: settings.saveFolder)
 
             if settings.showNotifications {
                 notifier.prepare()

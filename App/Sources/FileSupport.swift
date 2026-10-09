@@ -71,6 +71,23 @@ enum TempFiles {
         try FileManager.default.moveItem(at: fileURL, to: destination)
         return destination
     }
+
+    // Like move, for a capture that is not uploaded and would otherwise be lost when the temporary folder is emptied:
+    // when the chosen folder fails (e.g. its volume is not mounted), the default save folder is used.
+    static func keep(_ fileURL: URL, in folder: URL) throws -> URL {
+        do {
+            return try move(fileURL, to: folder)
+        } catch {
+            let fallback = AppSettings.defaultSaveFolder
+
+            guard fallback.standardizedFileURL.path != folder.standardizedFileURL.path else {
+                throw error
+            }
+
+            appLog.error("Saving to the chosen folder failed, using the default one: \(error.localizedDescription, privacy: .public)")
+            return try move(fileURL, to: fallback)
+        }
+    }
 }
 
 enum Pasteboard {

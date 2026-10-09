@@ -81,6 +81,10 @@ final class ScreenRecorder {
     private var timer: Timer?
     // Cancel was chosen while the stream was starting; the start ends as cancelled.
     private var cancelWhenStarted = false
+    // The stream stopped (or writing failed) while it was starting; the recording ends as soon as it runs.
+    private var stoppedWhileStarting = false
+    // Held from the start of the stream to its end, against App Nap and idle sleep.
+    private var activity: NSObjectProtocol?
     private let regionSelector = RegionSelector()
     private var pickerObserver: PickerObserver?
 
@@ -109,6 +113,7 @@ final class ScreenRecorder {
 
         self.options = options
         cancelWhenStarted = false
+        stoppedWhileStarting = false
         fileSize = 0
         setState(.choosing)
 
@@ -196,7 +201,9 @@ final class ScreenRecorder {
 
         Task {
             do {
-                let content = try await SCShareableContent.excludingDesktopWindows(false, onScreenWindowsOnly: true)
+                // All windows, not only those on screen, so UpLa is listed even while its menu bar item is off screen
+                // (a full screen app hides the menu bar).
+                let content = try await SCShareableContent.excludingDesktopWindows(false, onScreenWindowsOnly: false)
 
                 guard let display = content.displays.first(where: { $0.displayID == displayID }) else {
                     throw RecordingError.displayNotFound
@@ -205,6 +212,11 @@ final class ScreenRecorder {
                 // UpLa's own windows (the overlay while it fades, menus, settings) stay out of the video.
                 let ownProcess = ProcessInfo.processInfo.processIdentifier
                 let ownApps = content.applications.filter { $0.processID == ownProcess }
+
+                if ownApps.isEmpty {
+                    appLog.notice("UpLa is not in the shareable content; its windows may be recorded")
+                }
+
                 let filter = SCContentFilter(display: display, excludingApplications: ownApps, exceptingWindows: [])
                 let configuration = Self.configuration(options, width: area.width, height: area.height)
                 configuration.sourceRect = area.sourceRect
@@ -268,6 +280,12 @@ final class ScreenRecorder {
         }
 
         let configuration = Self.configuration(options, width: size.width, height: size.height)
+
+        // From macOS 14.2 on, a window's child windows (sheets, popovers) are only recorded when asked for.
+        if #available(macOS 14.2, *) {
+            configuration.includeChildWindows = true
+        }
+
         setState(.starting)
 
         Task {
@@ -312,6 +330,13 @@ final class ScreenRecorder {
             throw error
         }
 
+        // UpLa is never in front and its menu bar item is hidden over a full screen app, so App Nap could slow the limit
+        // timer and the encoder. A long recording without input must not let the Mac or the display sleep either.
+        if activity == nil {
+            activity = ProcessInfo.processInfo.beginActivity(options: [.userInitiated, .idleDisplaySleepDisabled],
+                                                             reason: "Screen recording")
+        }
+
         do {
             try await session.start()
         } catch {
@@ -330,6 +355,11 @@ final class ScreenRecorder {
         setState(.recording)
         startTimer()
         appLog.info("Recording \(width, privacy: .public)×\(height, privacy: .public) at \(options.framesPerSecond, privacy: .public) fps")
+
+        // The stream ended before the start was through: the recording ends now and keeps what was written.
+        if stoppedWhileStarting {
+            finish(stoppedAtLimit: false)
+        }
     }
 
     // The system ended the stream (the window closed, the display went away, the user stopped sharing in the menu bar,
@@ -339,6 +369,9 @@ final class ScreenRecorder {
 
         if state == .recording {
             finish(stoppedAtLimit: false)
+        } else if state == .starting {
+            // The stream can stop before the start resumes on the main actor.
+            stoppedWhileStarting = true
         }
     }
 
@@ -382,10 +415,17 @@ final class ScreenRecorder {
 
         stopTimer()
         closeWindowPicker()
+
+        if let activity {
+            ProcessInfo.processInfo.endActivity(activity)
+            self.activity = nil
+        }
+
         session = nil
         options = nil
         startDate = nil
         cancelWhenStarted = false
+        stoppedWhileStarting = false
         setState(.idle)
         onFinish?(outcome)
     }
@@ -512,6 +552,8 @@ final class RecordingSession: NSObject, SCStreamOutput, SCStreamDelegate, @unche
     private var sessionStartTime: CMTime?
     private var lastVideoSample: CMSampleBuffer?
     private var lastVideoTime = CMTime.invalid
+    // The newest frame the encoder had no room for; it is written before anything newer.
+    private var pendingVideoSample: CMSampleBuffer?
     private var stopTime: CMTime?
     private var isClosed = false
     private var reportedFailure = false
@@ -519,8 +561,10 @@ final class RecordingSession: NSObject, SCStreamOutput, SCStreamDelegate, @unche
     init(fileURL: URL, filter: SCContentFilter, configuration: SCStreamConfiguration, width: Int, height: Int,
          framesPerSecond: Int, capturesAudio: Bool, onStop: @escaping @Sendable (Error) -> Void) throws {
         let writer = try AVAssetWriter(outputURL: fileURL, fileType: .mp4)
-        // The movie header goes to the front of the file, so browsers start playing before it has loaded completely.
-        writer.shouldOptimizeForNetworkUse = true
+        // The media must reach fileURL while recording, because the upload limit stop reads its size. Optimized for
+        // network use, the writer keeps the media in a hidden temporary file and creates fileURL only when finishing,
+        // copying everything once more. The movie header goes to the end instead; browsers fetch it with a range request.
+        writer.shouldOptimizeForNetworkUse = false
 
         let compression: [String: Any] = [
             AVVideoAverageBitRateKey: RecordingVideo.bitRate(width: width, height: height, framesPerSecond: framesPerSecond),
@@ -633,6 +677,7 @@ final class RecordingSession: NSObject, SCStreamOutput, SCStreamDelegate, @unche
             queue.async {
                 self.isClosed = true
                 self.lastVideoSample = nil
+                self.pendingVideoSample = nil
 
                 if self.writer.status == .writing {
                     self.writer.cancelWriting()
@@ -686,6 +731,10 @@ final class RecordingSession: NSObject, SCStreamOutput, SCStreamDelegate, @unche
     }
 
     private func appendVideo(_ sampleBuffer: CMSampleBuffer) {
+        // A frame that waited for the encoder goes first, also on a callback without a new picture, so the last change
+        // before a still screen is not lost.
+        appendPendingVideo()
+
         // Only complete frames carry a new picture; idle, blank and suspended ones say that nothing changed. The SDK
         // calls the first new frame after the start "started", and on a still screen it may be the only one.
         guard let attachments = CMSampleBufferGetSampleAttachmentsArray(sampleBuffer, createIfNecessary: false)
@@ -709,17 +758,44 @@ final class RecordingSession: NSObject, SCStreamOutput, SCStreamDelegate, @unche
             sessionStartTime = time
         }
 
-        // Real-time input: when the encoder is behind, this frame is dropped instead of waiting.
-        guard videoInput.isReadyForMoreMediaData else {
+        // Real-time input: when the encoder is behind, the stream is not held up. The newest frame waits for the next
+        // callback, and an older waiting one is dropped.
+        guard pendingVideoSample == nil, videoInput.isReadyForMoreMediaData else {
+            pendingVideoSample = sampleBuffer
             return
         }
 
+        appendVideoSample(sampleBuffer)
+    }
+
+    private func appendPendingVideo() {
+        guard let pending = pendingVideoSample, videoInput.isReadyForMoreMediaData else {
+            return
+        }
+
+        pendingVideoSample = nil
+        appendVideoSample(pending)
+    }
+
+    private func appendVideoSample(_ sampleBuffer: CMSampleBuffer) {
         if videoInput.append(sampleBuffer) {
             lastVideoSample = sampleBuffer
-            lastVideoTime = time
+            lastVideoTime = CMSampleBufferGetPresentationTimeStamp(sampleBuffer)
         } else {
             reportWriterFailure()
         }
+    }
+
+    // At the end no more frames come, so the last ones may wait briefly (at most half a second) for the encoder.
+    private func waitForVideoInput() -> Bool {
+        var attempts = 0
+
+        while !videoInput.isReadyForMoreMediaData && attempts < 50 {
+            Thread.sleep(forTimeInterval: 0.01)
+            attempts += 1
+        }
+
+        return videoInput.isReadyForMoreMediaData
     }
 
     private func appendAudio(_ sampleBuffer: CMSampleBuffer) {
@@ -754,8 +830,16 @@ final class RecordingSession: NSObject, SCStreamOutput, SCStreamDelegate, @unche
 
     private func closeFile(stoppedAt requested: CMTime, completion: @escaping @Sendable (Error?) -> Void) {
         isClosed = true
+        let pending = pendingVideoSample
+        pendingVideoSample = nil
+
+        // The newest picture, if the encoder had no room for it yet.
+        if writer.status == .writing, let pending, waitForVideoInput() {
+            appendVideoSample(pending)
+        }
 
         guard writer.status == .writing else {
+            lastVideoSample = nil
             completion(writer.error ?? RecordingError.writerFailed)
             return
         }
@@ -770,11 +854,18 @@ final class RecordingSession: NSObject, SCStreamOutput, SCStreamDelegate, @unche
         // least one frame later) and the video lasts until then.
         let end = max(requested, CMTimeAdd(lastVideoTime, frameDuration))
 
-        if videoInput.isReadyForMoreMediaData, let copy = Self.retimed(lastSample, to: end) {
+        if waitForVideoInput(), let copy = Self.retimed(lastSample, to: end) {
             _ = videoInput.append(copy)
         }
 
         lastVideoSample = nil
+
+        // A failed append leaves the writer failed, with nothing left to finish.
+        guard writer.status == .writing else {
+            completion(writer.error ?? RecordingError.writerFailed)
+            return
+        }
+
         videoInput.markAsFinished()
         audioInput?.markAsFinished()
         writer.endSession(atSourceTime: end)

@@ -6,15 +6,13 @@ import Carbon
 @MainActor
 final class RegionSelector {
     private var panel: NSPanel?
-    // The app that was in front before the overlay; it gets the focus back, since that is usually what is recorded.
+    // Set only when UpLa had to be activated for the overlay: the app that was in front gets the focus back, since that
+    // is usually what is recorded.
     private var previousApp: NSRunningApplication?
 
     // completion gets the selection in screen coordinates (AppKit's, origin at the bottom left), or nil when cancelled.
     func select(on screen: NSScreen, completion: @escaping @MainActor (CGRect?) -> Void) {
         dismiss()
-
-        let frontmost = NSWorkspace.shared.frontmostApplication
-        previousApp = frontmost?.processIdentifier == ProcessInfo.processInfo.processIdentifier ? nil : frontmost
 
         let panel = RegionPanel(contentRect: screen.frame, styleMask: [.borderless, .nonactivatingPanel],
                                 backing: .buffered, defer: false)
@@ -27,6 +25,8 @@ final class RegionSelector {
         panel.hasShadow = false
         // A panel hides when its app is not active; UpLa may not become active before the user drags.
         panel.hidesOnDeactivate = false
+        // It covers everything, also an alert of UpLa, so it must not ignore events while such an alert runs.
+        panel.worksWhenModal = true
         panel.isReleasedWhenClosed = false
 
         let view = RegionSelectionView(frame: NSRect(origin: .zero, size: screen.frame.size))
@@ -37,9 +37,18 @@ final class RegionSelector {
         panel.contentView = view
         self.panel = panel
 
-        NSApp.activate()
-        panel.makeKeyAndOrderFront(nil)
+        // The non-activating panel takes the keys (Esc) while the app in front stays active. Activating UpLa would
+        // bring its other windows forward and could switch to their Space, so that is only the fallback.
+        panel.orderFrontRegardless()
+        panel.makeKey()
         _ = panel.makeFirstResponder(view)
+
+        if !panel.isKeyWindow {
+            let frontmost = NSWorkspace.shared.frontmostApplication
+            previousApp = frontmost?.processIdentifier == ProcessInfo.processInfo.processIdentifier ? nil : frontmost
+            NSApp.activate()
+            panel.makeKeyAndOrderFront(nil)
+        }
     }
 
     // Closes the overlay without answering.
