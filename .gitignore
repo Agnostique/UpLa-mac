@@ -12,6 +12,10 @@ xcuserdata/
 .build/
 .swiftpm/
 
+# Python (tools/)
+__pycache__/
+*.pyc
+
 # Release output (built apps contain the guest key in Info.plist)
 dist/
 *.app

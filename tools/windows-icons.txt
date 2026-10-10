@@ -1,0 +1,121 @@
+# Fugue icons (CC BY 3.0, docs/licenses) copied into App/Resources/Assets.xcassets/Fugue by
+# tools/import_windows_icons.py. One resource name per line, as the Windows code uses it
+# (Resources.<name>); the asset is "Fugue/<name>". A "<name>_white" resource in the Windows repo
+# becomes the dark appearance of the same asset.
+
+# Main window left panel (inventory §1.2); the menu bar menu uses the same icons
+camera
+arrow_090
+toolbox
+image_export
+upload_cloud
+drive_globe
+wrench_screwdriver
+gear
+keyboard
+globe_pencil
+folder_open_image
+application_blog
+application_icon_large
+traffic_cone
+crown
+
+# Capture ▸ (§1.3)
+layer_fullscreen
+application_blue
+monitor
+layer_shape
+Rectangle
+layer_transparent
+layers
+camcorder_image
+film
+ui_scroll_pane_image
+cursor
+clock_select
+
+# Upload ▸ (§1.4, §2.2)
+folder_open_document
+folder
+clipboard
+drive
+inbox
+
+# Tools ▸ (§1.5)
+color
+pipette
+ruler_triangle
+pin
+image_pencil
+picture_sunset
+image_reflection
+images_flickr
+document_break
+edit_drop_cap
+barcode_2d
+
+# After capture tasks ▸ (§1.6, TaskHelpers.FindMenuIcon)
+ui_menu_blue
+application_text_image
+image_saturation
+clipboard_paste_image
+printer
+disk
+disk_rename
+application_terminal
+clipboard_block
+clipboard_list
+folder_bookmark
+folder_stand
+application__arrow
+bin
+
+# After upload tasks ▸ (§1.7)
+application_browser
+globe_share
+clipboard_paste_document_text
+globe__arrow
+
+# Destinations ▸ (§1.8, §2.2)
+image
+notebook
+application_block
+
+# Debug ▸ (§1.12)
+application_monitor
+
+# Menu bar menu only (§2.2)
+categories
+keyboard__minus
+keyboard__plus
+ui_toolbar__arrow
+tick_button
+cross_button
+
+# Task right-click menu (§1.15)
+exclamation_button
+document_copy
+drive_upload
+drive_download
+script__minus
+application_tile_horizontal
+application_tile_vertical
+eraser
+application_list
+
+# Task types not covered above (§3.3, Workflows ▸ and the hotkey list)
+clipboard_task
+layer__arrow
+camcorder__arrow
+film__arrow
+camcorder__minus
+camcorder_pencil
+camcorder__exclamation
+pin__minus
+application_home
+cross
+
+# Task list status icons (§1.14.3)
+navigation_090_button
+navigation_000_button
+clock

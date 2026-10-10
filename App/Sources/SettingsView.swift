@@ -49,7 +49,7 @@ struct SettingsView: View {
                 .tabItem { Label("General", systemImage: "gearshape") }
                 .tag(SettingsTab.general)
             CaptureSettingsView(settings: settings)
-                .tabItem { Label("Capture", systemImage: "camera.viewfinder") }
+                .tabItem { Label("Capture (settings tab)", systemImage: "camera.viewfinder") }
                 .tag(SettingsTab.capture)
             RecordingSettingsView(settings: settings)
                 .tabItem { Label("Recording", systemImage: "record.circle") }
@@ -189,7 +189,8 @@ struct CaptureSettingsView: View {
         panel.canCreateDirectories = true
         panel.allowsMultipleSelection = false
         panel.prompt = String(localized: "Choose")
-        panel.directoryURL = settings.saveFolder
+        // The folder without the month subfolder, so choosing it unchanged does not pin the files to this month's one.
+        panel.directoryURL = settings.saveParentFolder
 
         if panel.runModal() == .OK, let url = panel.url {
             settings.saveFolderPath = url.path
@@ -340,7 +341,7 @@ struct HotKeyRow: View {
                         Text(verbatim: hotKey.displayString)
                             .monospacedDigit()
                     } else {
-                        Text("None")
+                        Text("None (no shortcut)")
                     }
                 }
                 .frame(minWidth: 160, alignment: .trailing)

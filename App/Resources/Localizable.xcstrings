@@ -34,6 +34,7 @@
       }
     },
     "%@ (sign in again)" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -209,6 +210,23 @@
         }
       }
     },
+    "1 second" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1 second"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1 saniye"
+          }
+        }
+      }
+    },
     "1 week" : {
       "localizations" : {
         "en" : {
@@ -241,6 +259,74 @@
         }
       }
     },
+    "2 seconds" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "2 seconds"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "2 saniye"
+          }
+        }
+      }
+    },
+    "3 seconds" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "3 seconds"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "3 saniye"
+          }
+        }
+      }
+    },
+    "4 seconds" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "4 seconds"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "4 saniye"
+          }
+        }
+      }
+    },
+    "5 seconds" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "5 seconds"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "5 saniye"
+          }
+        }
+      }
+    },
     "API key:" : {
       "localizations" : {
         "en" : {
@@ -253,6 +339,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "API anahtarı:"
+          }
+        }
+      }
+    },
+    "Abort screen recording" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abort screen recording"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ekran kaydetme iptal et"
           }
         }
       }
@@ -273,6 +376,23 @@
         }
       }
     },
+    "About…" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "About…"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hakkında…"
+          }
+        }
+      }
+    },
     "Account" : {
       "localizations" : {
         "en" : {
@@ -289,6 +409,40 @@
         }
       }
     },
+    "Add image effects" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add image effects"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Resim efekti ekle"
+          }
+        }
+      }
+    },
+    "Add image effects…" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add image effects…"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Resim efekti ekle…"
+          }
+        }
+      }
+    },
     "After capture" : {
       "localizations" : {
         "en" : {
@@ -301,6 +455,40 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Yakalama sonrası"
+          }
+        }
+      }
+    },
+    "After capture tasks" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "After capture tasks"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yakalama sonrası"
+          }
+        }
+      }
+    },
+    "After upload tasks" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "After upload tasks"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yükleme sonrası"
           }
         }
       }
@@ -385,6 +573,23 @@
         }
       }
     },
+    "Application settings…" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Application settings…"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uygulama ayarları…"
+          }
+        }
+      }
+    },
     "Auto delete:" : {
       "localizations" : {
         "en" : {
@@ -429,6 +634,40 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Onay bekliyor"
+          }
+        }
+      }
+    },
+    "Beautify image" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Beautify image"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Resmi güzelleştir"
+          }
+        }
+      }
+    },
+    "Beautify image…" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Beautify image…"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Resmi güzelleştir…"
           }
         }
       }
@@ -482,6 +721,24 @@
       }
     },
     "Capture" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Capture"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yakala"
+          }
+        }
+      }
+    },
+    "Capture (settings tab)" : {
+      "comment" : "The Capture tab of the 0.1 Settings window; \"Capture\" itself is the Windows menu verb (Yakala).",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -541,6 +798,159 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Pencere Yakala"
+          }
+        }
+      }
+    },
+    "Capture active monitor" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Capture active monitor"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aktif ekranı yakala"
+          }
+        }
+      }
+    },
+    "Capture active window" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Capture active window"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aktif pencereyi yakala"
+          }
+        }
+      }
+    },
+    "Capture entire screen" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Capture entire screen"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tüm ekranı yakala"
+          }
+        }
+      }
+    },
+    "Capture last region" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Capture last region"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Son bölgeyi yakala"
+          }
+        }
+      }
+    },
+    "Capture pre configured region" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Capture pre configured region"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Özel bölge yakala"
+          }
+        }
+      }
+    },
+    "Capture pre configured window" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Capture pre configured window"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Önceden yapılandırılmış pencereyi yakala"
+          }
+        }
+      }
+    },
+    "Capture region" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Capture region"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bölge yakala"
+          }
+        }
+      }
+    },
+    "Capture region (Light)" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Capture region (Light)"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bölge yakala (Basit)"
+          }
+        }
+      }
+    },
+    "Capture region (Transparent)" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Capture region (Transparent)"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bölge yakala (Saydam)"
           }
         }
       }
@@ -657,6 +1067,23 @@
         }
       }
     },
+    "Clear task list" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clear task list"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Listeyi temizle"
+          }
+        }
+      }
+    },
     "Clear the upload history?" : {
       "localizations" : {
         "en" : {
@@ -689,6 +1116,23 @@
         }
       }
     },
+    "Click to copy URL to clipboard. Option-click to open URL." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Click to copy URL to clipboard. Option-click to open URL."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Adresi kopyalamak için tıklayın. Adresi açmak için ⌥ ile tıklayın."
+          }
+        }
+      }
+    },
     "Close" : {
       "localizations" : {
         "en" : {
@@ -701,6 +1145,91 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Kapat"
+          }
+        }
+      }
+    },
+    "Color picker" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Color picker"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Renk seçici"
+          }
+        }
+      }
+    },
+    "Color picker…" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Color picker…"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Renk seçici…"
+          }
+        }
+      }
+    },
+    "Combine horizontally" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Combine horizontally"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yatay olarak birleştir"
+          }
+        }
+      }
+    },
+    "Combine images…" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Combine images…"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Resimleri birleştir…"
+          }
+        }
+      }
+    },
+    "Combine vertically" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Combine vertically"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dikey olarak birleştir"
           }
         }
       }
@@ -721,6 +1250,23 @@
         }
       }
     },
+    "Connected devices" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Connected devices"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bağlı cihazlar"
+          }
+        }
+      }
+    },
     "Continue as Guest" : {
       "localizations" : {
         "en" : {
@@ -737,7 +1283,25 @@
         }
       }
     },
+    "Continue as a guest" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Continue as a guest"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Misafir olarak devam et"
+          }
+        }
+      }
+    },
     "Copy" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -765,6 +1329,91 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Linki Kopyala"
+          }
+        }
+      }
+    },
+    "Copy URL to clipboard" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Copy URL to clipboard"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Adresi panoya kopyala"
+          }
+        }
+      }
+    },
+    "Copy file path to clipboard" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Copy file path to clipboard"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dosya yolunu panoya kopyala"
+          }
+        }
+      }
+    },
+    "Copy file to clipboard" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Copy file to clipboard"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dosyayı panoya kopyala"
+          }
+        }
+      }
+    },
+    "Copy folder path to clipboard" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Copy folder path to clipboard"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Klasör yolunu panoya kopyala"
+          }
+        }
+      }
+    },
+    "Copy image to clipboard" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Copy image to clipboard"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Resmi panoya kopyala"
           }
         }
       }
@@ -897,7 +1546,93 @@
         }
       }
     },
+    "Debug" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Debug"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hata ayıklama"
+          }
+        }
+      }
+    },
+    "Debug log…" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Debug log…"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hata ayıklama kütüğü…"
+          }
+        }
+      }
+    },
+    "Delete file locally" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete file locally"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dosyayı sil"
+          }
+        }
+      }
+    },
+    "Delete file locally…" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete file locally…"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yerel dosya sil…"
+          }
+        }
+      }
+    },
+    "Deletion URL" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Deletion URL"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Silme adresi"
+          }
+        }
+      }
+    },
     "Deletion link" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -909,6 +1644,40 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Silme linki"
+          }
+        }
+      }
+    },
+    "Destination settings…" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Destination settings…"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hedef ayarları…"
+          }
+        }
+      }
+    },
+    "Destinations" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Destinations"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hedefler"
           }
         }
       }
@@ -925,6 +1694,108 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Doğrudan dosya linki"
+          }
+        }
+      }
+    },
+    "Disable hotkeys" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Disable hotkeys"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kısayolları devre dışı bırak"
+          }
+        }
+      }
+    },
+    "Disable/Enable hotkeys" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Disable/Enable hotkeys"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Devre dışı bırak/Aktif et kısayolları"
+          }
+        }
+      }
+    },
+    "Do you really want to delete this file?" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Do you really want to delete this file?"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bu dosyayı gerçekten silmek istiyor musunuz?"
+          }
+        }
+      }
+    },
+    "Download" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Download"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İndir"
+          }
+        }
+      }
+    },
+    "Drag and drop upload" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Drag and drop upload"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sürükle bırak ile yükle"
+          }
+        }
+      }
+    },
+    "Drag and drop upload…" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Drag and drop upload…"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sürükle bırak ile yükle…"
           }
         }
       }
@@ -957,6 +1828,40 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Düzen"
+          }
+        }
+      }
+    },
+    "Edit image…" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Edit image…"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Resim düzenle…"
+          }
+        }
+      }
+    },
+    "Enable hotkeys" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enable hotkeys"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kısayolları aktif et"
           }
         }
       }
@@ -1025,6 +1930,40 @@
         }
       }
     },
+    "Exit" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Exit"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Çıkış"
+          }
+        }
+      }
+    },
+    "Exit UpLa" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Exit UpLa"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "UpLa'yı kapat"
+          }
+        }
+      }
+    },
     "Failed uploads are always reported. Click a notification to open the link." : {
       "localizations" : {
         "en" : {
@@ -1041,6 +1980,125 @@
         }
       }
     },
+    "File" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "File"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dosya"
+          }
+        }
+      }
+    },
+    "File delete confirmation" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "File delete confirmation"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dosya silme onayı"
+          }
+        }
+      }
+    },
+    "File name" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "File name"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dosya adı"
+          }
+        }
+      }
+    },
+    "File name with extension" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "File name with extension"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dosya adı uzantısıyla birlikte"
+          }
+        }
+      }
+    },
+    "File path" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "File path"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dosya yolu"
+          }
+        }
+      }
+    },
+    "File uploader" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "File uploader"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dosya yükleyici"
+          }
+        }
+      }
+    },
+    "File uploader: %@" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "File uploader: %@"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dosya yükleyici: %@"
+          }
+        }
+      }
+    },
     "Finishing the recording…" : {
       "localizations" : {
         "en" : {
@@ -1053,6 +2111,41 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Kayıt tamamlanıyor…"
+          }
+        }
+      }
+    },
+    "Folder" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Folder"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Klasör"
+          }
+        }
+      }
+    },
+    "Folder (Open menu)" : {
+      "comment" : "Same English as another menu text, different Turkish (ShareX/Forms/MainForm|tsmiOpenFolder.Text).",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Folder"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dizin"
           }
         }
       }
@@ -1089,6 +2182,57 @@
         }
       }
     },
+    "Forum (BBCode) image" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Forum (BBCode) image"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Forum (BBCode) resim"
+          }
+        }
+      }
+    },
+    "Forum (BBCode) link" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Forum (BBCode) link"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Forum (BBCode) bağlantı"
+          }
+        }
+      }
+    },
+    "Forum (BBCode) linked image" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Forum (BBCode) linked image"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Forum (BBCode) bağlantılı resim"
+          }
+        }
+      }
+    },
     "Frames per second:" : {
       "localizations" : {
         "en" : {
@@ -1101,6 +2245,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Saniyedeki kare sayısı:"
+          }
+        }
+      }
+    },
+    "Fullscreen" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fullscreen"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tam ekran"
           }
         }
       }
@@ -1201,6 +2362,91 @@
         }
       }
     },
+    "HTML image" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "HTML image"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "HTML resim"
+          }
+        }
+      }
+    },
+    "HTML link" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "HTML link"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "HTML bağlantı"
+          }
+        }
+      }
+    },
+    "HTML linked image" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "HTML linked image"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "HTML bağlantılı resim"
+          }
+        }
+      }
+    },
+    "History…" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "History…"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Geçmiş…"
+          }
+        }
+      }
+    },
+    "Hotkey settings…" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hotkey settings…"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kısayol ayarları…"
+          }
+        }
+      }
+    },
     "Hotkeys" : {
       "localizations" : {
         "en" : {
@@ -1213,6 +2459,278 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Kısayollar"
+          }
+        }
+      }
+    },
+    "Hotkeys disabled." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hotkeys disabled."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kısayollar devre dışı kaldı."
+          }
+        }
+      }
+    },
+    "Hotkeys enabled." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hotkeys enabled."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kısayollar aktif edildi."
+          }
+        }
+      }
+    },
+    "Image" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Image"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Resim"
+          }
+        }
+      }
+    },
+    "Image beautifier" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Image beautifier"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Resim güzelleştirici"
+          }
+        }
+      }
+    },
+    "Image beautifier…" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Image beautifier…"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Resim güzelleştirici…"
+          }
+        }
+      }
+    },
+    "Image combiner" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Image combiner"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Resim birleştirici"
+          }
+        }
+      }
+    },
+    "Image combiner…" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Image combiner…"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Resim birleştirici…"
+          }
+        }
+      }
+    },
+    "Image dimensions" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Image dimensions"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Resim boyutları"
+          }
+        }
+      }
+    },
+    "Image editor" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Image editor"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Resim düzenleyici"
+          }
+        }
+      }
+    },
+    "Image editor…" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Image editor…"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Resim düzenleyici…"
+          }
+        }
+      }
+    },
+    "Image effects" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Image effects"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Resim efektleri"
+          }
+        }
+      }
+    },
+    "Image effects…" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Image effects…"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Resim efektleri…"
+          }
+        }
+      }
+    },
+    "Image history…" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Image history…"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Resim geçmişi…"
+          }
+        }
+      }
+    },
+    "Image uploader: %@" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Image uploader: %@"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Resim yükleyici: %@"
+          }
+        }
+      }
+    },
+    "Image viewer" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Image viewer"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Resim görüntüleyici"
+          }
+        }
+      }
+    },
+    "Image viewer…" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Image viewer…"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Resim görüntüleyici…"
           }
         }
       }
@@ -1249,6 +2767,23 @@
         }
       }
     },
+    "Last region" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Last region"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Son bölge"
+          }
+        }
+      }
+    },
     "License" : {
       "localizations" : {
         "en" : {
@@ -1277,6 +2812,57 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Kopyalanacak link:"
+          }
+        }
+      }
+    },
+    "Markdown image" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Markdown image"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Markdown resim"
+          }
+        }
+      }
+    },
+    "Markdown link" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Markdown link"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Markdown bağlantı"
+          }
+        }
+      }
+    },
+    "Markdown linked image" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Markdown linked image"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Markdown bağlantılı resim"
           }
         }
       }
@@ -1313,12 +2899,46 @@
         }
       }
     },
+    "Monitor" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Monitor"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Monitör"
+          }
+        }
+      }
+    },
     "My Profile" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "My Profile"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Profilim"
+          }
+        }
+      }
+    },
+    "My profile" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "My profile"
           }
         },
         "tr" : {
@@ -1345,6 +2965,23 @@
         }
       }
     },
+    "No delay" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No delay"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gecikme yok"
+          }
+        }
+      }
+    },
     "No uploads yet" : {
       "localizations" : {
         "en" : {
@@ -1362,6 +2999,24 @@
       }
     },
     "None" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "None"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hiçbiri"
+          }
+        }
+      }
+    },
+    "None (no shortcut)" : {
+      "comment" : "Shown for an action without a shortcut in the 0.1 Settings window; \"None\" itself is the Windows task type (Hiçbiri).",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1409,6 +3064,57 @@
         }
       }
     },
+    "OCR" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OCR"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OCR"
+          }
+        }
+      }
+    },
+    "OCR image…" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OCR image…"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Resimden yazı yakala (OCR)…"
+          }
+        }
+      }
+    },
+    "OCR…" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OCR…"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OCR…"
+          }
+        }
+      }
+    },
     "OK" : {
       "localizations" : {
         "en" : {
@@ -1442,6 +3148,7 @@
       }
     },
     "Open" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1537,6 +3244,23 @@
         }
       }
     },
+    "Open URL" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open URL"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Adresi aç"
+          }
+        }
+      }
+    },
     "Open UpLa at login" : {
       "localizations" : {
         "en" : {
@@ -1553,7 +3277,111 @@
         }
       }
     },
+    "Open history window" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open history window"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Geçmiş penceresini aç"
+          }
+        }
+      }
+    },
+    "Open image history window" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open image history window"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Resim geçmişi penceresini aç"
+          }
+        }
+      }
+    },
+    "Open in image editor" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open in image editor"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Resim düzenleyicide aç"
+          }
+        }
+      }
+    },
+    "Open main window" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open main window"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ana pencereyi aç"
+          }
+        }
+      }
+    },
+    "Open main window (menu bar menu)" : {
+      "comment" : "Same English as another menu text, different Turkish (ShareX/Forms/MainForm|tsmiTrayShow.Text).",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open main window"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "UpLa penceresini göster"
+          }
+        }
+      }
+    },
+    "Open screenshots folder" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open screenshots folder"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ekran görüntüleri dizinini aç"
+          }
+        }
+      }
+    },
     "Opening the deletion link can delete the uploaded file from the server immediately and permanently. Do you want to continue?" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1565,6 +3393,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Silme linki açıldığında yüklenen dosya sunucudan hemen ve kalıcı olarak silinebilir. Devam etmek istiyor musunuz?"
+          }
+        }
+      }
+    },
+    "Other" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Other"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Diğer"
           }
         }
       }
@@ -1617,6 +3462,142 @@
         }
       }
     },
+    "Pause screen recording" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pause screen recording"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ekran kaydını duraklat"
+          }
+        }
+      }
+    },
+    "Perform actions" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Perform actions"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aksiyonları gerçekleştir"
+          }
+        }
+      }
+    },
+    "Pin to screen" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pin to screen"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ekrana sabitle"
+          }
+        }
+      }
+    },
+    "Pin to screen (Close all)" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pin to screen (Close all)"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ekrana sabitle (Tümünü kapat)"
+          }
+        }
+      }
+    },
+    "Pin to screen (From clipboard)" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pin to screen (From clipboard)"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ekrana sabitle (Panodan)"
+          }
+        }
+      }
+    },
+    "Pin to screen (From file)" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pin to screen (From file)"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ekrana sabitle (Dosyadan)"
+          }
+        }
+      }
+    },
+    "Pin to screen (From screen)" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pin to screen (From screen)"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ekrana sabitle (Ekrandan)"
+          }
+        }
+      }
+    },
+    "Pin to screen…" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pin to screen…"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ekrana sabitle…"
+          }
+        }
+      }
+    },
     "Press the new shortcut…" : {
       "localizations" : {
         "en" : {
@@ -1629,6 +3610,91 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Yeni kısayola basın…"
+          }
+        }
+      }
+    },
+    "Print image" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Print image"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Resmi yazdır"
+          }
+        }
+      }
+    },
+    "QR code" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "QR code"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "QR kod"
+          }
+        }
+      }
+    },
+    "QR code (Scan region)" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "QR code (Scan region)"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "QR kodu (Bölge tara)"
+          }
+        }
+      }
+    },
+    "QR code (Scan screen)" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "QR code (Scan screen)"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "QR kod (Ekrandan çöz)"
+          }
+        }
+      }
+    },
+    "QR code…" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "QR code…"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "QR kod…"
           }
         }
       }
@@ -1661,6 +3727,40 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Son Yüklemeler"
+          }
+        }
+      }
+    },
+    "Recent links" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Recent links"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Son bağlantılar"
+          }
+        }
+      }
+    },
+    "Recognize text (OCR)" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Recognize text (OCR)"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yazı tanı (OCR)"
           }
         }
       }
@@ -1825,6 +3925,57 @@
         }
       }
     },
+    "Region" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Region"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bölge"
+          }
+        }
+      }
+    },
+    "Region (Light)" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Region (Light)"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bölge (Basit)"
+          }
+        }
+      }
+    },
+    "Region (Transparent)" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Region (Transparent)"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bölge (Saydam)"
+          }
+        }
+      }
+    },
     "Region and window captures use the macOS selection: drag to select a region, press Space to switch between region and window, press Esc to cancel." : {
       "localizations" : {
         "en" : {
@@ -1889,6 +4040,23 @@
         }
       }
     },
+    "Remove task from list" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Remove task from list"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Listeden sil"
+          }
+        }
+      }
+    },
     "Remove the API key entered by hand from this Mac? Later uploads are made as a guest." : {
       "localizations" : {
         "en" : {
@@ -1921,6 +4089,23 @@
         }
       }
     },
+    "Report abuse" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Report abuse"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kötüye kullanımı bildir"
+          }
+        }
+      }
+    },
     "Restore Defaults" : {
       "localizations" : {
         "en" : {
@@ -1933,6 +4118,91 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Varsayılanları Geri Yükle"
+          }
+        }
+      }
+    },
+    "Ruler" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ruler"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cetvel"
+          }
+        }
+      }
+    },
+    "Ruler…" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ruler…"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cetvel…"
+          }
+        }
+      }
+    },
+    "Run action" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Run action"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aksiyon çalıştır"
+          }
+        }
+      }
+    },
+    "Save image to file" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Save image to file"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Resmi dosya olarak kaydet"
+          }
+        }
+      }
+    },
+    "Save image to file as…" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Save image to file as…"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Resmi dosya olarak farklı kaydet…"
           }
         }
       }
@@ -1953,6 +4223,23 @@
         }
       }
     },
+    "Scan QR code" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Scan QR code"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "QR kodunu tara"
+          }
+        }
+      }
+    },
     "Screen Recording Permission" : {
       "localizations" : {
         "en" : {
@@ -1965,6 +4252,108 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ekran Kaydı İzni"
+          }
+        }
+      }
+    },
+    "Screen capture" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Screen capture"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ekran yakalama"
+          }
+        }
+      }
+    },
+    "Screen color picker" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Screen color picker"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Renk seçici ekranı"
+          }
+        }
+      }
+    },
+    "Screen color picker…" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Screen color picker…"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ekrandan renk seçici…"
+          }
+        }
+      }
+    },
+    "Screen record" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Screen record"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ekran kaydetme"
+          }
+        }
+      }
+    },
+    "Screen recording" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Screen recording"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ekran kaydetme"
+          }
+        }
+      }
+    },
+    "Screen recording (GIF)" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Screen recording (GIF)"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ekran kaydetme (GIF)"
           }
         }
       }
@@ -2033,6 +4422,23 @@
         }
       }
     },
+    "Screenshot delay: %@s" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Screenshot delay: %@s"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ekran görüntüsü gecikmesi: %@sn"
+          }
+        }
+      }
+    },
     "Screenshot saved" : {
       "localizations" : {
         "en" : {
@@ -2061,6 +4467,40 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ekran görüntüleri (macOS'in screencapture aracıyla alınır) ve ekran kayıtları bu izne ihtiyaç duyar. Siz yakalama yapana ya da kayıt başlatana kadar UpLa hiçbir şey kaydetmez."
+          }
+        }
+      }
+    },
+    "Screenshots folder…" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Screenshots folder…"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ekran görüntüsü dizini…"
+          }
+        }
+      }
+    },
+    "Scrolling capture…" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Scrolling capture…"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kaydırarak yakalama…"
           }
         }
       }
@@ -2097,6 +4537,23 @@
         }
       }
     },
+    "Share URL" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Share URL"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Adresi paylaş"
+          }
+        }
+      }
+    },
     "Short link" : {
       "localizations" : {
         "en" : {
@@ -2129,6 +4586,57 @@
         }
       }
     },
+    "Show \"After capture\" window" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show \"After capture\" window"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "\"Yakalama sonrası\" penceresini göster"
+          }
+        }
+      }
+    },
+    "Show \"After upload\" window" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show \"After upload\" window"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "\"Yükleme sonrası\" penceresini göster"
+          }
+        }
+      }
+    },
+    "Show \"Before upload\" window" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show \"Before upload\" window"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "\"Yükleme öncesi\" penceresini göster"
+          }
+        }
+      }
+    },
     "Show History…" : {
       "localizations" : {
         "en" : {
@@ -2141,6 +4649,40 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Geçmişi Göster…"
+          }
+        }
+      }
+    },
+    "Show QR code window" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show QR code window"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "QR kod penceresini göster"
+          }
+        }
+      }
+    },
+    "Show QR code…" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show QR code…"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "QR kod göster…"
           }
         }
       }
@@ -2161,6 +4703,57 @@
         }
       }
     },
+    "Show cursor" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show cursor"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İmleç göster"
+          }
+        }
+      }
+    },
+    "Show errors" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show errors"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hataları göster"
+          }
+        }
+      }
+    },
+    "Show file in Finder" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show file in Finder"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dosyayı klasörde göster"
+          }
+        }
+      }
+    },
     "Show in Finder" : {
       "localizations" : {
         "en" : {
@@ -2173,6 +4766,40 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Finder'da Göster"
+          }
+        }
+      }
+    },
+    "Show quick task menu" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show quick task menu"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hızlı görev menüsünü göster"
+          }
+        }
+      }
+    },
+    "Show response…" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show response…"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yanıtı göster…"
           }
         }
       }
@@ -2257,6 +4884,40 @@
         }
       }
     },
+    "Sign in" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sign in"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Giriş yap"
+          }
+        }
+      }
+    },
+    "Sign in again…" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sign in again…"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tekrar giriş yap…"
+          }
+        }
+      }
+    },
     "Sign in to upla.com.tr" : {
       "localizations" : {
         "en" : {
@@ -2273,6 +4934,40 @@
         }
       }
     },
+    "Sign in…" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sign in…"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Giriş yap…"
+          }
+        }
+      }
+    },
+    "Sign out" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sign out"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Çıkış yap"
+          }
+        }
+      }
+    },
     "Sign out of your upla.com.tr account? This Mac's connection is removed from the server too; later uploads are made as a guest." : {
       "localizations" : {
         "en" : {
@@ -2285,6 +4980,40 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "upla.com.tr hesabınızdan çıkış yapılsın mı? Bu Mac'in bağlantısı sunucudan da silinir; sonraki yüklemeler misafir olarak yapılır."
+          }
+        }
+      }
+    },
+    "Sign out of your upla.com.tr account? This computer's connection is removed from the server too; later uploads are made as a guest." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sign out of your upla.com.tr account? This computer's connection is removed from the server too; later uploads are made as a guest."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "upla.com.tr hesabınızdan çıkış yapılsın mı? Bu bilgisayarın bağlantısı sunucudan da silinir; sonraki yüklemeler misafir olarak yapılır."
+          }
+        }
+      }
+    },
+    "Sign up" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sign up"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hesap oluştur"
           }
         }
       }
@@ -2385,6 +5114,159 @@
         }
       }
     },
+    "Start/Stop screen recording" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Start/Stop screen recording"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ekran kaydetme başlat/durdur"
+          }
+        }
+      }
+    },
+    "Start/Stop screen recording (GIF)" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Start/Stop screen recording (GIF)"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ekran kaydetme (GIF) başlat/durdur"
+          }
+        }
+      }
+    },
+    "Start/Stop screen recording (GIF) using active window region" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Start/Stop screen recording (GIF) using active window region"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aktif pencere alanıyla ekran kaydetme (GIF) başlat"
+          }
+        }
+      }
+    },
+    "Start/Stop screen recording (GIF) using last region" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Start/Stop screen recording (GIF) using last region"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Son bölgeyi kullanarak ekran kaydet (GIF)"
+          }
+        }
+      }
+    },
+    "Start/Stop screen recording (GIF) using pre configured region" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Start/Stop screen recording (GIF) using pre configured region"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Özel alan ile ekran kaydetme (GIF) başlat"
+          }
+        }
+      }
+    },
+    "Start/Stop screen recording using active window region" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Start/Stop screen recording using active window region"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aktif pencere alanıyla ekran kaydetme başlat"
+          }
+        }
+      }
+    },
+    "Start/Stop screen recording using last region" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Start/Stop screen recording using last region"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Son bölgeyi kullanarak ekran kaydet"
+          }
+        }
+      }
+    },
+    "Start/Stop screen recording using pre configured region" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Start/Stop screen recording using pre configured region"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Özel alan ile ekran kaydetme başlat"
+          }
+        }
+      }
+    },
+    "Start/Stop scrolling capture" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Start/Stop scrolling capture"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kaydırarak yakalamayı başlat/durdur"
+          }
+        }
+      }
+    },
     "Starting the recording…" : {
       "localizations" : {
         "en" : {
@@ -2417,6 +5299,40 @@
         }
       }
     },
+    "Stop all active uploads" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stop all active uploads"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tüm aktif yüklemeleri durdur"
+          }
+        }
+      }
+    },
+    "Stop screen recording" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stop screen recording"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ekran kaydını durdur"
+          }
+        }
+      }
+    },
     "Stop screen recordings that will be uploaded at the upload limit" : {
       "localizations" : {
         "en" : {
@@ -2433,6 +5349,57 @@
         }
       }
     },
+    "Stop upload" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stop upload"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yüklemeyi durdur"
+          }
+        }
+      }
+    },
+    "Switch to list view" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Switch to list view"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Liste görünümüne geç"
+          }
+        }
+      }
+    },
+    "Switch to thumbnail view" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Switch to thumbnail view"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Küçük resim görünümüne geç"
+          }
+        }
+      }
+    },
     "Tags (comma separated):" : {
       "localizations" : {
         "en" : {
@@ -2445,6 +5412,74 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Etiketler (virgülle ayırın):"
+          }
+        }
+      }
+    },
+    "Task settings…" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Task settings…"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Görev ayarları…"
+          }
+        }
+      }
+    },
+    "Test image upload" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Test image upload"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Resim yükleme testi"
+          }
+        }
+      }
+    },
+    "Text" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Text"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yazı"
+          }
+        }
+      }
+    },
+    "Text uploader: %@" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Text uploader: %@"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Metin yükleyici: %@"
           }
         }
       }
@@ -3089,6 +6124,57 @@
         }
       }
     },
+    "Thumbnail URL" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Thumbnail URL"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Küçük resim adresi"
+          }
+        }
+      }
+    },
+    "Toggle actions toolbar" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Toggle actions toolbar"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aksiyonlar araç çubuğunu göster/sakla"
+          }
+        }
+      }
+    },
+    "Toggle menu bar menu" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Toggle menu bar menu"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Menü çubuğu menüsünü aç/kapat"
+          }
+        }
+      }
+    },
     "Too many failed attempts. Try again in 24 hours or sign in on the website." : {
       "localizations" : {
         "en" : {
@@ -3153,6 +6239,23 @@
         }
       }
     },
+    "Tools" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tools"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Araçlar"
+          }
+        }
+      }
+    },
     "Turn Off Automatic Upload" : {
       "localizations" : {
         "en" : {
@@ -3197,6 +6300,40 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Hesabınızda iki adımlı doğrulama açık. Kimlik doğrulama uygulamanızdaki 6 haneli kodu girin."
+          }
+        }
+      }
+    },
+    "URL" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "URL"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Adres"
+          }
+        }
+      }
+    },
+    "URL sharing service: %@" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "URL sharing service: %@"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Adres paylaşım servisi: %@"
           }
         }
       }
@@ -3298,6 +6435,7 @@
       }
     },
     "Upload" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -3361,6 +6499,74 @@
         }
       }
     },
+    "Upload file" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Upload file"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dosya yükle"
+          }
+        }
+      }
+    },
+    "Upload file…" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Upload file…"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dosya yükle…"
+          }
+        }
+      }
+    },
+    "Upload folder" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Upload folder"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dizin yükle"
+          }
+        }
+      }
+    },
+    "Upload folder…" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Upload folder…"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Klasör yükle…"
+          }
+        }
+      }
+    },
     "Upload from Clipboard" : {
       "localizations" : {
         "en" : {
@@ -3373,6 +6579,108 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Panodan Yükle"
+          }
+        }
+      }
+    },
+    "Upload from URL" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Upload from URL"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Adresten yükle"
+          }
+        }
+      }
+    },
+    "Upload from URL…" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Upload from URL…"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Adresten indirip yükle…"
+          }
+        }
+      }
+    },
+    "Upload from clipboard" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Upload from clipboard"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Panodan yükle"
+          }
+        }
+      }
+    },
+    "Upload from clipboard with content viewer" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Upload from clipboard with content viewer"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İçerik gösterici ile panodan yükle"
+          }
+        }
+      }
+    },
+    "Upload from clipboard…" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Upload from clipboard…"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Panodan yükle…"
+          }
+        }
+      }
+    },
+    "Upload image to host" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Upload image to host"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Resmi yükle"
           }
         }
       }
@@ -3602,6 +6910,7 @@
       }
     },
     "Window" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -3613,6 +6922,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Pencere"
+          }
+        }
+      }
+    },
+    "Workflows" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Workflows"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "İş akışları"
           }
         }
       }
@@ -3661,6 +6987,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Bu Mac'te çıkış yapıldı ancak bağlantısı upla.com.tr'den kaldırılamadı (%@). Kaldırılana kadar bu bağlantı hesabınıza yükleme yapabilir. \"Bağlı cihazlar\" sayfası açılsın mı?"
+          }
+        }
+      }
+    },
+    "You are signed out on this computer, but its connection could not be removed from upla.com.tr (%@). Until it is removed it can still upload to your account. Open the \"Connected devices\" page?" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You are signed out on this computer, but its connection could not be removed from upla.com.tr (%@). Until it is removed it can still upload to your account. Open the \"Connected devices\" page?"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bu bilgisayarda çıkış yapıldı ancak bağlantısı upla.com.tr'den kaldırılamadı (%@). Kaldırılana kadar bu bağlantı hesabınıza yükleme yapabilir. \"Bağlı cihazlar\" sayfası açılsın mı?"
           }
         }
       }
@@ -3805,6 +7148,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "upla.com.tr Hesabı"
+          }
+        }
+      }
+    },
+    "upla.com.tr account" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "upla.com.tr account"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "upla.com.tr hesabı"
           }
         }
       }
