@@ -7,3 +7,5 @@
 - Server changes (upla.com.tr pages, routes) are made from the Windows session and need the user's approval.
 - Git identity: `Agnostique <20846034+Agnostique@users.noreply.github.com>`.
 - For upla.com.tr behaviour (limits, error codes, sign-in), the Windows app is the reference: `ShareX.UploadersLib/Upla/` in https://github.com/Agnostique/UpLa.
+- For the user interface too: menus, windows, texts and defaults follow UpLa for Windows (decision of 2026-10-10). Work from `docs/parity/`: the inventory, the plan with its 22 accepted decisions, and the Windows screenshots in `docs/parity/windows-ref/`. Do not copy the Windows bugs listed in the inventory §12.
+- Merging is always the user's decision: one branch and pull request per step, never a push to `main`.
