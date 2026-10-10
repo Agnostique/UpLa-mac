@@ -1,4 +1,5 @@
 import AppKit
+import Combine
 import SwiftUI
 import UplaKit
 
@@ -18,6 +19,7 @@ final class AppController {
     private var statusItem: StatusItemController?
     // Set while UpLa waits for a recording to finish before it quits.
     private var quitReply: (@MainActor () -> Void)?
+    private var hotKeyMirror: AnyCancellable?
 
     init() {
         settings = AppSettings()
@@ -53,6 +55,11 @@ final class AppController {
         }
         hotKeys.start()
 
+        // HotkeysConfig.json follows HotKeyCenter's shortcuts until HotKeyCenter reads that file itself.
+        hotKeyMirror = hotKeys.$hotKeys.sink { [weak self] hotKeys in
+            self?.mirror(hotKeys)
+        }
+
         // The account is checked when its settings open (like UpLa for Windows), not at every launch: a launch at login
         // then sends nothing to upla.com.tr.
 
@@ -61,6 +68,17 @@ final class AppController {
         if !UserDefaults.standard.bool(forKey: launchedKey) {
             UserDefaults.standard.set(true, forKey: launchedKey)
             showSettings(tab: .general)
+        }
+    }
+
+    private func mirror(_ hotKeys: [HotKeyAction: HotKey]) {
+        for action in HotKeyAction.allCases {
+            guard let job = SettingsMigration.legacyHotkeyJobs.first(where: { $0.action == action.rawValue })?.job else {
+                continue
+            }
+
+            let info = hotKeys[action].map { HotkeyInfo(keyCode: $0.keyCode, modifiers: $0.modifiers, key: $0.key) }
+            settings.setHotkey(info ?? HotkeyInfo.none, for: job)
         }
     }
 
@@ -426,5 +444,50 @@ final class AppController {
                 self?.windows.close(.permission)
             })
         }
+    }
+}
+
+// What MenuBuilder's items do. No menu is built from MenuSpec yet (the main window and the new menus come in the next
+// steps of phase 1); the commands the Mac cannot run yet are hidden by MenuSpec and only logged here.
+extension AppController: MenuActionHandler {
+    func perform(_ command: MenuCommand) {
+        switch command {
+        case .captureFullscreen:
+            capture(.fullScreen)
+        case .captureRegion:
+            capture(.region)
+        case .screenRecording:
+            toggleRecording()
+        case .uploadFile:
+            uploadFiles()
+        case .uploadFromClipboard:
+            uploadFromClipboard()
+        case .applicationSettings:
+            showSettings(tab: .general)
+        case .hotkeySettings:
+            showSettings(tab: .hotKeys)
+        case .destinationSettings:
+            showSettings(tab: .upla)
+        case .history:
+            showHistory()
+        case .about:
+            showAbout()
+        case .exit:
+            NSApp.terminate(nil)
+        default:
+            appLog.notice("The menu command \(command.rawValue, privacy: .public) is not available yet")
+        }
+    }
+
+    func toggle(_ check: MenuCheck) {
+        settings.taskSettings = MenuSpec.applying(check, to: settings.taskSettings)
+    }
+
+    func items(for menu: DynamicMenu) -> [NSMenuItem]? {
+        nil
+    }
+
+    func title(for menu: DynamicMenu) -> String? {
+        nil
     }
 }

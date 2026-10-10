@@ -43,3 +43,5 @@ Needs macOS 14 or later and Xcode 16.
 5. Each test build is signed differently, so it may ask again for the Screen Recording permission and for keychain access.
 
 License: GNU General Public License v3, see [LICENSE](LICENSE).
+
+The menu icons are [Fugue Icons](https://p.yusukekamiyamane.com) by Yusuke Kamiyamane, licensed under CC BY 3.0; see [docs/licenses/Fugue_Icons_license.txt](docs/licenses/Fugue_Icons_license.txt).

@@ -73,13 +73,14 @@ enum TempFiles {
     }
 
     // Like move, for a capture that is not uploaded and would otherwise be lost when the temporary folder is emptied:
-    // when the chosen folder fails (e.g. its volume is not mounted), the default save folder is used.
+    // when the chosen folder fails (e.g. its volume is not mounted, or Documents access was denied), 0.1's
+    // ~/Pictures/UpLa is used, which needs no permission and is outside the default Documents folder.
     @MainActor
     static func keep(_ fileURL: URL, in folder: URL) throws -> URL {
         do {
             return try move(fileURL, to: folder)
         } catch {
-            let fallback = AppSettings.defaultSaveFolder
+            let fallback = AppSettings.legacyDefaultSaveFolder
 
             guard fallback.standardizedFileURL.path != folder.standardizedFileURL.path else {
                 throw error
