@@ -3,7 +3,7 @@ import Combine
 import CoreGraphics
 import SwiftUI
 
-// Shown instead of capturing while the Screen Recording permission is missing.
+// Shown instead of capturing or recording while the Screen Recording permission is missing.
 @MainActor
 struct PermissionView: View {
     let onClose: @MainActor () -> Void
@@ -23,7 +23,7 @@ struct PermissionView: View {
                 VStack(alignment: .leading, spacing: 8) {
                     Text("UpLa needs the Screen Recording permission")
                         .font(.headline)
-                    Text("Screenshots are taken with the macOS screencapture tool, which needs this permission. UpLa does not record anything until you capture.")
+                    Text("Screenshots (taken with the macOS screencapture tool) and screen recordings need this permission. UpLa does not record anything until you capture or start a recording.")
                         .fixedSize(horizontal: false, vertical: true)
                     Text("Turn on UpLa in System Settings › Privacy & Security › Screen & System Audio Recording (Screen Recording on macOS 14), then quit and reopen UpLa.")
                         .fixedSize(horizontal: false, vertical: true)

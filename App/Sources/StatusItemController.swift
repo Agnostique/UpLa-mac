@@ -1,8 +1,8 @@
 import AppKit
 import UplaKit
 
-// The menu bar item: the app's menu (rebuilt each time it opens), upload progress as the button title, and files
-// dropped onto the icon.
+// The menu bar item: the app's menu (rebuilt each time it opens), the recording time or the upload progress as the
+// button title, and files dropped onto the icon.
 @MainActor
 final class StatusItemController: NSObject, NSMenuDelegate, NSWindowDelegate, NSDraggingDestination {
     private static let recentCount = 10
@@ -10,19 +10,27 @@ final class StatusItemController: NSObject, NSMenuDelegate, NSWindowDelegate, NS
     private let app: AppController
     private let statusItem: NSStatusItem
     private let menu: NSMenu
+    private let idleImage: NSImage?
+    private let recordingImage: NSImage
+    // The "Recording… 0:42, 12 MB" line of the open menu, updated while the menu is open.
+    private weak var recordingStatusItem: NSMenuItem?
 
     init(app: AppController) {
         self.app = app
         statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
         menu = NSMenu()
+        let image = NSImage(systemSymbolName: "arrow.up.circle", accessibilityDescription: "UpLa")
+        image?.isTemplate = true
+        idleImage = image
+        recordingImage = StatusItemController.makeRecordingImage()
         super.init()
 
         if let button = statusItem.button {
-            let image = NSImage(systemSymbolName: "arrow.up.circle", accessibilityDescription: "UpLa")
-            image?.isTemplate = true
-            button.image = image
+            button.image = idleImage
             button.imagePosition = .imageLeading
             button.toolTip = "UpLa"
+            // Digits of equal width, so the time and the percentage do not move the other menu bar items.
+            button.font = NSFont.monospacedDigitSystemFont(ofSize: button.font?.pointSize ?? NSFont.systemFontSize, weight: .regular)
         }
 
         menu.delegate = self
@@ -36,17 +44,56 @@ final class StatusItemController: NSObject, NSMenuDelegate, NSWindowDelegate, NS
         }
     }
 
-    // Shows the upload progress next to the icon.
+    // A red dot and the elapsed time while recording, otherwise the icon and the upload progress.
     func update() {
         guard let button = statusItem.button else {
             return
         }
 
-        if let progress = app.uploads.progress {
-            button.title = " \(Int(progress * 100))%"
+        let recorder = app.recorder
+
+        if recorder.state == .recording || recorder.state == .finishing {
+            setImage(recordingImage, on: button)
+            button.title = recorder.elapsedSeconds.map { " " + RecordingTime.text(seconds: $0) } ?? ""
         } else {
-            button.title = ""
+            setImage(idleImage, on: button)
+
+            if let progress = app.uploads.progress {
+                button.title = " \(Int(progress * 100))%"
+            } else {
+                button.title = ""
+            }
         }
+
+        if recorder.state == .recording {
+            recordingStatusItem?.title = recordingStatusText()
+        }
+    }
+
+    private func setImage(_ image: NSImage?, on button: NSStatusBarButton) {
+        if button.image !== image {
+            button.image = image
+        }
+    }
+
+    // Not a template image, so the dot stays red in the menu bar.
+    private static func makeRecordingImage() -> NSImage {
+        let image = NSImage(size: NSSize(width: 14, height: 14), flipped: false) { rect in
+            NSColor.systemRed.setFill()
+            NSBezierPath(ovalIn: rect.insetBy(dx: 2, dy: 2)).fill()
+            return true
+        }
+        image.isTemplate = false
+        image.accessibilityDescription = String(localized: "Recording")
+        return image
+    }
+
+    private func recordingStatusText() -> String {
+        let recorder = app.recorder
+        let elapsed = RecordingTime.text(seconds: recorder.elapsedSeconds ?? 0)
+        // Guest limits are binary megabytes, member limits decimal, like the upload errors.
+        let size = UplaText.megabytes(recorder.fileSize, binary: !(recorder.limit?.isMember ?? false))
+        return String(localized: "Recording… \(elapsed), \(size)")
     }
 
     private func setUpDropTarget() {
@@ -74,6 +121,8 @@ final class StatusItemController: NSObject, NSMenuDelegate, NSWindowDelegate, NS
         menu.addItem(captureItem(.region))
         menu.addItem(captureItem(.window))
         menu.addItem(captureItem(.fullScreen))
+        menu.addItem(.separator())
+        addRecordingItems(to: menu)
         menu.addItem(.separator())
         menu.addItem(item(String(localized: "Upload File…"), #selector(uploadFile(_:))))
         menu.addItem(item(String(localized: "Upload from Clipboard"), #selector(uploadFromClipboard(_:))))
@@ -115,14 +164,55 @@ final class StatusItemController: NSObject, NSMenuDelegate, NSWindowDelegate, NS
     private func captureItem(_ action: HotKeyAction) -> NSMenuItem {
         let item = self.item(action.title, #selector(capture(_:)))
         item.representedObject = action.rawValue
+        showHotKey(action, on: item)
+        return item
+    }
 
-        // The global shortcut is shown for reference only (the Carbon hot key does the work).
+    // The global shortcut is shown for reference only (the Carbon hot key does the work).
+    private func showHotKey(_ action: HotKeyAction, on item: NSMenuItem) {
         if let hotKey = app.hotKeys.hotKey(for: action), let key = hotKey.menuKeyEquivalent {
             item.keyEquivalent = key
             item.keyEquivalentModifierMask = hotKey.eventModifierFlags
         }
+    }
 
-        return item
+    // Record… while idle; the state, Stop and Cancel while a recording is chosen, runs or is being finished.
+    private func addRecordingItems(to menu: NSMenu) {
+        func info(_ text: String) -> NSMenuItem {
+            let infoItem = NSMenuItem(title: text, action: nil, keyEquivalent: "")
+            infoItem.isEnabled = false
+            menu.addItem(infoItem)
+            return infoItem
+        }
+
+        switch app.recorder.state {
+        case .idle:
+            for target in RecordingTarget.allCases {
+                let recordItem = item(target.title, #selector(record(_:)))
+                recordItem.representedObject = target.rawValue
+
+                // The recording shortcut starts a region recording.
+                if target == .region {
+                    showHotKey(.recording, on: recordItem)
+                }
+
+                menu.addItem(recordItem)
+            }
+        case .choosing:
+            _ = info(String(localized: "Choose what to record…"))
+            menu.addItem(item(String(localized: "Cancel Recording"), #selector(cancelRecording(_:))))
+        case .starting:
+            _ = info(String(localized: "Starting the recording…"))
+            menu.addItem(item(String(localized: "Cancel Recording"), #selector(cancelRecording(_:))))
+        case .recording:
+            recordingStatusItem = info(recordingStatusText())
+            let stopItem = item(String(localized: "Stop Recording"), #selector(stopRecording(_:)))
+            showHotKey(.recording, on: stopItem)
+            menu.addItem(stopItem)
+            menu.addItem(item(String(localized: "Cancel Recording"), #selector(cancelRecording(_:))))
+        case .finishing:
+            _ = info(String(localized: "Finishing the recording…"))
+        }
     }
 
     private func recentMenu() -> NSMenu {
@@ -211,11 +301,27 @@ final class StatusItemController: NSObject, NSMenuDelegate, NSWindowDelegate, NS
     // MARK: Actions
 
     @objc private func capture(_ sender: NSMenuItem) {
-        guard let raw = sender.representedObject as? String, let action = HotKeyAction(rawValue: raw) else {
+        guard let raw = sender.representedObject as? String, let mode = HotKeyAction(rawValue: raw)?.captureMode else {
             return
         }
 
-        app.capture(action.captureMode)
+        app.capture(mode)
+    }
+
+    @objc private func record(_ sender: NSMenuItem) {
+        guard let raw = sender.representedObject as? String, let target = RecordingTarget(rawValue: raw) else {
+            return
+        }
+
+        app.startRecording(target)
+    }
+
+    @objc private func stopRecording(_ sender: Any?) {
+        app.recorder.stop()
+    }
+
+    @objc private func cancelRecording(_ sender: Any?) {
+        app.recorder.cancel()
     }
 
     @objc private func uploadFile(_ sender: Any?) {

@@ -19,6 +19,18 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         false
     }
 
+    // A screen recording is finished and kept before UpLa quits; the temporary folder is emptied at quit.
+    func applicationShouldTerminate(_ sender: NSApplication) -> NSApplication.TerminateReply {
+        guard let controller, !controller.recorder.isIdle else {
+            return .terminateNow
+        }
+
+        controller.finishRecordingBeforeQuit {
+            NSApp.reply(toApplicationShouldTerminate: true)
+        }
+        return .terminateLater
+    }
+
     func applicationWillTerminate(_ notification: Notification) {
         controller?.prepareForQuit()
     }

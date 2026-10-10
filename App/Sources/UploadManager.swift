@@ -11,7 +11,7 @@ final class UploadManager: ObservableObject {
         case file
         // An image from the clipboard written to the temporary folder; removed afterwards (the clipboard still has it).
         case clipboardImage
-        // A screenshot in the temporary folder, with the copy "Save to a folder" made, if any.
+        // A screenshot or screen recording in the temporary folder, with the copy "Save to a folder" made, if any.
         case capture(savedCopy: URL?)
     }
 
@@ -26,6 +26,11 @@ final class UploadManager: ObservableObject {
                 return true
             }
             return false
+        }
+
+        // A screen recording rather than a screenshot, for the texts.
+        var isVideo: Bool {
+            Upla.isVideoExtension(fileURL.pathExtension)
         }
     }
 
@@ -81,10 +86,10 @@ final class UploadManager: ObservableObject {
         }
     }
 
-    // Cancels the current upload and drops the waiting ones; cancelled screenshots are not kept.
+    // Cancels the current upload and drops the waiting ones. Cancelled screenshots are not kept; screen recordings are.
     func cancelAll() {
         for job in queue {
-            _ = dispose(job, keepCapture: false)
+            disposeCancelled(job)
         }
 
         queue.removeAll()
@@ -152,8 +157,9 @@ final class UploadManager: ObservableObject {
 
                 for job in captures {
                     if let keptURL = self.dispose(job, keepCapture: true), self.settings.showNotifications {
+                        let title = job.isVideo ? String(localized: "Screen recording saved") : String(localized: "Screenshot saved")
                         self.notifier.prepare()
-                        self.notifier.post(title: String(localized: "Screenshot saved"), body: UploadManager.displayPath(keptURL))
+                        self.notifier.post(title: title, body: UploadManager.displayPath(keptURL))
                     }
                 }
             }
@@ -165,8 +171,10 @@ final class UploadManager: ObservableObject {
 
     private func finish(_ job: Job, _ outcome: Outcome) {
         switch outcome {
-        case .uploaded, .cancelled:
+        case .uploaded:
             _ = dispose(job, keepCapture: false)
+        case .cancelled:
+            disposeCancelled(job)
         case .failed(let message):
             let keptURL = dispose(job, keepCapture: true)
             reportFailure(message, job: job, keptURL: keptURL)
@@ -201,12 +209,24 @@ final class UploadManager: ObservableObject {
             }
 
             do {
-                return try TempFiles.move(job.fileURL, to: settings.saveFolder)
+                return try TempFiles.keep(job.fileURL, in: settings.saveFolder)
             } catch {
                 // Stays in the temporary folder until the app quits.
                 appLog.error("Keeping the screenshot failed: \(error.localizedDescription, privacy: .public)")
                 return nil
             }
+        }
+    }
+
+    // A cancelled upload: a screen recording stays in the save folder, because it cannot be taken again (on Windows
+    // it is recorded into that folder), and a screenshot is deleted.
+    private func disposeCancelled(_ job: Job) {
+        let keepsRecording = job.isCapture && job.isVideo
+        let keptURL = dispose(job, keepCapture: keepsRecording)
+
+        if keepsRecording, let keptURL, settings.showNotifications {
+            notifier.prepare()
+            notifier.post(title: String(localized: "Screen recording saved"), body: UploadManager.displayPath(keptURL))
         }
     }
 
@@ -319,7 +339,8 @@ final class UploadManager: ObservableObject {
 
         if let keptURL {
             let path = UploadManager.displayPath(keptURL)
-            body += " " + String(localized: "The screenshot was saved to \(path).")
+            body += " " + (job.isVideo ? String(localized: "The screen recording was saved to \(path).")
+                : String(localized: "The screenshot was saved to \(path)."))
         }
 
         notifier.prepare()

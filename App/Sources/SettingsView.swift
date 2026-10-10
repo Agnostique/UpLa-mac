@@ -7,6 +7,7 @@ import UplaKit
 enum SettingsTab: String, Hashable {
     case general
     case capture
+    case recording
     case upla
     case hotKeys
     case account
@@ -50,6 +51,9 @@ struct SettingsView: View {
             CaptureSettingsView(settings: settings)
                 .tabItem { Label("Capture", systemImage: "camera.viewfinder") }
                 .tag(SettingsTab.capture)
+            RecordingSettingsView(settings: settings)
+                .tabItem { Label("Recording", systemImage: "record.circle") }
+                .tag(SettingsTab.recording)
             UplaSettingsView(settings: settings, account: account)
                 .tabItem {
                     Label {
@@ -205,6 +209,37 @@ struct CaptureSettingsView: View {
 }
 
 @MainActor
+struct RecordingSettingsView: View {
+    @ObservedObject var settings: AppSettings
+
+    var body: some View {
+        Form {
+            Section {
+                Picker("Frames per second:", selection: $settings.recordingFramesPerSecond) {
+                    ForEach(AppSettings.recordingFrameRates, id: \.self) { rate in
+                        Text(verbatim: String(rate)).tag(rate)
+                    }
+                }
+                Toggle("Show the mouse pointer", isOn: $settings.recordingShowsCursor)
+                Toggle("Record system audio", isOn: $settings.recordingCapturesAudio)
+                Hint("Sound played by apps is recorded; the microphone is not.")
+            }
+
+            Section {
+                Toggle("Stop screen recordings that will be uploaded at the upload limit", isOn: $settings.stopRecordingAtUploadLimit)
+                Hint("Guests can upload 20 MB, signed in members 100 MB. The recording stops a little before the limit, so it can still be uploaded.")
+            }
+
+            Section {
+                Hint("Recordings are MP4 videos. After a recording the actions in the Capture tab apply (uploading, saving to the folder); a recording that is not uploaded is always saved to the folder.")
+                Hint("Record Region: drag to select the area, or click to record the whole screen; Esc cancels. Stop the recording from the menu bar icon or with the shortcut.")
+            }
+        }
+        .formStyle(.grouped)
+    }
+}
+
+@MainActor
 struct UplaSettingsView: View {
     @ObservedObject var settings: AppSettings
     @ObservedObject var account: AccountStore
@@ -239,8 +274,6 @@ struct UplaSettingsView: View {
             }
 
             Section {
-                Toggle("Stop screen recordings that will be uploaded at the upload limit", isOn: $settings.stopRecordingAtUploadLimit)
-                Hint("Screen recording comes in a later version; this setting is kept for it.")
                 Hint("Screen recordings (MP4, WEBM) are uploaded to upla.com.tr too. The limit is 20 MB for guests and 100 MB for signed in members.")
             }
         }
@@ -273,6 +306,7 @@ struct HotKeySettingsView: View {
             Section {
                 Hint("Click a shortcut, then press the new keys. Esc cancels, Delete removes the shortcut. A shortcut needs ⌘ or ⌃ and one more modifier key, like ⌥⇧⌘4; with F1–F20 one is enough. Shortcuts like ⌘C are left to the other apps.")
                 Hint("macOS's own ⇧⌘3, ⇧⌘4 and ⇧⌘5 keep working; UpLa's defaults add ⌥.")
+                Hint("The recording shortcut starts a region recording and stops a running one.")
                 Button("Restore Defaults") {
                     hotKeys.restoreDefaults()
                 }

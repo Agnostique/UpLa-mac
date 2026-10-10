@@ -3,7 +3,7 @@ import Foundation
 import UniformTypeIdentifiers
 import UplaKit
 
-// Temporary capture files ("UpLa_yyyy-MM-dd_HH-mm-ss.png") and copies into the save folder.
+// Temporary capture files ("UpLa_yyyy-MM-dd_HH-mm-ss.png", recordings as .mp4) and copies into the save folder.
 enum TempFiles {
     static var directory: URL {
         FileManager.default.temporaryDirectory.appendingPathComponent("UpLa", isDirectory: true)
@@ -43,6 +43,12 @@ enum TempFiles {
         try? FileManager.default.removeItem(at: url)
     }
 
+    // 0 when the file is missing.
+    static func fileSize(_ url: URL) -> Int64 {
+        let attributes = try? FileManager.default.attributesOfItem(atPath: url.path)
+        return (attributes?[.size] as? NSNumber)?.int64Value ?? 0
+    }
+
     // Captures and upload request bodies (which hold the key); emptied at launch, for leftovers of a crash, and at quit.
     static func cleanUp() {
         try? FileManager.default.removeItem(at: directory)
@@ -64,6 +70,24 @@ enum TempFiles {
                                     extension: fileURL.pathExtension)
         try FileManager.default.moveItem(at: fileURL, to: destination)
         return destination
+    }
+
+    // Like move, for a capture that is not uploaded and would otherwise be lost when the temporary folder is emptied:
+    // when the chosen folder fails (e.g. its volume is not mounted), the default save folder is used.
+    @MainActor
+    static func keep(_ fileURL: URL, in folder: URL) throws -> URL {
+        do {
+            return try move(fileURL, to: folder)
+        } catch {
+            let fallback = AppSettings.defaultSaveFolder
+
+            guard fallback.standardizedFileURL.path != folder.standardizedFileURL.path else {
+                throw error
+            }
+
+            appLog.error("Saving to the chosen folder failed, using the default one: \(error.localizedDescription, privacy: .public)")
+            return try move(fileURL, to: fallback)
+        }
     }
 }
 

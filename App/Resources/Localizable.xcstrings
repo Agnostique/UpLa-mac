@@ -449,6 +449,22 @@
         }
       }
     },
+    "Cancel Recording" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cancel Recording"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kaydı İptal Et"
+          }
+        }
+      }
+    },
     "Cancel Uploads" : {
       "localizations" : {
         "en" : {
@@ -573,6 +589,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Seç"
+          }
+        }
+      }
+    },
+    "Choose what to record…" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose what to record…"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Neyi kaydedeceğinizi seçin…"
           }
         }
       }
@@ -897,6 +929,22 @@
         }
       }
     },
+    "Drag to select the area to record, or click to record the whole screen. Press Esc to cancel." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Drag to select the area to record, or click to record the whole screen. Press Esc to cancel."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kaydedilecek alanı seçmek için sürükleyin ya da tüm ekranı kaydetmek için tıklayın. İptal etmek için Esc tuşuna basın."
+          }
+        }
+      }
+    },
     "Edit" : {
       "localizations" : {
         "en" : {
@@ -993,6 +1041,22 @@
         }
       }
     },
+    "Finishing the recording…" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Finishing the recording…"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kayıt tamamlanıyor…"
+          }
+        }
+      }
+    },
     "Folder:" : {
       "localizations" : {
         "en" : {
@@ -1021,6 +1085,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Şifremi unuttum"
+          }
+        }
+      }
+    },
+    "Frames per second:" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Frames per second:"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Saniyedeki kare sayısı:"
           }
         }
       }
@@ -1101,6 +1181,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Misafir yükleme şu anda kapalı. Hesabınızla giriş yapın."
+          }
+        }
+      }
+    },
+    "Guests can upload 20 MB, signed in members 100 MB. The recording stops a little before the limit, so it can still be uploaded." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Guests can upload 20 MB, signed in members 100 MB. The recording stops a little before the limit, so it can still be uploaded."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Misafirler 20 MB, giriş yapan üyeler 100 MB yükleyebilir. Kayıt sınırdan biraz önce durur, böylece yine de yüklenebilir."
           }
         }
       }
@@ -1293,6 +1389,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Yüklenecek bir şey yok"
+          }
+        }
+      }
+    },
+    "Nothing was recorded." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nothing was recorded."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hiçbir şey kaydedilmedi."
           }
         }
       }
@@ -1553,6 +1665,150 @@
         }
       }
     },
+    "Record Full Screen" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Record Full Screen"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tam Ekranı Kaydet"
+          }
+        }
+      }
+    },
+    "Record Region: drag to select the area, or click to record the whole screen; Esc cancels. Stop the recording from the menu bar icon or with the shortcut." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Record Region: drag to select the area, or click to record the whole screen; Esc cancels. Stop the recording from the menu bar icon or with the shortcut."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bölge Kaydet: alanı seçmek için sürükleyin ya da tüm ekranı kaydetmek için tıklayın; Esc iptal eder. Kaydı menü çubuğu simgesinden ya da kısayolla durdurun."
+          }
+        }
+      }
+    },
+    "Record Region…" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Record Region…"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bölge Kaydet…"
+          }
+        }
+      }
+    },
+    "Record Window…" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Record Window…"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pencere Kaydet…"
+          }
+        }
+      }
+    },
+    "Record system audio" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Record system audio"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sistem sesini kaydet"
+          }
+        }
+      }
+    },
+    "Recording" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Recording"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kayıt"
+          }
+        }
+      }
+    },
+    "Recording stopped at the upload limit (%@)" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Recording stopped at the upload limit (%@)"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kayıt yükleme sınırında durduruldu (%@)"
+          }
+        }
+      }
+    },
+    "Recordings are MP4 videos. After a recording the actions in the Capture tab apply (uploading, saving to the folder); a recording that is not uploaded is always saved to the folder." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Recordings are MP4 videos. After a recording the actions in the Capture tab apply (uploading, saving to the folder); a recording that is not uploaded is always saved to the folder."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kayıtlar MP4 videodur. Kayıttan sonra Yakalama sekmesindeki işlemler uygulanır (yükleme, klasöre kaydetme); yüklenmeyen bir kayıt her zaman klasöre kaydedilir."
+          }
+        }
+      }
+    },
+    "Recording… %@, %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Recording… %@, %@"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kaydediliyor… %@, %@"
+          }
+        }
+      }
+    },
     "Redo" : {
       "localizations" : {
         "en" : {
@@ -1713,18 +1969,34 @@
         }
       }
     },
-    "Screen recording comes in a later version; this setting is kept for it." : {
+    "Screen recording failed" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Screen recording comes in a later version; this setting is kept for it."
+            "value" : "Screen recording failed"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ekran kaydı sonraki bir sürümde gelecek; bu ayar onun için saklanır."
+            "value" : "Ekran kaydı yapılamadı"
+          }
+        }
+      }
+    },
+    "Screen recording saved" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Screen recording saved"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ekran kaydı kaydedildi"
           }
         }
       }
@@ -1777,18 +2049,18 @@
         }
       }
     },
-    "Screenshots are taken with the macOS screencapture tool, which needs this permission. UpLa does not record anything until you capture." : {
+    "Screenshots (taken with the macOS screencapture tool) and screen recordings need this permission. UpLa does not record anything until you capture or start a recording." : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Screenshots are taken with the macOS screencapture tool, which needs this permission. UpLa does not record anything until you capture."
+            "value" : "Screenshots (taken with the macOS screencapture tool) and screen recordings need this permission. UpLa does not record anything until you capture or start a recording."
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ekran görüntüleri macOS'in screencapture aracıyla alınır ve bu araç bu izne ihtiyaç duyar. Siz yakalama yapana kadar UpLa hiçbir şey kaydetmez."
+            "value" : "Ekran görüntüleri (macOS'in screencapture aracıyla alınır) ve ekran kayıtları bu izne ihtiyaç duyar. Siz yakalama yapana ya da kayıt başlatana kadar UpLa hiçbir şey kaydetmez."
           }
         }
       }
@@ -1901,6 +2173,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Finder'da Göster"
+          }
+        }
+      }
+    },
+    "Show the mouse pointer" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show the mouse pointer"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fare imlecini göster"
           }
         }
       }
@@ -2049,6 +2337,22 @@
         }
       }
     },
+    "Sound played by apps is recorded; the microphone is not." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sound played by apps is recorded; the microphone is not."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uygulamaların çaldığı ses kaydedilir; mikrofon kaydedilmez."
+          }
+        }
+      }
+    },
     "Source code" : {
       "localizations" : {
         "en" : {
@@ -2061,6 +2365,54 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Kaynak kod"
+          }
+        }
+      }
+    },
+    "Start/Stop Recording" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Start/Stop Recording"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kaydı Başlat/Durdur"
+          }
+        }
+      }
+    },
+    "Starting the recording…" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Starting the recording…"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kayıt başlatılıyor…"
+          }
+        }
+      }
+    },
+    "Stop Recording" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stop Recording"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kaydı Durdur"
           }
         }
       }
@@ -2337,6 +2689,38 @@
         }
       }
     },
+    "The recording is being uploaded." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The recording is being uploaded."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kayıt yükleniyor."
+          }
+        }
+      }
+    },
+    "The recording shortcut starts a region recording and stops a running one." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The recording shortcut starts a region recording and stops a running one."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kayıt kısayolu bölge kaydı başlatır, süren bir kaydı da durdurur."
+          }
+        }
+      }
+    },
     "The resize width is larger than the image width." : {
       "localizations" : {
         "en" : {
@@ -2365,6 +2749,70 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Kayıtlı API anahtarı bu Mac'in anahtar zincirinden okunamadı. Tekrar giriş yapın veya misafir olarak devam edin."
+          }
+        }
+      }
+    },
+    "The screen recording could not be saved" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The screen recording could not be saved"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ekran kaydı kaydedilemedi"
+          }
+        }
+      }
+    },
+    "The screen recording was not uploaded" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The screen recording was not uploaded"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ekran kaydı yüklenmedi"
+          }
+        }
+      }
+    },
+    "The screen recording was saved to %@." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The screen recording was saved to %@."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ekran kaydı şuraya kaydedildi: %@."
+          }
+        }
+      }
+    },
+    "The screen to record was not found." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The screen to record was not found."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kaydedilecek ekran bulunamadı."
           }
         }
       }
@@ -2461,6 +2909,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Yükleme iptal edildi."
+          }
+        }
+      }
+    },
+    "The video file could not be written." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The video file could not be written."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Video dosyası yazılamadı."
           }
         }
       }
@@ -3265,18 +3729,18 @@
         }
       }
     },
-    "Your screenshots are uploaded to upla.com.tr automatically after capture, and a link that anyone who has it can open is created.\n\nKeep automatic upload on?\n\nIf you turn it off, screenshots are not uploaded and are saved to a folder instead; you can turn automatic upload back on in Settings › Capture." : {
+    "Your screenshots and screen recordings are uploaded to upla.com.tr automatically after capture, and a link that anyone who has it can open is created.\n\nKeep automatic upload on?\n\nIf you turn it off, screenshots and recordings are not uploaded and are saved to a folder instead; you can turn automatic upload back on in Settings › Capture." : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Your screenshots are uploaded to upla.com.tr automatically after capture, and a link that anyone who has it can open is created.\n\nKeep automatic upload on?\n\nIf you turn it off, screenshots are not uploaded and are saved to a folder instead; you can turn automatic upload back on in Settings › Capture."
+            "value" : "Your screenshots and screen recordings are uploaded to upla.com.tr automatically after capture, and a link that anyone who has it can open is created.\n\nKeep automatic upload on?\n\nIf you turn it off, screenshots and recordings are not uploaded and are saved to a folder instead; you can turn automatic upload back on in Settings › Capture."
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ekran görüntüleriniz yakalandıktan sonra otomatik olarak upla.com.tr'ye yüklenir ve linke sahip herkesin görebileceği bir bağlantı oluşturulur.\n\nOtomatik yükleme açık kalsın mı?\n\nKapatırsanız ekran görüntüleri yüklenmez, bunun yerine bir klasöre kaydedilir; otomatik yüklemeyi Ayarlar › Yakalama bölümünden tekrar açabilirsiniz."
+            "value" : "Ekran görüntüleriniz ve kayıtlarınız yakalandıktan sonra otomatik olarak upla.com.tr'ye yüklenir ve linke sahip herkesin görebileceği bir bağlantı oluşturulur.\n\nOtomatik yükleme açık kalsın mı?\n\nKapatırsanız ekran görüntüleri ve kayıtlar yüklenmez, bunun yerine bir klasöre kaydedilir; otomatik yüklemeyi Ayarlar › Yakalama bölümünden tekrar açabilirsiniz."
           }
         }
       }
